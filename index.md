@@ -16,16 +16,16 @@ analysis with and plotting with this the interface.
 
 > [Simple github page](https://github.com/deepaksamuel/simple) 
 
-> Go the releases page to download the app-image for Ubuntu 18.
+> Go the [releases](https://github.com/deepaksamuel/simple/releases)  page to download the app-image for Ubuntu 18.
 
 # iRoot
 
 This is a front-end for ROOT framework. If your data is in the form of TTree structures and you want to have a look at the data in "Excel-Worksheet" like format 
 or if you want to just plot the variables in your tree. You can download the binaries and start right away. Working with multiple files is way easier with this tool.
 
-> https://github.com/deepaksamuel/iRoot
-> Go the releases page to download the binary for Windows.
+> [iRoot github page](https://github.com/deepaksamuel/iRoot) 
 
+> Go the [releases](https://github.com/deepaksamuel/iRoot/releases)  page to download the Windows binaries
 
 # Python-Tutorials
 
