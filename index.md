@@ -2,19 +2,21 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](./another-page.html).
 
-There should be whitespace between paragraphs.
+The following are the projects that I am working on.
+For more details, write to me at deepaksamuel@gmail.com
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+# Simple
 
-# Header 1
+A front-end for Geant4 - you can use for demonstrating particle interactions with matter or even for a full simulation that involved simple geometries. 
+No need to compile Geant4 or write any code. The extensive process of Geant4 coding is simplified into a GUI-based framework. You can also perform simple
+analysis with and plotting with this the interface.
+# iRoot
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## Header 2
+This is a front-end for ROOT framework. If your data is in the form of TTree structures and you want to have a look at the data in "Excel-Worksheet" like format 
+or if you want to just plot the variables in your tree. You can download the binaries and start right away. Working with multiple files is way easier with this tool.
 
 > This is a blockquote following a header.
 >
