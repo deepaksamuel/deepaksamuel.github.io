@@ -14,7 +14,8 @@ A front-end for Geant4 - you can use for demonstrating particle interactions wit
 No need to compile Geant4 or write any code. The extensive process of Geant4 coding is simplified into a GUI-based framework. You can also perform simple
 analysis with and plotting with this the interface.
 
-> https://github.com/deepaksamuel/simple
+> [Simple github page](https://github.com/deepaksamuel/simple) 
+
 > Go the releases page to download the app-image for Ubuntu 18.
 
 # iRoot
