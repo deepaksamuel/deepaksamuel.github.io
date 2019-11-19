@@ -13,21 +13,33 @@ For more details, write to me at deepaksamuel@gmail.com
 A front-end for Geant4 - you can use for demonstrating particle interactions with matter or even for a full simulation that involved simple geometries. 
 No need to compile Geant4 or write any code. The extensive process of Geant4 coding is simplified into a GUI-based framework. You can also perform simple
 analysis with and plotting with this the interface.
+
+> https://github.com/deepaksamuel/simple
+> Go the releases page to download the app-image for Ubuntu 18.
+
 # iRoot
 
 This is a front-end for ROOT framework. If your data is in the form of TTree structures and you want to have a look at the data in "Excel-Worksheet" like format 
 or if you want to just plot the variables in your tree. You can download the binaries and start right away. Working with multiple files is way easier with this tool.
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+> https://github.com/deepaksamuel/iRoot
+> Go the releases page to download the binary for Windows.
+
 
 # Python-Tutorials
 
 Coding in python has become inevitable for students. A lot of my teaching involves demonstration using plots and data analysis. Python comes in handy during those sessions.
-These tutorials are the first jump for beginners who have never coded in python.   
+These tutorials are the first jump for beginners who have never coded in python. 
 
-```js
+> https://github.com/deepaksamuel/python-tutorials
+
+# Neutrino Oscillations
+
+Neutrino oscillations form the last part of my lectures in Nuclear and High Energy Physics. The "kick" in the subject is in the many plots of survival probability, exclusion charts amongst many others. This project has the codes to generate most of the plots required for my teaching. 
+
+> https://github.com/deepaksamuel/neutrino-oscillations
+
+<!-- ```js
 // Javascript code with syntax highlighting.
 var fun = function lang(l) {
   dateformat.i18n = require('./lang/' + l)
@@ -125,4 +137,4 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 
 ```
 The final element.
-```
+``` -->
