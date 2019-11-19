@@ -39,7 +39,7 @@ These tutorials are the first jump for beginners who have never coded in python.
 
 Neutrino oscillations form the last part of my lectures in Nuclear and High Energy Physics. The "kick" in the subject is in the many plots of survival probability, exclusion charts amongst many others. This project has the codes to generate most of the plots required for my teaching. 
 
-> [Neutrino Oscillations](https://github.com/deepaksamuel/neutrino-oscillations)
+> [Neutrino Oscillations github page](https://github.com/deepaksamuel/neutrino-oscillations)
 
 <!-- ```js
 // Javascript code with syntax highlighting.
