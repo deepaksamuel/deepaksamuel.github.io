@@ -3,7 +3,7 @@ layout: default
 ---
 
 
-[Link to another page](./another-page.html).
+<!-- [Link to another page](./another-page.html). -->
 
 The following are the projects that I am working on.
 For more details, write to me at deepaksamuel@gmail.com
