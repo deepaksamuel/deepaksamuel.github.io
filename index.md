@@ -32,13 +32,14 @@ or if you want to just plot the variables in your tree. You can download the bin
 Coding in python has become inevitable for students. A lot of my teaching involves demonstration using plots and data analysis. Python comes in handy during those sessions.
 These tutorials are the first jump for beginners who have never coded in python. 
 
-> https://github.com/deepaksamuel/python-tutorials
+> [Python-tutorials github page](https://github.com/deepaksamuel/python-tutorials) 
+
 
 # Neutrino Oscillations
 
 Neutrino oscillations form the last part of my lectures in Nuclear and High Energy Physics. The "kick" in the subject is in the many plots of survival probability, exclusion charts amongst many others. This project has the codes to generate most of the plots required for my teaching. 
 
-> https://github.com/deepaksamuel/neutrino-oscillations
+> [Neutrino Oscillations](https://github.com/deepaksamuel/neutrino-oscillations)
 
 <!-- ```js
 // Javascript code with syntax highlighting.
