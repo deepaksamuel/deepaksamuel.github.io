@@ -22,7 +22,10 @@ or if you want to just plot the variables in your tree. You can download the bin
 >
 > When something is important enough, you do it even if the odds are not in your favor.
 
-### Header 3
+# Python-Tutorials
+
+Coding in python has become inevitable for students. A lot of my teaching involves demonstration using plots and data analysis. Python comes in handy during those sessions.
+These tutorials are the first jump for beginners who have never coded in python.   
 
 ```js
 // Javascript code with syntax highlighting.
