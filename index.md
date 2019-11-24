@@ -10,9 +10,8 @@ For more details, write to me at deepaksamuel@gmail.com
 
 # Simple
 
-A front-end for Geant4 - you can use for demonstrating particle interactions with matter or even for a full simulation that involved simple geometries. 
-No need to compile Geant4 or write any code. The extensive process of Geant4 coding is simplified into a GUI-based framework. You can also perform simple
-analysis with and plotting with this the interface.
+A front-end for Geant4 - you can use for demonstrating particle interactions with matter or even for a full simulation that involves simple geometries. 
+No need to compile Geant4 or write any code. The extensive process of Geant4 coding is simplified into a GUI-based framework. You can also perform simple analysis with and plotting with this the interface.
 
 > [Simple github page](https://github.com/deepaksamuel/simple) 
 
@@ -20,8 +19,7 @@ analysis with and plotting with this the interface.
 
 # iRoot
 
-This is a front-end for ROOT framework. If your data is in the form of TTree structures and you want to have a look at the data in "Excel-Worksheet" like format 
-or if you want to just plot the variables in your tree. You can download the binaries and start right away. Working with multiple files is way easier with this tool.
+This is a front-end for ROOT framework. If your data is in the form of TTree structures and you want to have a look at the data in "Excel-Worksheet" like format or if you want to just plot the variables in your tree. You can download the binaries and start right away. Working with multiple files is way easier with this tool.
 
 > [iRoot github page](https://github.com/deepaksamuel/iRoot) 
 
@@ -29,8 +27,7 @@ or if you want to just plot the variables in your tree. You can download the bin
 
 # Python-Tutorials
 
-Coding in python has become inevitable for students. A lot of my teaching involves demonstration using plots and data analysis. Python comes in handy during those sessions.
-These tutorials are the first jump for beginners who have never coded in python. 
+Coding in python has become inevitable for students. A lot of my teaching involves demonstration using plots and data analysis. Python comes in handy during those sessions.These tutorials are the first jump for beginners who have never coded in python. 
 
 > [Python-tutorials github page](https://github.com/deepaksamuel/python-tutorials) 
 
