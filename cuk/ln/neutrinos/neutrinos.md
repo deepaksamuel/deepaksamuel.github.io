@@ -1,30 +1,47 @@
+
 # Lecture notes on Neutrinos
 **Deepak Samuel**
+
 *Central University of Karnataka*
 
 ## Neutrino interactions
 Neutrino, as is well known, is a weakly interacting particle. This is the reason that despite the huge flux of neutrinos, more than trillions per second, that swarms us, only few of them will ever interact in our lifetime. It is also the reason why neutrino detectors are large in size. If ever a neutrino interacts, there are these primary modes through which it will do so: 
 
 -- **Neutrino-electron elastic scattering**: In this process, the neutrino of any flavour interacts with an electron resulting in an neutrino of the same flavour as that of the incoming one, and an electron:
+
 $$ \nu_a + e^- \rightarrow \nu_a + e^- $$
+
 Since the incoming and the outgoing particles are identical, only the energy and the momentum gets redistributed and there is no threshold for these reactions. 
 
-In case, the incoming neutrino is electron type, it could be that the outgoing neutrino is the same as the incoming neutrino, in which case, the interaction is mediated by Z i.e., a neutral current (NC) interaction. It could also be that the incoming electron converted into the outcoming neutrino and vice-versa, through the mediation of W i.e., a charged-current (CC) interaction.
 
 It must be obvious at this point that for the other two neutrino flavours, $\mu$ and $\tau$, only NC interactions are possible for the above reaction, as long as we demand flavour conservation at the vertices.
 
-Both neutrinos and antineutrinos can participate in the above reaction but the cross-section is much smaller. The ratio of the cross-sections are as follows;
+Both neutrinos and antineutrinos can participate in the above reaction. However, the corresponding Feynman diagrams are different:
+
+<figure>
+<img src="img/nu-scattering-e.png" alt="drawing" style="width:500px;"/>
+  <figcaption>Fig.1 - Feynman diagrams for neutrino-electron scatterings through CC and NC interactions.</figcaption>
+</figure>
+
+
+
+ The cross-section for 2is much smaller. The ratio of the cross-sections are as follows
+
 $$\sigma_{\nu_e}: \sigma_{\bar{\nu}_e}: \sigma_{\nu_\mu,\tau}: \sigma_{\bar{\nu}_{\mu,\tau}} =1: 0.42 : 0.16 : 0.14$$
 
 -- **Neutrino-electron quasielastic scattering**
-These reactions are almost similar to the previous elastic scattering process with the difference that the outgoing neutrino and the lepton flavours do not coincide with the incoming neutrino and lepton flavours  like the following reaction:
+These reactions are almost similar to the previous elastic scattering process with the difference that the outgoing neutrino and the lepton flavours do not coincide with the incoming neutrino and lepton flavours  as in the following reaction:
+
 $$ \nu_\mu + e^- \rightarrow \nu_e + \mu^- $$
+
 Also called as inverse muon decay, there is a threshold energy for these reactions, called as the muon production threshold. 
 
 -- **Neutrino-nucleon quasielastic charged-current scattering**
 In these processes, the neutrino interacts with a proton or a neutron to produce a charged lepton in the final state:
+
 $$\nu_l + n \rightarrow p + l^-$$
 $$\nu_l + p \rightarrow n + l^+$$
+
 An important aspect in these reactions is that the flavour of the outgoing lepton is the same as the flavour of the incoming neutrino - an important handle to identify the flavour of neutrinos.
 
 ## Create files and folders
