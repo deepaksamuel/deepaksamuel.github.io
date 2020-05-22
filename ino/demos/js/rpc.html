@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+   <title>Reading object from the ROOT file</title>
+ 
+   <script src="scripts/JSRootCore.js" type="text/javascript"></script>
+ 
+   <script type='text/javascript'>
+     // absolute file path can be used as well
+     var filename = "files/rpc/rpcdemo.root";
+     JSROOT.OpenFile(filename, function(file) {
+        file.ReadObject("simple1", function(obj) {
+           JSROOT.draw("drawing", obj, "transp10");
+        });
+     });
+   </script>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+   <style>
+    body {
+        font-family: 'Roboto';font-size: 14px;
+    }
+    </style>
+</head>
+ 
+<body>
+    <center>
+      <div id="text" style="width:1600px; height:120px" align="justify" >Resistive plate chambers (RPC) are the main detectors in the Iron-Calorimeter (ICAL) 
+         experiment of the India-based Neutrino Observatory. Over 30,000 RPCs will be employed in the ICAL detector. Shown here is an exploded view of a single RPC. 
+         A RPC consists of two 2 m x 2 m glass plates (blue) separated by 2 mm gap by button spacers (gray). Inside the gap, a gas is circulated through nozzles (not shown). Typical gas mixtures are Freon and Isobutane (95.5:4.5) with traces of SF6. The edges of the glass plates 
+         are sealed so that the gas does not come out. On top of the glass plates is a graphite coating (not shown) through which a high and uniform electric field (10 KV) is set up across the glass plates.
+         When a charged particle enters the gas volume, it ionizes the gas, producing electron-ion pairs. The movement of these electron-ion pairs due to the high electric field is picked up by strips (yellow) placed on a pickup panel (red).
+         There are 64 strips of width 3 cm on two sides of the RPC such that they are oriented orthogonal to each other. This structure helps in recording the x,y positions of the crossing point of the particles. RPCs also give the time of crossing of particles.
+         
+      </div>
+      <!-- <a href="https://deepaksamuel.github.io/ino/demos/js/?file=files/rpc/rpcdemo.root&item=simple1">Detailed view with controls</a> -->
+  <div id="drawing" > </div>
+</center>
+
+</body>
+ 
+</html>
