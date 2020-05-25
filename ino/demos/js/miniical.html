@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+   <title>Mini ICAL demo</title>
+ 
+   <script src="scripts/JSRootCore.js" type="text/javascript"></script>
+ 
+   <script type='text/javascript'>
+     // absolute file path can be used as well
+     var filename = "files/rpc/miniICAL.root";
+     JSROOT.OpenFile(filename, function(file) {
+        file.ReadObject("simple1", function(obj) {
+           JSROOT.draw("drawing", obj, "transp15,z");
+        });
+     });
+   </script>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+   <style>
+    body {
+        font-family: 'Roboto';font-size: 14px;
+    }
+    </style>
+</head>
+ 
+<body>
+   <div id="fb-root"></div>
+   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"></script>
+    <center>
+      <div id="text" style="width:1600px; height:50px" align="justify" >INO has built many prototype detectors that are used to characterize the performance of RPCs. The detector setup at Madurai is a scaled-down version of 
+    the actual ICAL detector. Shown below is an 'artistic' version of the mini-ICAL detector. This detector is now monitoring the cosmic muons that zip past their volume. The detector consists of RPCs sandwiched between iron plates (blue). 
+    The iron plates are needed to setup a magnetic field and also as an interaction medium for neutrinos. The magnetic field helps decipher the charge of particles going through it. Due to the small size of the detector, it is almost impossible to see neutrinos here. To see the details of RPCs, go  <a href="https://deepaksamuel.github.io/ino/demos/js/rpc.html">here</a>.</center>
+         <center>
+         <div class="fb-share-button" data-href="https://deepaksamuel.github.io/ino/demos/js/rpc.html" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeepaksamuel.github.io%2Fino%2Fdemos%2Fjs%2Frpc.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+      </center>
+ 
+      </div>
+      <!-- <a href="https://deepaksamuel.github.io/ino/demos/js/?file=files/rpc/rpcdemo.root&item=simple1">Detailed view with controls</a> -->
+  <div id="drawing" > </div>
+</center>
+
+</body>
+ 
+</html>

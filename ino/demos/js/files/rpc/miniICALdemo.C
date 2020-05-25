@@ -25,19 +25,29 @@ void miniICALdemo(bool vis = true)
    Double_t worldx = 210.;
    Double_t worldy = 210.;
    Double_t worldz = 500.;
+   Double_t rpcDim = 200; 
+   Double_t glassThickness = 0.2;
+   Double_t gasGap = 1.5;
 
 
    TGeoVolume *world = geom->MakeBox("TOP", Vacuum, worldx, worldy, worldz*nRPC);
    geom->SetTopVolume(world);
+
+
+   // Iron plate
+   Double_t ironThickness = 2.;
+   TGeoVolume *ironPlate = geom->MakeBox("Ironplate", Vacuum, rpcDim+75, rpcDim+75, ironThickness);
+   ironPlate->SetLineColor(kBlue);
+   //ironPlate->SetTransparency(0.9);
+   //ironPlate->AddNode(topGlass,1, new TGeoTranslation(0, 0, gasGap));
+
 
    TGeoVolume *rpcWorld = geom->MakeBox("TOP", Vacuum, worldx, worldy, worldz);
   
    //geom->SetVisibility(kFALSE);
 
 
-   Double_t rpcDim = 200; 
-   Double_t glassThickness = 0.2;
-   Double_t gasGap = 10;
+
 
    //Glass
 
@@ -55,7 +65,7 @@ void miniICALdemo(bool vis = true)
    botGlass->SetLineColor(kBlue);
    
   //HoneyComb Glass
-   Double_t HCspacing = 5;
+   Double_t HCspacing = 2.5;
    TGeoVolume *topHC = geom->MakeBox("TOPHC", Vacuum, rpcDim, rpcDim, glassThickness);
    topHC->SetLineColor(kRed);
    topHC->SetTransparency(0.9);
@@ -102,10 +112,20 @@ void miniICALdemo(bool vis = true)
 
    }
 
+
+    Double_t layer_spacing =25;
+    Double_t iron_offset =10;
+
+     TGeoTrack *track = new TGeoTrack();
     for(int i=0;i<nRPC;i++){
-     world->AddNode(rpcWorld,i,new TGeoTranslation(0, 0, 20*i));
+     if(i!=nRPC-1)
+     world->AddNode(rpcWorld,i,new TGeoTranslation(0, 0, (layer_spacing)*i));
+     world->AddNode(ironPlate,i,new TGeoTranslation(0, 0, (layer_spacing)*i-iron_offset));
+     track->AddPoint(-(nRPC-i)*(nRPC-i), 0, (layer_spacing)*i,i);
+     
     }
 
+   geom->AddTrack(track);
    geom->CloseGeometry();
    geom->Export("miniICAL.root");
    // disable sections to save only part of geometry
@@ -118,4 +138,6 @@ void miniICALdemo(bool vis = true)
 
    geom->SetVisLevel(4);
    if (vis) world->Draw("ogle");
+    track->Draw("SAME");
+  
 }
