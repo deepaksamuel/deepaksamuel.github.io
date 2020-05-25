@@ -116,15 +116,18 @@ void miniICALdemo(bool vis = true)
     Double_t layer_spacing =25;
     Double_t iron_offset =10;
 
-     TEveTrack *track = new TEveTrack();
+     TGeoTrack *track = new TGeoTrack();
     for(int i=0;i<nRPC;i++){
      if(i!=nRPC-1)
      world->AddNode(rpcWorld,i,new TGeoTranslation(0, 0, (layer_spacing)*i));
      world->AddNode(ironPlate,i,new TGeoTranslation(0, 0, (layer_spacing)*i-iron_offset));
-     track->AddPoint(-(nRPC-i)*(nRPC-i), 0, (layer_spacing)*i,i);
+     track->AddPoint((nRPC-i)*(nRPC-i), 0, (layer_spacing)*i,i);
      
     }
 
+   track->SetLineColor(kBlack);
+   track->SetLineWidth(3.0);
+   
    geom->AddTrack(track);
    geom->CloseGeometry();
    geom->Export("miniICAL.root");
