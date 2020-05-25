@@ -116,7 +116,7 @@ void miniICALdemo(bool vis = true)
     Double_t layer_spacing =25;
     Double_t iron_offset =10;
 
-     TGeoTrack *track = new TGeoTrack();
+     TEveTrack *track = new TEveTrack();
     for(int i=0;i<nRPC;i++){
      if(i!=nRPC-1)
      world->AddNode(rpcWorld,i,new TGeoTranslation(0, 0, (layer_spacing)*i));
