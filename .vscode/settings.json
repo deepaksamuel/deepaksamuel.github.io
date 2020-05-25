@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "rpcDemo.C": "cpp"
+        "rpcDemo.C": "cpp",
+        "miniICALdemo.C": "cpp"
     }
 }

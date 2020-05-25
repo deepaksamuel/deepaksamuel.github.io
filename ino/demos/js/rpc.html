@@ -14,7 +14,7 @@
      var filename = "files/rpc/rpcdemo.root";
      JSROOT.OpenFile(filename, function(file) {
         file.ReadObject("simple1", function(obj) {
-           JSROOT.draw("drawing", obj, "transp10");
+           JSROOT.draw("drawing", obj, "transp15,z");
         });
      });
    </script>
@@ -36,7 +36,7 @@
          are sealed so that the gas does not come out. On top of the glass plates is a graphite coating (not shown) through which a high and uniform electric field (10 KV) is set up across the glass plates.
          When a charged particle enters the gas volume, it ionizes the gas, producing electron-ion pairs. The movement of these electron-ion pairs due to the high electric field is picked up by strips (yellow) placed on a pickup panel (red).
          There are 64 strips of width 3 cm on two sides of the RPC such that they are oriented orthogonal to each other. This structure helps in recording the x,y positions of the crossing point of the particles. RPCs also give the time of crossing of particles.<br>
-         <center>This is a 3d rendering - you can move, rotate, zoom it with you mouse. Feel free to share!</center>
+         <center>This is a 3d rendering - you can move, rotate, zoom it with your mouse. Feel free to share!</center>
          <center>
          <div class="fb-share-button" data-href="https://deepaksamuel.github.io/ino/demos/js/rpc.html" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdeepaksamuel.github.io%2Fino%2Fdemos%2Fjs%2Frpc.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
       </center>
