@@ -19,7 +19,7 @@ body, html {
 
 }
 .bgimg-1 {
-  background-image: url("night.jpg");
+  {% comment %} background-image: url("night.jpg"); {% endcomment %}
   height: 100%;
 }
 
@@ -74,6 +74,29 @@ h3 {
   background: #bb0000;
   color: white;
 }
+a:link {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -86,32 +109,34 @@ h3 {
 <div class="bgimg-1">
   <div class="caption">
   <span class="border">ALL ABOUT NEUTRINOS!</span><br>
-  <h2 style="color:whitesmoke;">ONLINE INTERACTIVE LECTURE SERIES FOR GENERAL AUDIENCE</h2>
+  <h2 style="color:blue;">ONLINE INTERACTIVE LECTURE SERIES FOR GENERAL AUDIENCE</h2>
   <!-- <span class="border">BROUGHT TO YOU BY THE INDIA-BASED NEUTRINO OBSERVATORY</span><br>
   <h4 style="color:whitesmoke;">HOSTED AND MODERATED BY DR. B. SATYANARAYANA, TIFR, MUMBAI</h4> -->
   <!-- <br> -->
   <center>
-  <h4 style="color:yellow;"> <a href="ols.html" style="color:whitesmoke;">Go to upcoming talks...</a></h4> 
-  <h4 style="color:yellow;"> Click on titles for presentation material</h4> 
-    <table style="color:whitesmoke;">
-    <tr><td>27 Apr 2020</td><td><a href="https://drive.google.com/open?id=1VvENdWFHEb4syf69P5spkSFE6xftBxKR" style="color:whitesmoke;">Neutrino Oscillations</a></td><td>Dr. Deepak Samuel, Central University of Karnataka, Kalaburagi</td><td><a href="https://www.youtube.com/watch?v=wgQJqFmHZg4" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>29 Apr 2020</td><td><span style="font-style:normal;text-decoration:none"><a href=" https://drive.google.com/file/d/1PCkJwWYxnYadIUiMCo6VzduuKP3CoBra/view?usp=sharing" style="color:whitesmoke;">Detectors for High Energy Physics</a></span></td><td>Dr. Saikat Biswas, Bose Institute, Kolkata</td><td><a href="https://www.youtube.com/watch?v=Zv93sFX3gec" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>01 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:whitesmoke;"></a>Probing Neutrinos with Cool Detectors</span></td><td>Prof. Vandana Nanal, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=_Irm6zXe9BM" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>04 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1VensaTZS6J5r4dfFuWtNQvK_TdCJ1cM0/view?usp=sharing" style="color:whitesmoke;">Demystifying the neutrino</a></span></td><td>Prof. Vivek Datar, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=HAcY8CgHdbs&t=4035s" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>06 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1sKpwxzJoo-a4O4mRuF5Jvj_x_p1fVuG3/view?usp=sharing" style="color:whitesmoke;">Going underground to look at the sky</a></span></td><td>Prof. Amol Dighe, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=dZvcRMQpDOw" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>08 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1ZAVhQwhgU7l1Wpjvo9yOAGkcG4X1lo0s/view?usp=sharing" style="color:whitesmoke;">Neutrinos: The Nobel Connection</a></span></td><td>Prof. Srubabati Goswami, PRL, Ahmedabad</td><td><a href="https://www.youtube.com/watch?v=GmeE4dkKE-U" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>11 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1UgALzSkT2OHuuHWqdy5TFodQWOtV_Da8/view?usp=sharing" style="color:whitesmoke;">Medical Imaging with Particle detectors</a></span></td><td>Dr. Moon Moon Devi, Tezpur University, Tezpur</td><td><a href="https://youtu.be/QpSSwTRaTZQ" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>13 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:whitesmoke;"></a>What is the matter with Dark Matter?</span></td><td>Prof. Basudeb Dasgupta, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=4F_JLAJyPRg" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>15 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/14rdiDD3R1f5vIGhwv_8ZRNYyaP4jqrWR/view?usp=sharing" style="color:whitesmoke;">Search for Sterile Neutrino</a></span></td><td>Prof. Sanjib Kumar Agarwalla, IOP, Bhubaneswar</td><td><a href="https://www.youtube.com/watch?v=9nwnUBPMOho" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>18 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1w9LSMGa9awQ5tCdwjTXdFeEQopEr4kqW/view?usp=sharing" style="color:whitesmoke;">Landscape of BSM physics in the context of neutrino oscillation</a></span></td><td>Dr. Mehedi Masud, IOP, Bhubaneswar</td><td><a href="https://www.youtube.com/watch?v=W0pt-40nj0g" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>20 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1dXjY1xCHSu3n13LLizQXePoIj-0WN0ES/view?usp=sharing" style="color:whitesmoke;">Neutrinos and matter anti-matter asymmetry: a unification perspective</a></span></td><td>Prof. Urjit A Yajnik, IIT Bombay</td><td><a href="https://www.youtube.com/watch?v=UJ6KwMqnMxE" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>22 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1HVQ8mlavZWLGMUA5MXlH4gnEv54uMU2P/view?usp=sharing" style="color:whitesmoke;">Precision Measurement of Neutrino Oscillation Parameters</a></span></td><td>Prof. Uma Sankar, IIT Bombay</td><td><a href="https://www.youtube.com/watch?v=LVAOjBQ0OkE" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>25 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1pUWr-2S6KkzxuCEBgyR4fFC3ADHygLFl/view?usp=sharing" style="color:whitesmoke;">Unravelling the neutrino</a></span></td><td>Prof. Vivek Datar, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=hAWHiCdX6FU" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>28 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:whitesmoke;"></a>From Nano to Atto: the amazing world of elementary particles</span></td><td>Prof. Sreerup Raychaudhuri, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=VAuiWRyJI6Q" style="color:whitesmoke;">View on YouTube</a></td></tr>  
-    <tr><td>29 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1WSvDKYtaC98oNE2_IZaDGlvULa4YQOaT/view?usp=sharing" style="color:whitesmoke;">The “Spin” in the Difference Between Bosons and Fermions</a></span></td><td>Prof. C.S.Unnikrishnan , TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=X5fvhRax8M4" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>01 Jun 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1MunWAup3laoBCMXsGYhfBjV1fEW7RFOE/view" style="color:whitesmoke;">GeV neutrino oscillation experiments</a></span></td><td>Dr.  Lakshmi S. Mohan, NCBJ, Warsaw</td><td><a href="https://www.youtube.com/watch?v=9AbLj4zZi7s" style="color:whitesmoke;">View on YouTube</a></td></tr>
-    <tr><td>03 Jun 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1I71qYK6ywjPa6DRgo47ezgwckHOJ2e8k/view?usp=sharing" style="color:whitesmoke;">How will the INO detector record neutrino interactions?</a></span></td><td>Dr. B. Satyanarayana , TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=hA4ywCdNjhA" style="color:whitesmoke;">View on YouTube</a></td></tr>
-  
+  <h4 style="color:black;"> <a href="ols.html" style="color:black;">Go to upcoming talks...</a></h4> 
+  <h4 style="color:blue;"> Click on titles for presentation material</h4> 
+    <table style="color:black;">
+    <tr><td>27 Apr 2020</td><td><a href="https://drive.google.com/open?id=1VvENdWFHEb4syf69P5spkSFE6xftBxKR" style="color:black;">Neutrino Oscillations</a></td><td>Dr. Deepak Samuel, Central University of Karnataka, Kalaburagi</td><td><a href="https://www.youtube.com/watch?v=wgQJqFmHZg4" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>29 Apr 2020</td><td><span style="font-style:normal;text-decoration:none"><a href=" https://drive.google.com/file/d/1PCkJwWYxnYadIUiMCo6VzduuKP3CoBra/view?usp=sharing" style="color:black;">Detectors for High Energy Physics</a></span></td><td>Dr. Saikat Biswas, Bose Institute, Kolkata</td><td><a href="https://www.youtube.com/watch?v=Zv93sFX3gec" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>01 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:whitesmoke;"></a>Probing Neutrinos with Cool Detectors</span></td><td>Prof. Vandana Nanal, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=_Irm6zXe9BM" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>04 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1VensaTZS6J5r4dfFuWtNQvK_TdCJ1cM0/view?usp=sharing" style="color:black;">Demystifying the neutrino</a></span></td><td>Prof. Vivek Datar, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=HAcY8CgHdbs&t=4035s" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>06 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1sKpwxzJoo-a4O4mRuF5Jvj_x_p1fVuG3/view?usp=sharing" style="color:black;">Going underground to look at the sky</a></span></td><td>Prof. Amol Dighe, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=dZvcRMQpDOw" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>08 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1ZAVhQwhgU7l1Wpjvo9yOAGkcG4X1lo0s/view?usp=sharing" style="color:black;">Neutrinos: The Nobel Connection</a></span></td><td>Prof. Srubabati Goswami, PRL, Ahmedabad</td><td><a href="https://www.youtube.com/watch?v=GmeE4dkKE-U" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>11 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1UgALzSkT2OHuuHWqdy5TFodQWOtV_Da8/view?usp=sharing" style="color:black;">Medical Imaging with Particle detectors</a></span></td><td>Dr. Moon Moon Devi, Tezpur University, Tezpur</td><td><a href="https://youtu.be/QpSSwTRaTZQ" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>13 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:whitesmoke;"></a>What is the matter with Dark Matter?</span></td><td>Prof. Basudeb Dasgupta, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=4F_JLAJyPRg" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>15 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/14rdiDD3R1f5vIGhwv_8ZRNYyaP4jqrWR/view?usp=sharing" style="color:black;">Search for Sterile Neutrino</a></span></td><td>Prof. Sanjib Kumar Agarwalla, IOP, Bhubaneswar</td><td><a href="https://www.youtube.com/watch?v=9nwnUBPMOho" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>18 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1w9LSMGa9awQ5tCdwjTXdFeEQopEr4kqW/view?usp=sharing" style="color:black;">Landscape of BSM physics in the context of neutrino oscillation</a></span></td><td>Dr. Mehedi Masud, IOP, Bhubaneswar</td><td><a href="https://www.youtube.com/watch?v=W0pt-40nj0g" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>20 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1dXjY1xCHSu3n13LLizQXePoIj-0WN0ES/view?usp=sharing" style="color:black;">Neutrinos and matter anti-matter asymmetry: a unification perspective</a></span></td><td>Prof. Urjit A Yajnik, IIT Bombay</td><td><a href="https://www.youtube.com/watch?v=UJ6KwMqnMxE" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>22 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1HVQ8mlavZWLGMUA5MXlH4gnEv54uMU2P/view?usp=sharing" style="color:black;">Precision Measurement of Neutrino Oscillation Parameters</a></span></td><td>Prof. Uma Sankar, IIT Bombay</td><td><a href="https://www.youtube.com/watch?v=LVAOjBQ0OkE" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>25 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1pUWr-2S6KkzxuCEBgyR4fFC3ADHygLFl/view?usp=sharing" style="color:black;">Unravelling the neutrino</a></span></td><td>Prof. Vivek Datar, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=hAWHiCdX6FU" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>28 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:whitesmoke;"></a>From Nano to Atto: the amazing world of elementary particles</span></td><td>Prof. Sreerup Raychaudhuri, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=VAuiWRyJI6Q" style="color:black;">View on YouTube</a></td></tr>  
+    <tr><td>29 May 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1WSvDKYtaC98oNE2_IZaDGlvULa4YQOaT/view?usp=sharing" style="color:black;">The “Spin” in the Difference Between Bosons and Fermions</a></span></td><td>Prof. C.S.Unnikrishnan , TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=X5fvhRax8M4" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>01 Jun 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1MunWAup3laoBCMXsGYhfBjV1fEW7RFOE/view" style="color:black;">GeV neutrino oscillation experiments</a></span></td><td>Dr.  Lakshmi S. Mohan, NCBJ, Warsaw</td><td><a href="https://www.youtube.com/watch?v=9AbLj4zZi7s" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>03 Jun 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="https://drive.google.com/file/d/1I71qYK6ywjPa6DRgo47ezgwckHOJ2e8k/view?usp=sharing" style="color:black;">How will the INO detector record neutrino interactions?</a></span></td><td>Dr. B. Satyanarayana , TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=hA4ywCdNjhA" style="color:black;">View on YouTube</a></td></tr>
+    <tr><td>03 Jun 2020</td><td><span style="font-style:normal;text-decoration:none"><a href="" style="color:black;"></a>First decade of LHC over, 2 more to go!?</span></td><td>Prof. Kajari Mazumdar, TIFR, Mumbai</td><td><a href="https://www.youtube.com/watch?v=9lPSGNQGEu4" style="color:black;">View on YouTube</a></td></tr>
+    
+   
   
   </table>
     
@@ -120,10 +145,10 @@ h3 {
     <tr><td>13 May 2020</td><td><span style="font-style:normal;text-decoration:none">What is the matter with Dark Matter?</span></td><td>Prof. Basudeb Dasgupta, TIFR, Mumbai</td></tr>
     <tr><td>15 May 2020</td><td><span style="font-style:normal;text-decoration:none">Search for Sterile Neutrino</span></td><td>Prof. Sanjib Kumar Agarwalla, IOP, Bhubaneswar</td></tr></table>
    -->
-    <h4 style="color:whitesmoke;"> Meet us via zoom: <a href="https://zoom.us/j/96620746979" style="color:whitesmoke;">https://zoom.us/j/96620746979</a>  at 6.00 PM IST</h4>
+    <h4 style="color:blue;"> Meet us via zoom: <a href="https://zoom.us/j/96620746979" style="color:blue;">https://zoom.us/j/96620746979</a>  at 6.00 PM IST</h4>
   <a href="https://facebook.com/ino.neutrino/" class="fa fa-facebook"></a> <a href="https://twitter.com/inoofficial1/" class="fa fa-twitter" ></a> <a href="https://www.youtube.com/channel/UCDBNQLBg39hWfVKl5cv0sWg" class="fa fa-youtube" ></a>
   <br>
-  <a href="http://www.ino.tifr.res.in/ino" style="color:whitesmoke;">www.ino.tifr.res.in/ino/ </a>  
+  <a href="http://www.ino.tifr.res.in/ino" style="color:blue;">www.ino.tifr.res.in/ino/ </a>  
 
 </center>
 </div>
