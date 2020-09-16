@@ -194,3 +194,7 @@
 	order: 1;
   }
   
+  h1{
+	  font-family: 'Open Sans Condensed', sans-serif;
+	  color: lightskyblue;
+  }
