@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "rpcDemo.C": "cpp",
-        "miniICALdemo.C": "cpp"
+        "miniICALdemo.C": "cpp",
+        "ironlayer.C": "cpp"
     }
 }
