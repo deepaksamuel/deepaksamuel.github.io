@@ -11,7 +11,8 @@
  
    <script type='text/javascript'>
      // absolute file path can be used as well
-     var filename = "files/rpc/rpcdemo.root";
+   //   var filename = "files/rpc/rpcdemo.root";
+   var filename = "files/rpc/detector_geometry_drich.root";
      JSROOT.OpenFile(filename, function(file) {
         file.ReadObject("simple1", function(obj) {
            JSROOT.draw("drawing", obj, "transp15,z");
