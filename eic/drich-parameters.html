@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EIC-DRICH Parameters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .notes {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #ccc;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>EIC-DRICH Parameters (for pedagogical purposes only)</h1>
+<a href="drich.html">Back to geometry</a>
+<div class="notes">
+    <h3>Notes:</h3>
+    <ol>
+      <li>
+        <strong>Vessel Geometry</strong>: The DRICH vessel consists of a <strong>snout</strong> (conical front) and a <strong>tank</strong> (cylindrical main volume). The snout houses the aerogel radiator, while the tank contains the majority of the detector components. The gas volume fills this vessel, and all other volumes are children.
+      </li>
+      <li>
+        <strong>Radiator</strong>: There are two radiators. The first radiator is composed of <strong>aerogel</strong> and a <strong>filter</strong>, separated by a small air gap. The aerogel thickness is 4.0 cm, and the filter thickness is 3.0 mm. The second radiator is a gas.
+      </li>
+      <li>
+        <strong>Sensors</strong>: The sensors are arranged in <strong>Photodetector Units (PDUs)</strong>, each containing a 2x2 matrix of sensors. The sensors have a pixel size of 3.0 mm and a pitch of 3.2 mm.
+      </li>
+      <li>
+        <strong>Optical Properties</strong>: The mirror has a reflectivity of 90%, and the sensors have 100% efficiency for detecting photons.
+      </li>
+      <li>
+        <strong>Materials</strong>: The vessel is made of <strong>aluminum</strong>, the radiator uses <strong>aerogel</strong> and <strong>acrylic</strong>, and the gas inside the detector is <strong>C₂F₆</strong>.
+      </li>
+    </ol>
+  </div>
+
+<h2>DRICH Detector Parameters</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Parameter</strong></th>
+      <th><strong>Value</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Detector Name</strong></td>
+      <td>DRICH</td>
+    </tr>
+    <tr>
+      <td><strong>Detector ID</strong></td>
+      <td><code>ForwardRICH_ID</code> (ID: 120)</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Geometry</strong></td>
+    </tr>
+    <tr>
+      <td>- ForwardRICHRegion_length</td>
+      <td><code>PIDRegion_length-TOF_length= 135 cm - 15 cm = 120 cm</code> </td>
+    </tr>
+    <tr>
+      <td>- ForwardRICHRegion_zmin</td>
+      <td><code>Centraltracing_zmax-TOF_length= 1800 mm - 15 cm = 165 cm</code> </td>
+    </tr>
+    <tr>
+      <td>- Vessel Length</td>
+      <td><code>DRICH_length = ForwardRICHRegion_length= 120 cm</code> </td>
+    </tr>
+    <tr>
+      <td>- Vessel Z-min</td>
+      <td><code>DRICH_zmin = ForwardRICHRegion_zmin + 3.0*cm = 195 cm</code></td>
+    </tr>
+    <tr>
+      <td>- Vessel Z-max</td>
+      <td><code>DRICH_zmax = DRICH_zmin + DRICH_length= 195 cm + 120 cm = 315 cm</code> </td>
+    </tr>
+    <tr>
+      <td>- Bore Radius (Front)</td>
+      <td><code>DRICH_rmin0 = DRICH_zmin * ForwardRICHRegion_tan1</code></td>
+    </tr>
+    <tr>
+      <td>- Bore Radius (Back)</td>
+      <td><code>DRICH_rmin1 = DRICH_zmax * ForwardRICHRegion_tan2</code></td>
+    </tr>
+    <tr>
+      <td>- Wall Thickness</td>
+      <td><code>DRICH_wall_thickness = 1.0*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Window Thickness</td>
+      <td><code>DRICH_window_thickness = 0.3*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Number of Sectors</td>
+      <td><code>DRICH_num_sectors = 6</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Snout Geometry</strong></td>
+    </tr>
+    <tr>
+      <td>- Snout Length</td>
+      <td><code>DRICH_snout_length = 20.0*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Snout Radius (Front)</td>
+      <td><code>DRICH_rmax0 = 90.0*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Snout Radius (Back)</td>
+      <td><code>DRICH_rmax1 = DRICH_rmax0 + DRICH_snout_length * tan(0.200 + atan(DRICH_rmax0/DRICH_zmin)</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tank Geometry</strong></td>
+    </tr>
+    <tr>
+      <td>- Tank Radius</td>
+      <td><code>DRICH_rmax2 = ForwardPIDRegion_rmax= 180 cm</code> </td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Sensor Boxes</strong></td>
+    </tr>
+    <tr>
+      <td>- Sensor Box Length</td>
+      <td><code>DRICH_sensorbox_length = 50.0*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Box R-min</td>
+      <td><code>DRICH_sensorbox_rmin = 108*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Box R-max</td>
+      <td><code>DRICH_sensorbox_rmax = DRICH_rmax2 + 5*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Box Azimuthal Width</td>
+      <td><code>DRICH_sensorbox_dphi = 42*degree</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Radiator</strong></td>
+    </tr>
+    <tr>
+      <td>- Aerogel Thickness</td>
+      <td><code>DRICH_aerogel_thickness = 4.0*cm</code></td>
+    </tr>
+    <tr>
+      <td>- Air Gap Thickness</td>
+      <td><code>DRICH_airgap_thickness = 0.01*mm</code></td>
+    </tr>
+    <tr>
+      <td>- Filter Thickness</td>
+      <td><code>DRICH_filter_thickness = 3.0*mm</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Sensors</strong></td>
+    </tr>
+    <tr>
+      <td>- Pixel Gap</td>
+      <td><code>DRICH_pixel_gap = 0.2*mm</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Resin Size</td>
+      <td><code>DRICH_sensor_resin_size = 25.8*mm</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Size</td>
+      <td><code>DRICH_sensor_size = DRICH_sensor_resin_size - DRICH_pixel_gap</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Thickness</td>
+      <td><code>DRICH_sensor_thickness = 0.1*mm</code></td>
+    </tr>
+    <tr>
+      <td>- Sensor Resin Thickness</td>
+      <td><code>DRICH_sensor_resin_thickness = 1.35*mm</code></td>
+    </tr>
+    <tr>
+      <td>- Number of Pixels</td>
+      <td><code>DRICH_num_px = 8</code></td>
+    </tr>
+    <tr>
+      <td>- Pixel Size</td>
+      <td><code>DRICH_pixel_size = 3.0*mm</code></td>
+    </tr>
+    <tr>
+      <td>- Pixel Pitch</td>
+      <td><code>DRICH_pixel_pitch = DRICH_pixel_size + DRICH_pixel_gap</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Photodetector Unit (PDU)</strong></td>
+    </tr>
+    <tr>
+      <td>- PDU Number of Sensors</td>
+      <td><code>DRICH_pdu_num_sensors = 2</code></td>
+    </tr>
+    <tr>
+      <td>- PDU Sensor Gap</td>
+      <td><code>DRICH_pdu_sensor_gap = 0.2*mm</code></td>
+    </tr>
+    <tr>
+      <td>- PDU Gap</td>
+      <td><code>DRICH_pdu_gap = 3.0*mm</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Materials</strong></td>
+    </tr>
+    <tr>
+      <td>- Vessel Material</td>
+      <td><code>Aluminum</code></td>
+    </tr>
+    <tr>
+      <td>- Radiator Aerogel Material</td>
+      <td><code>Aerogel_DRICH</code></td>
+    </tr>
+    <tr>
+      <td>- Radiator Filter Material</td>
+      <td><code>Acrylic_DRICH</code></td>
+    </tr>
+    <tr>
+      <td>- Gas Material</td>
+      <td><code>C2F6_DRICH</code></td>
+    </tr>
+    <tr>
+      <td>- Mirror Material</td>
+      <td><code>Acrylic_DRICH</code></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Optical Properties</strong></td>
+    </tr>
+    <tr>
+      <td>- Mirror Reflectivity</td>
+      <td><code>REFLECTIVITY_mirror</code> (90% reflectivity)</td>
+    </tr>
+    <tr>
+      <td>- Sensor Efficiency</td>
+      <td><code>SensorSurface_DRICH</code> (100% efficiency)</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Readout</strong></td>
+    </tr>
+    <tr>
+      <td>- Readout Name</td>
+      <td><code>DRICHHits</code></td>
+    </tr>
+    <tr>
+      <td>- Segmentation Type</td>
+      <td><code>CartesianGridXY</code></td>
+    </tr>
+    <tr>
+      <td>- Grid Size</td>
+      <td><code>DRICH_pixel_pitch</code> (3.2 mm)</td>
+    </tr>
+    <tr>
+      <td>- Offset</td>
+      <td><code>-0.5*(DRICH_num_px-1)*DRICH_pixel_pitch</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="notes">
+  <h3>Notes:</h3>
+  <ol>
+    <li>
+      <strong>Vessel Geometry</strong>: The DRICH vessel consists of a <strong>snout</strong> (conical front) and a <strong>tank</strong> (cylindrical main volume). The snout houses the aerogel radiator, while the tank contains the majority of the detector components. The gas volume fills this vessel, and all other volumes are children.
+    </li>
+    <li>
+      <strong>Radiator</strong>: There are two radiators. The first radiator is composed of <strong>aerogel</strong> and a <strong>filter</strong>, separated by a small air gap. The aerogel thickness is 4.0 cm, and the filter thickness is 3.0 mm. The second radiator is a gas.
+    </li>
+    <li>
+      <strong>Sensors</strong>: The sensors are arranged in <strong>Photodetector Units (PDUs)</strong>, each containing a 2x2 matrix of sensors. The sensors have a pixel size of 3.0 mm and a pitch of 3.2 mm.
+    </li>
+    <li>
+      <strong>Optical Properties</strong>: The mirror has a reflectivity of 90%, and the sensors have 100% efficiency for detecting photons.
+    </li>
+    <li>
+      <strong>Materials</strong>: The vessel is made of <strong>aluminum</strong>, the radiator uses <strong>aerogel</strong> and <strong>acrylic</strong>, and the gas inside the detector is <strong>C₂F₆</strong>.
+    </li>
+  </ol>
+</div>
+
+</body>
+</html>
