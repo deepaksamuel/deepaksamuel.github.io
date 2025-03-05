@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+   <title>DRICH-QUARTZ GEOMETRY</title>
+   
+   <!-- <script src="scripts/JSRootCore.js" type="text/javascript"></script> -->
+   <script type='module'>
+      import { openFile, draw } from 'https://root.cern/js/latest/modules/main.mjs';
+      let filename = "files/drich-quartz-touching-sensors.root";
+      let file = await openFile(filename);
+      let obj = await file.readObject("default;1");
+      await draw("drawing", obj, "all");
+   </script>
+ 
+<body>
+   EIC-DRICH detector with quartz window (to be tested for overlaps and dimensions. Updated on 5 Mar 2025)
+   <a href="drich-parameters.html">Link to DRICH parameters</a>
+  <div id="drawing" > </div>
+
+
+</body>
+ 
+</html>
