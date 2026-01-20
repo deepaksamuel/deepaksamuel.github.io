@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIPP 2026 Timetable</title>
+    <style>
+        :root {
+            --primary-blue: #2c3e50;
+            --accent-blue: #3498db;
+            --light-gray: #f4f7f6;
+            --white: #ffffff;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        /* Accordion Styles */
+        .accordion-item {
+            background: var(--white);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--accent-blue);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--primary-blue);
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        .time-col { width: 25%; font-weight: bold; color: var(--accent-blue); }
+        .session-col { width: 45%; }
+        .speaker-col { width: 30%; font-style: italic; font-size: 0.9em; }
+
+        .active .accordion-content {
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .time-col { width: 30%; }
+            th, td { font-size: 0.85em; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>TIPP 2026 Timetable</h1>
+
+    <div class="accordion-item">
+        <div class="accordion-header">Monday, Feb 02 <span>+</span></div>
+        <div class="accordion-content">
+            <table>
+                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
+                <tbody>
+                    <tr><td class="time-col">09:30-11:00</td><td>Opening Session (HBA)</td><td class="speaker-col">Prof. Rudrajyoti Palit</td></tr>
+                    <tr><td class="time-col">11:00-11:30</td><td>Tea</td><td></td></tr>
+                    <tr><td class="time-col">11:30-12:40</td><td>Plenary Session (HBA)</td><td class="speaker-col">Prof. Vandana Nanal</td></tr>
+                    <tr><td class="time-col">12:40-14:00</td><td>Lunch Break</td><td></td></tr>
+                    <tr><td class="time-col">14:00-16:00</td><td>Parallel Sessions I-V</td><td class="speaker-col">Nayana Majumdar, et al.</td></tr>
+                    <tr><td class="time-col">16:00-16:30</td><td>Tea Break</td><td></td></tr>
+                    <tr><td class="time-col">16:30-18:00</td><td>Parallel Sessions (Cont.)</td><td class="speaker-col">Mandar Saraf, et al.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">Tuesday, Feb 03 <span>+</span></div>
+        <div class="accordion-content">
+            <table>
+                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
+                <tbody>
+                    <tr><td class="time-col">09:30-10:40</td><td>Plenary Session (HBA)</td><td class="speaker-col">BS Acharya</td></tr>
+                    <tr><td class="time-col">10:40-10:50</td><td>Group Photo</td><td></td></tr>
+                    <tr><td class="time-col">10:50-11:20</td><td>Tea Break</td><td></td></tr>
+                    <tr><td class="time-col">11:20-12:30</td><td>Plenary Session II (HBA)</td><td class="speaker-col">Junji Haba</td></tr>
+                    <tr><td class="time-col">12:30-14:00</td><td>Lunch Break</td><td></td></tr>
+                    <tr><td class="time-col">14:00-16:00</td><td>Parallel Sessions I-IV</td><td class="speaker-col">Rajdeep Chatterjee, et al.</td></tr>
+                    <tr><td class="time-col">16:30-18:00</td><td>Poster Session</td><td class="speaker-col">HBA Foyer</td></tr>
+                    <tr><td class="time-col">18:00-20:30</td><td>Cultural Program & Dinner</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">Wednesday, Feb 04 <span>+</span></div>
+        <div class="accordion-content">
+            <table>
+                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
+                <tbody>
+                    <tr><td class="time-col">09:30-10:45</td><td>Plenary Session I (HBA)</td><td class="speaker-col">Sunanda Banerjee</td></tr>
+                    <tr><td class="time-col">10:45-11:15</td><td>Tea Break</td><td></td></tr>
+                    <tr><td class="time-col">11:15-12:30</td><td>Plenary Session II (HBA)</td><td class="speaker-col">Indranil Mazumdar</td></tr>
+                    <tr><td class="time-col">12:30-14:00</td><td>Lunch Break</td><td></td></tr>
+                    <tr><td class="time-col">14:00-15:30</td><td>Plenary Session III (HBA)</td><td class="speaker-col">Yuri Tikhonov</td></tr>
+                    <tr><td class="time-col">16:00-17:00</td><td>Physics Colloquium</td><td class="speaker-col">at HBA</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">Thursday, Feb 05 <span>+</span></div>
+        <div class="accordion-content">
+            <table>
+                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
+                <tbody>
+                    <tr><td class="time-col">09:30-10:45</td><td>Plenary Session I (HBA)</td><td class="speaker-col">Nayana Majumdar</td></tr>
+                    <tr><td class="time-col">10:45-11:15</td><td>Tea Break</td><td></td></tr>
+                    <tr><td class="time-col">11:15-12:30</td><td>Plenary Session II (HBA)</td><td class="speaker-col">Naba Mondal</td></tr>
+                    <tr><td class="time-col">12:30-14:00</td><td>Lunch Break</td><td></td></tr>
+                    <tr><td class="time-col">14:00-16:00</td><td>Parallel Sessions I-V</td><td class="speaker-col">Prakash Rout, et al.</td></tr>
+                    <tr><td class="time-col">16:30-18:00</td><td>Parallel Sessions (Cont.)</td><td class="speaker-col">Saranya Samik Ghosh, et al.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">Friday, Feb 06 <span>+</span></div>
+        <div class="accordion-content">
+            <table>
+                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
+                <tbody>
+                    <tr><td class="time-col">09:30-10:30</td><td>ICFA Session (HBA)</td><td class="speaker-col">Stefan Söldner-Rembold</td></tr>
+                    <tr><td class="time-col">10:30-11:00</td><td>Tea Break</td><td></td></tr>
+                    <tr><td class="time-col">11:00-12:40</td><td>Technology Transfer I</td><td class="speaker-col">Dr Christophe De La Taille</td></tr>
+                    <tr><td class="time-col">12:40-14:00</td><td>Lunch Break</td><td></td></tr>
+                    <tr><td class="time-col">14:00-15:30</td><td>Technology Transfer II</td><td class="speaker-col">Mandar Saraf</td></tr>
+                    <tr><td class="time-col">16:25-17:25</td><td>ASET Colloquium (HBA)</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+            
+            // Toggle the plus/minus sign
+            const span = button.querySelector('span');
+            span.textContent = item.classList.contains('active') ? '-' : '+';
+        });
+    });
+</script>
+
+</body>
+</html>
