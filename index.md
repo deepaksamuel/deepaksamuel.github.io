@@ -4,10 +4,23 @@ layout: default
 
 
 <!-- [Link to another page](./another-page.html). -->
+I am experimental particle physicist with a passion for coding. With over 15 years of experience in C++ programming, multithreading, parallel computing (CUDA) with a recent love for the python language through which I learnt the art of machine learning. I also enjoy electronics, in particular, the development of particle detetors.
 
-The following are the projects that I am working on.
-For more details, write to me at deepaksamuel@gmail.com
 
+
+A list of my scientific publications can be seen at:   
+https://scholar.google.co.in/citations?user=lD7kXAsAAAAJ&hl=en
+
+
+I am working for three experiments:
+- # India-based Neutrino Observatory:
+  - I developed a modern VME-based data acquisition with classy Qt-based front-end that helped us control the detector and data collection with a user friendly interface:   
+  https://www.sciencedirect.com/science/article/abs/pii/S0168900210018498
+  - Many of my students who worked for a project work under my supervision have immensely benefitted from the training  received through analysing the data from the prototype stack. Unfortunately, the experiment is now shelved. If the experiment had seen the light of the day, it would have certainly taken Indian science to the next level.
+  - Here is list of my students who directly worked under my supervision:
+    <!-- - Alaka B G (PhD student): Machine learning 
+    - Lakshmi Murgod (PhD student)
+    - Karthik Suresh: -->
 # Simple
 
 A front-end for Geant4 - you can use for demonstrating particle interactions with matter or even for a full simulation that involves simple geometries. 
