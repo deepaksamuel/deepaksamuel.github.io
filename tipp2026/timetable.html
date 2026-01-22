@@ -6,98 +6,45 @@
     <title>TIPP 2026 Timetable</title>
     <style>
         :root {
-            --primary-blue: #2c3e50;
-            --accent-blue: #3498db;
-            --light-gray: #f4f7f6;
-            --white: #ffffff;
-            --text: #333;
+            --primary: #002b5b;
+            --secondary: #1a5f7a;
+            --accent: #52ab98;
+            --bg: #f8f9fa;
         }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #333; padding: 15px; }
+        .container { max-width: 950px; margin: 0 auto; }
+        h1 { text-align: center; color: var(--primary); }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: var(--light-gray);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-        }
+        /* Main Accordion */
+        .day-box { margin-bottom: 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .day-header { background: var(--primary); color: white; padding: 15px; cursor: pointer; font-weight: bold; font-size: 1.1rem; border-radius: 8px 8px 0 0; }
+        .day-content { display: none; padding: 10px; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* Sub Accordion */
+        .sub-box { margin: 8px 0; border-left: 4px solid var(--secondary); background: #f1f1f1; border-radius: 4px; }
+        .sub-header { padding: 10px; cursor: pointer; font-weight: 600; background: #e9ecef; display: flex; justify-content: space-between; }
+        .sub-content { display: none; padding: 10px; background: #fff; }
 
-        h1 {
-            text-align: center;
-            color: var(--primary-blue);
-            margin-bottom: 30px;
-        }
-
-        /* Accordion Styles */
-        .accordion-item {
-            background: var(--white);
-            margin-bottom: 10px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .accordion-header {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 15px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            background-color: var(--accent-blue);
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 0 15px;
-            border-top: 1px solid #ddd;
-        }
-
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-        }
-
-        th {
-            background-color: #f8f9fa;
-            color: var(--primary-blue);
-            font-size: 0.9em;
-            text-transform: uppercase;
-        }
-
-        .time-col { width: 25%; font-weight: bold; color: var(--accent-blue); }
-        .session-col { width: 45%; }
-        .speaker-col { width: 30%; font-style: italic; font-size: 0.9em; }
-
-        .active .accordion-content {
-            display: block;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            body { padding: 10px; }
-            .time-col { width: 30%; }
-            th, td { font-size: 0.85em; padding: 8px; }
-        }
+        table { width: 100%; border-collapse: collapse; margin: 5px 0; }
+        td { padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .time { width: 110px; font-weight: bold; color: var(--secondary); font-size: 0.9rem; }
+        .talk { font-weight: 600; color: #000; display: block; }
+        .speaker { color: #c0392b; font-size: 0.9rem; font-weight: bold; margin-top: 2px; display: block; }
+        .location { color: #757575; font-size: 0.8rem; font-weight: 400; margin-top: 4px; display: block; letter-spacing: 0.3px; }
+        .convener { color: #9e9e9e; font-size: 0.8rem; font-weight: 400; font-style: normal; margin-top: 2px; display: block; }
+        
+        .tea-break { background: linear-gradient(135deg, #fff8e1 0%, #ffe8b6 100%); border-left: 4px solid #ff9800 !important; }
+        .tea-break td { border-bottom: 2px dashed #ff9800; }
+        .tea-break .talk { color: #e65100; font-size: 1.05rem; }
+        
+        .lunch-break { background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border-left: 4px solid #8e24aa !important; }
+        .lunch-break td { border-bottom: 2px dashed #8e24aa; }
+        .lunch-break .talk { color: #6a1b9a; font-size: 1.05rem; }
+        .room { color: #757575; font-weight: 400; font-size: 0.9rem; }
+        .session-convener { color: #9e9e9e; font-weight: 400; font-size: 0.9rem; }
+        .tea-icon { font-size: 1.3rem; margin-right: 8px; }
+        
+        .active { display: block !important; }
     </style>
 </head>
 <body>
@@ -105,106 +52,494 @@
 <div class="container">
     <h1>TIPP 2026 Timetable</h1>
 
-    <div class="accordion-item">
-        <div class="accordion-header">Monday, Feb 02 <span>+</span></div>
-        <div class="accordion-content">
+    <div class="day-box">
+        <div class="day-header" onclick="toggle(this)">2nd Feb 2026</div>
+        <div class="day-content">
+            <p class="convener">Convener: Prof. Rudrajyoti Palit</p>
             <table>
-                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
-                <tbody>
-                    <tr><td class="time-col">09:30-11:00</td><td>Opening Session (HBA)</td><td class="speaker-col">Prof. Rudrajyoti Palit</td></tr>
-                    <tr><td class="time-col">11:00-11:30</td><td>Tea</td><td></td></tr>
-                    <tr><td class="time-col">11:30-12:40</td><td>Plenary Session (HBA)</td><td class="speaker-col">Prof. Vandana Nanal</td></tr>
-                    <tr><td class="time-col">12:40-14:00</td><td>Lunch Break</td><td></td></tr>
-                    <tr><td class="time-col">14:00-16:00</td><td>Parallel Sessions I-V</td><td class="speaker-col">Nayana Majumdar, et al.</td></tr>
-                    <tr><td class="time-col">16:00-16:30</td><td>Tea Break</td><td></td></tr>
-                    <tr><td class="time-col">16:30-18:00</td><td>Parallel Sessions (Cont.)</td><td class="speaker-col">Mandar Saraf, et al.</td></tr>
-                </tbody>
+                <tr><td class="time">09:30-09:40</td><td><span class="talk">Welcome</span><span class="speaker">Prof. Jayaram Chengalur (Director, TIFR)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">09:40-09:50</td><td><span class="talk">Introduction to TIFR</span><span class="speaker">Prof. Shankar Ghosh (Dean-NSF, TIFR)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">09:50-10:00</td><td><span class="talk">Welcome address from CERN</span><span class="speaker">Mark Thomson (CERN)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:00-10:10</td><td><span class="talk">Welcome address from Europe</span><span class="speaker"></span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:10-10:20</td><td><span class="talk">Welcome address from KEK</span><span class="speaker">Shoji Asai (Univ. Tokyo)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:20-10:55</td><td><span class="talk">Microelectronics: A vision talk with radiation hard electronics</span><span class="speaker">Dr. Christophe De La Taille (OMEGA)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">11:00-11:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                <tr><td colspan="2"><p class="convener" style="margin: 5px 0;">Plenary 1 Convener: Prof. Vandana Nanal (TIFR)</p></td></tr>
+                <tr><td class="time">11:30-12:05</td><td><span class="talk">Plenary: SuperCDMS dark matter experiment</span><span class="speaker">Priscilla Cushman</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">12:05-12:40</td><td><span class="talk">Plenary: Indian National Gamma Array</span><span class="speaker">Rudrajyoti Palit (TIFR)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="lunch-break"><td class="time">12:40-14:00</td><td><span class="talk"><span class="tea-icon">🍽️</span>Lunch Break</span></td></tr>
+            </table>
+
+            <div class="sub-box">
+                <div class="sub-header" onclick="toggle(this)">Parallel Sessions (14:00 - 16:00) <span>[+]</span></div>
+                <div class="sub-content">
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session I - <span class="room">Homi Bhabha Auditorium</span> - <span class="session-convener">Convener: Nayana Majumdar</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Wireless power transmission for silicon detector</span><span class="speaker">Yan Benhammou</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">The Spin Physics Detector (SPD) at NICA</span><span class="speaker">Alexander Korzenev</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">The Crilin electromagnetic calorimeter: a fast, highly granular detector for a future Muon Collider</span><span class="speaker">Vittoria Ludovica Ciccarella</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">Low-Power Modular UV Detector with SiPMs and ASIC/FPGA Readout for Space-Based Observatories</span><span class="speaker">Valentina Scotti</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">R&D toward a next-generation heavy-ion experiment at LHC (ALICE 3)</span><span class="speaker">Sofia Strazzi</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">High Granularity Scintillator Tiles for the High Luminosity Upgrade of the CMS Endcap Calorimeter</span><span class="speaker">Daria Selivanova</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">Water Cherenkov Test Experiment at CERN: Preliminary Results from a New Generation of multi-PMT Modules</span><span class="speaker">Mohit Gola</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">A new large-area Micromegas detector and its ToRA-based readout electronics for AMBER experiment at CERN</span><span class="speaker">Chiara Alice</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Water-based Liquid Scintillator in ANNIE</span><span class="speaker">Mr Noah Goehlke</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Towards detection of Breit-Wheeler tunneling positrons in E320 at the FACET-II accelerator</span><span class="speaker">Arka Santra</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">Construction and QA/QC of Large-Size GEM Modules for Muon Chamber Station 1 in CBM</span><span class="speaker">Mr Rajeshranjan Rath</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Development of the PBR Cherenkov Camera: A High-Resolution SiPM Instrument for Space Astroparticle Observatories</span><span class="speaker">Valentina Scotti</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session II - <span class="room">Room AG66</span> - <span class="session-convener">Convener: Ismael Martel</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Operational experience and performance of the Silicon Vertex Detector after the first long shutdown of Belle II</span><span class="speaker">Alice Gabrielli</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Design, Development and Performance of a Charge Injection System for the CMS HGCAL Front-End Electronics QC</span><span class="speaker">Jasmine Chhikara</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">CMS Phase 2 Tracker Upgrade for HL-LHC</span><span class="speaker">Prolay Mal</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">Radiation Tolerance Evaluation of P-Type Silicon Sensors with HGCROC for FoCal Detector in ALICE</span><span class="speaker">Anup Kumar Sikdar</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Assembly procedure of silicon strip detector module with 1 µm alignment precision for the muon g-2/EDM experiment at J-PARC</span><span class="speaker">Shinji Ogawa</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Radiation Damage and Operation of the LHCb Upgrade I Vertex Locator</span><span class="speaker">Valeriia Zhovkovska</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">The new NA60+/DiCE experiment at the CERN SPS with wafer-scale, stitched, monolithic active pixel sensors</span><span class="speaker">Dr Sabyasachi Siddhanta</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">Phase 2 Upgrade of ATLAS Hadronic Tile Calorimeter</span><span class="speaker">Mattia Soldani</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Pentadimensional Tracking Space Detector on a CubeSat demonstrator for 5D tracking in space</span><span class="speaker">Elisabetta Cavazzuti</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Design and Performance Evaluation of the Silicon Strip Detector Cooling System for J-PARC Muon g-2/EDM Experiment</span><span class="speaker">Mr Taiki SATO</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">The CBM Micro-Vertex Detector: Toward Production Readiness with MIMOSIS MAPS</span><span class="speaker">Ajit Kumar</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">The Beam Conditions Monitor at the LHCb experiment in Run 3</span><span class="speaker">Donata Osthues</span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">Pixelated AC-LGAD sensors for the Electron-Ion Collider (EIC): read-out performances with EICROC0_v0 ASIC</span><span class="speaker">Dominique Marchand</span></td></tr>
+                                <tr><td class="time">17:45-18:00</td><td><span class="talk">Early Failure Detection in Electronics: Assessing the Impact of Burn-In Station Using Machine Learning</span><span class="speaker">Chuene Johannes Mosomane</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session III - <span class="room">Room AG69</span> - <span class="session-convener">Convener: Moonmoon Devi</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">G-RWELL Performance Studies for ePIC's MPGD Endcap Tracker</span><span class="speaker">Elena Sidoretti</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Superheated liquid Detector and instrumentation for InDEx dark matter search experiment at JUSL</span><span class="speaker">Mala Das</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Measurement and Simulation of Light Output Response in EJ-276D Plastic Scintillator for Fast Neutron Detection</span><span class="speaker">Mr Pankaj Pant</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">DarkSide-20k: A Next Generation LAr Dual-phase TPC for Direct Search of Particle DM</span><span class="speaker">Devidutta Gahan</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Development of the ATLAS Liquid Argon Calorimeter Readout Electronics for the HL-LHC</span><span class="speaker">Georges Aad</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Power over fiber for fundamental and applied physics at cryogenic temperature: final results of the Cryo-PoF project</span><span class="speaker">Andrea Falcone</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">R&D Studies on the ALLEGRO Noble Liquid Calorimeter for FCC-ee</span><span class="speaker">Juska Pekkanen</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">Resistive Pixelized Micromegas for Applications at Future Colliders</span><span class="speaker">Mauro Iodice</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Latest results from the LUX-ZEPLIN (LZ) dark matter experiment</span><span class="speaker">Nicholas Fieldhouse</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Development of an optical tomography system based on picosecond pulses for non-invasive brain diagnosis and monitoring</span><span class="speaker">Vladislav Sharov</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">In-flight performance of the HEPD-02 detector on board the CSES-02 satellite</span><span class="speaker">Ester Ricci</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Development of Silicon Photo-Multiplier (SiPM) Detectors for Muon Scattering Tomography</span><span class="speaker">Shubhabrata Dutta</span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">A development of a water quality monitoring system and its application to drinking water monitoring</span><span class="speaker">Akira Konaka</span></td></tr>
+                                <tr><td class="time">17:45-18:00</td><td><span class="talk">Neutron detection with boron-coated GEM-based detector using 252Cf source</span><span class="speaker">Pawan Kumar Sharma</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session IV - <span class="room">Room AG80</span> - <span class="session-convener">Convener: Shilpi Jain / Deepak Samuel (post-tea)</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Drift tube detectors in RNC "Kurchatov institute" - IHEP</span><span class="speaker">Dr RinatMakarim Fakhrutdinov</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Proportional counter development with vacuum manifolds recycling legacy iron tubes for the GRAPES-3 expansion</span><span class="speaker">Dr Pranaba K Nayak</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Development of Time Projection Chamber for low energy Nuclear Physics experiments</span><span class="speaker">Nayana Majumdar; Mr Pralay Kumar Das</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">Preliminary Design of ePIC’s G-RWELL Endcap Tracker and Development of its First Engineering Test Article</span><span class="speaker">Stefano Gramigna</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Performance Studies of Gaseous Detectors for Heavy-Ion Experiments</span><span class="speaker">Mr S. Mandal</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Muon momentum spectrum near equator and tuning of hadronic models</span><span class="speaker">Dr PETHURAJ S</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">Technical challenges and performance of the new ATLAS LAr Calorimeter Trigger</span><span class="speaker">Ruben Pozzi</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Commissioning and Testing of Station-1 and Station-2 MuCh-GEM Modules with High-Intensity Beams at the mini-CBM Experiment at GSI</span><span class="speaker">Mr Chandrasekhar Ghosh</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Investigation of India-made Thick-GEM for Application in Muon Scattering Tomography</span><span class="speaker">Saikat Ghosh</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">ATLAS Muon Detectors Upgrades for High Luminosity LHC</span><span class="speaker">Chaowaroj Wanotayaroj</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Construction and Testing of Resistive Plate Chambers with Optical Readout</span><span class="speaker">Burak Bilki</span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">The µ-RWELL technology in the IDEA Muon System for FCC-ee</span><span class="speaker">Riccardo Farinelli</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session V - <span class="room">Room D406</span> - <span class="session-convener">Convener: Mandakini Patil / Mandar Saraf (post-tea)</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Electronics of the Fast Forward Detector in MPD experiment</span><span class="speaker">Victor Rogov</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Design and development of a 32 Channel Waveform Digitiser Board based on DRS4 for the Cosmic Muon Veto Detector</span><span class="speaker">Mandar Saraf</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Development and Characterisation of a Plastic Scintillator-based Compact Test and Trigger System with SiPM Readout and Custom Electronics</span><span class="speaker">Mr Prajjalak Chattopadhyay</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">The MDT Trigger Processor prototype for the ATLAS Level-0 Muon Trigger at HLLHC</span><span class="speaker">Panagiotis Gkountoumis</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Knypaegje: An Algorithm for Achieving Deterministic Startup Phase in GTYe4 and GTYe5 Transceivers</span><span class="speaker">Melvin Leguijt</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">RAM-based Coincidence Window Optimization for Real-Time Muon Reconstruction in HL-LHC ATLAS L0 Muon Trigger</span><span class="speaker">Tetsuro Nakagawa </span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">FPGA-based Emulator Platform Targeting ATLAS Phase-2 ITk DAQ System Development </span><span class="speaker">Matthias Peter Drescher </span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Upgrade of the Front-End Electronics of the C217 RPC Detector Stack at TIFR </span><span class="speaker">Ravindra Raghunath Shinde</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Data Acquisition System of the TPC/MPD Detector for the NICA Project </span><span class="speaker">Mr Stepan Vereshchagin</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">An FPGA based readout system for sub-nanosecond beam background characterization </span><span class="speaker">Florian Eisele </span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Development and Testing of an External and Self-Triggering System for HGCAL Beam and Cassette Tests </span><span class="speaker">Raghunandan Shukla</span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">Scintillator Counters and PMT Read-out Electronics for the HEPD-02 Calorimeter on the CSES-02 Satellite: Design and Performance </span><span class="speaker">Marco Mese</span></td></tr>
+                                <tr><td class="time">17:45-18:00</td><td><span class="talk">From Polling to Proactive Push: An Event-Driven Architecture for Real-Time Data Acquisition </span><span class="speaker">Mr Prajwal Deshmukh</span></td></tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="day-box">
+        <div class="day-header" onclick="toggle(this)">3rd Feb 2026</div>
+        <div class="day-content">
+            <p class="convener">Plenary 1 Convener: B S Acharya</p>
+            <table>
+                <tr><td class="time">09:30-10:05</td><td><span class="talk">JUNO – A technical feat becoming reality</span><span class="speaker">Andrea Barresi (INFN)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:05-10:40</td><td><span class="talk">MACE Detector and physics</span><span class="speaker">Kuldeep Yadav</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:40-10:50</td><td><span class="talk"><span class="tea-icon">📸</span>Group Photo</span></td></tr>
+                <tr class="tea-break"><td class="time">10:50-11:20</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                <tr><td colspan="2"><p class="convener" style="margin: 5px 0;">Plenary 2 Convener: Junji Haba</p></td></tr>
+                <tr><td class="time">11:20-11:55</td><td><span class="talk">ATLAS Inner Tracker Upgrade</span><span class="speaker">Tony Affolder (UC Santa Cruz)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">11:55-12:30</td><td><span class="talk">CMS High Granularity Calorimeter</span><span class="speaker">Rajdeep Mohan Chatterjee (TIFR)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="lunch-break"><td class="time">12:30-14:00</td><td><span class="talk"><span class="tea-icon">🍽️</span>Lunch Break</span></td></tr>
+            </table>
+
+            <div class="sub-box">
+                <div class="sub-header" onclick="toggle(this)">Parallel Sessions (14:00 - 16:00) <span>[+]</span></div>
+                <div class="sub-content">
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session I - <span class="room">Homi Bhabha Auditorium</span> - <span class="session-convener">Convener: Rajdeep Chatterjee</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Test of 1 cm³ scintillator cubes with pion beam</span><span class="speaker">Angelina Chvirova</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Characterization of Different Size Deuterated Liquid Scintillator Detectors</span><span class="speaker">P. Pant; S. Dalal</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Advancing Scintillation-Based Dark Matter Detection with SiPM Readout in NaI Crystals</span><span class="speaker">Mr Swadheen Bharat</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">The OREO Calorimeter status and prospect</span><span class="speaker">Pierluigi Fedeli</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Performance of 3D segmented neutrino detector SuperFGD in the T2K neutrino beam</span><span class="speaker">Yury Kudenko</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">R&D on supercritical CO2 and krypton as natural refrigerants for the thermal management of future detectors and electronics</span><span class="speaker">Bart Verlaat</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">DRD8 - Common tools for next generation detectors</span><span class="speaker">Burkhard Schmidt</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session II - <span class="room">Room AG69</span> - <span class="session-convener">Convener: Saranya Samik Ghosh</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Irradiation studies of CMS Cathode Strip Chambers and in situ CSC performance monitoring at CMS</span><span class="speaker">Neha Rawal</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">The CGEM-IT of the BESIII detector</span><span class="speaker">Antonio Amoroso</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Quenching factor measurement efforts for NEWS-G</span><span class="speaker">Neha Panchal</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">External VMM3a Readout for the Straw Trackers</span><span class="speaker">Vitalii Bautin</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Wire-by-Wire Tracking Efficiency Plots: New Diagnostic for the Belle II Central Drift Chamber</span><span class="speaker">Dr Suryanarayan Mondal</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">THGEM with resistive plate anode: Signal shape and gain optimization</span><span class="speaker">Arpan Maity</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">The G-RWELL: A High-Performance Resistive MPGD for Next-Generation High-Energy Experiments</span><span class="speaker">Matteo Giovannetti</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">Requirements to the read-out electronics for future Straw Trackers and the straw performance measurements</span><span class="speaker">Katerina Kuznetsova</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session III - <span class="room">Room AG80</span> - <span class="session-convener">Convener: Deepak Samuel</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Design and Performance Evaluation of a Compact PET Scanner Setup</span><span class="speaker">Vishal Malik</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">A prototype coded aperture imaging-based radiation localization and identification system</span><span class="speaker">Mr Tushar Kesarkar</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">OPOSSUM - Optimal Particle identification Of Single Site events with Underground MKIDs detectors</span><span class="speaker">Paul Andrei Puiu</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">Characterization of Quantum Dot Properties for Enhanced Calorimetry in High Energy Physics</span><span class="speaker">Mr Santanu Mahata</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">CEvNS Search with Cryogenic Sapphire Detectors at MINER: From TRIGA Results to HFIR Prospects</span><span class="speaker">Dipanwita Mondal</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">3D-Printed Plastic Scintillators for Advanced Radiation Detection and ToF-PET Applications</span><span class="speaker">Vivek Anand</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">Optimisation of plastic scintillator based PET device</span><span class="speaker">Raj Shah</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session IV - <span class="room">Room D406</span> - <span class="session-convener">Convener: Mandar Saraf</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Analysis of radiation effects in trigger front-end electronics with impedance spectroscopy</span><span class="speaker">Dr Pierluigi Casolaro</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Development and validation of trigger primitive generation algorithms of High Granularity Calorimeter of CMS</span><span class="speaker">Indranil Das</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">A FPGA-based L1 trigger system design for STCF</span><span class="speaker">Yuhe Huang</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">Triggering on Muon Detector Showers with CMS</span><span class="speaker">Pedro Fernandez Manteca</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Detector R&D for Future Linear Colliders</span><span class="speaker">Dr Maksym Titov</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Control System and Data Quality Monitoring of the Belle II KLM Detector</span><span class="speaker">Dr Varghese Babu</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">Development of an SiPM-based camera for a 4 m class Atmospheric Cherenkov Telescope</span><span class="speaker">Sandeep Duhan</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">Commissioning and Calibration of SiPM-based 4m cherenkov telescope</span><span class="speaker">Dr Bharat Singh</span></td></tr>
+                                <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                        
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ <div class="sub-box">
+                <div class="sub-header" onclick="toggle(this)">Poster session at Homi Bhabha Auditorium (A0 posters, to be displayed on all days) <span>[+]</span></div>
+                <div class="sub-content">
+                     <table>                    <tr><td><span class="talk">The OCTOPUS Project: Development of a Monolithic Active Pixel Sensor for Future Lepton Colliders</span><span class="speaker">Zdenko Janoska (Czech Technical University in Prague (CZ))</span></td></tr>
+<tr><td><span class="talk">Study of bulk and surface resistivity of carbon-loaded PTFE material for RPC</span><span class="speaker">Sayan Chakraborty (University of Calcutta)</span></td></tr>
+<tr><td><span class="talk">Measurements of Response of LBC, LaBr3:Ce and NaI(Tl) Crystals to Thermal and Fast Neutrons</span><span class="speaker">Virender Ranga (Indian Institute of Technology Roorkee)</span></td></tr>
+<tr><td><span class="talk">KKMCee for precision monte carlo: Tests and extensions</span><span class="speaker">Dr J. M. John (IFJ-PAN, Krakow)</span></td></tr>
+<tr><td><span class="talk">Background Particle Response of CMS GEM Detectors with Run 3 Data and Simulation</span><span class="speaker">Tanvi Sheokand (Panjab University (IN))</span></td></tr>
+<tr><td><span class="talk">Recent results from the characterization of the MALTA2 monolithic active pixel sensor.</span><span class="speaker">Anusree Vijay (Indian Institute of Technology Madras (IN))</span></td></tr>
+<tr><td><span class="talk">Study with HFO gas in Ar/CO2 based gas mixture in GEM Detectors.</span><span class="speaker">Ms Sushila Lohan (University of Delhi (IN))</span></td></tr>
+<tr><td><span class="talk">Performance study of Glass RPC detector with low Global Warming Potential gases.</span><span class="speaker">Bhanu Thakurani (University of Delhi (IN))</span></td></tr>
+<tr><td><span class="talk">A portable glass-RPC based muon tracking system for muography applications</span><span class="speaker">Dr Raveendrababu Karnam (National Institute of Science Education and Research (NISER) (IN))</span></td></tr>
+<tr><td><span class="talk">Long-Baseline Neutrino Physics in the Precision Era: multi-PMTs for the Hyper-Kamiokande Experiment</span><span class="speaker">Mohit Gola (TRIUMF (CA))</span></td></tr>
+<tr><td><span class="talk">Operation of the Belle II ARICH detector</span><span class="speaker">Hridey Chetri, Nihar Pawar</span></td></tr>
+<tr><td><span class="talk">Characteristic study of Straw tube detector for future heavy ion experiment</span><span class="speaker">Mr SUBIR MANDAL (Bose Institute)</span></td></tr>
+<tr><td><span class="talk">Status of the ATLAS Tile Calorimeter during LHC Run 3</span><span class="speaker">Mattia Soldani (CERN)</span></td></tr>
+<tr><td><span class="talk">Design, Development, and Validation of Inner Coincidence for HL-LHC ATLAS Level-0 Endcap Muon Trigger.</span><span class="speaker">Ryugo Mizuhiki (Kobe University (JP))</span></td></tr>
+<tr><td><span class="talk">CMS Phase 2 Outer Tracker 2S Module Assembly</span><span class="speaker">Kuldeep Kumar Pal (National Institute of Science Education and Research (NISER) (IN))</span></td></tr>
+<tr><td><span class="talk">In-flight performances of the HEPD-02 silicon tracker</span><span class="speaker">Prof. Paoloz Zuccon (Universita degli Studi di Trento and INFN (IT))</span></td></tr>
+<tr><td><span class="talk">Performance of the Belle II TOP Detector for Charged Particle Identification</span><span class="speaker">Mr Hrishikesh Goswami (Indian Institute of Technology Hyderabad)</span></td></tr>
+<tr><td><span class="talk">Operational performance of the CMS Strip Tracker during LHC Run 3</span><span class="speaker">Sneh Shuchi (National Institute of Science Education and Research (NISER) (IN))</span></td></tr>
+<tr><td><span class="talk">The SISMUV Project: Modular Front-End Readout and Control Electronics for Large SiPM-Based Telescope Focal Surfaces</span><span class="speaker">Marco Mese (University of Naples Federico II)</span></td></tr>
+<tr><td><span class="talk">Development of Large-Area Plastic Scintillators at the Cosmic Ray Laboratory, TIFR, India</span><span class="speaker">Atul Jain (Tata Institute of Fundamental Research (TIFR))</span></td></tr>
+<tr><td><span class="talk">Development of EPICS based control system for LINAC at BARC-TIFR PLF, Mumbai</span><span class="speaker">Ms Catarina Rozario (Tata Institute of Fundamental Research (IN))</span></td></tr>
+</table>
+                </div>
+            </div>
+
+     <div class="sub-box">
+                <div class="sub-header" onclick="toggle(this)">Cultural programme and Conference Dinner at TIFR <span>[+]</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <div class="day-box">
+        <div class="day-header" onclick="toggle(this)">4th Feb 2026</div>
+        <div class="day-content">
+            <p class="convener">Plenary 1, Convener: Sunanda Banerjee (University of Wisconsin (US))</p>
+            <table>
+                <tr><td class="time">09:30-10:05</td><td><span class="talk">Digital SiPM beyond particle physics</span><span class="speaker">Claudio Bruschini</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:05-10:40</td><td><span class="talk">FoCAL detector activities in India</span><span class="speaker">Sanjib Muhuri (Department of Atomic Energy (IN))</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">10:45-11:15</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                <tr><td colspan="2"><p class="convener" style="margin: 5px 0;">Plenary 2, Convener: Indranil Mazumdar (TIFR)</p></td></tr>
+                
+                <tr><td class="time">11:15-11:50</td><td><span class="talk">Future of single photon detection technology</span><span class="speaker">Massimiliano Fiorini (INFN)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">11:50-12:25</td><td><span class="talk">Achievements and plans of CERN DRD collaborations</span><span class="speaker">Dr Didier Claude Contardo</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="lunch-break"><td class="time">12:30-14:00</td><td><span class="talk"><span class="tea-icon">🍽️</span>Lunch Break</span></td></tr>
+                <tr><td colspan="2"><p class="convener" style="margin: 5px 0;">Plenary 3, Convener: Yuri Tikhonov (Budker (INP))</p></td></tr>
+               
+                <tr><td class="time">14:00-14:35</td><td><span class="talk">Vision on picosecond timing device</span><span class="speaker">Nicolo Cartiglia (INFN)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">14:35-15:10</td><td><span class="talk">A monitored and tagged beamline for neutrinos</span><span class="speaker">Andrea Falcone (INFN)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">15:30-16:00</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                
+                <tr><td class="time">16:00-17:00</td><td><span class="talk">Colloquium: Physics with Cosmic Microwave Background Observations</span><span class="speaker">Masashi Hazumi</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">17:00-17:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
             </table>
         </div>
     </div>
 
-    <div class="accordion-item">
-        <div class="accordion-header">Tuesday, Feb 03 <span>+</span></div>
-        <div class="accordion-content">
+<div class="day-box">
+        <div class="day-header" onclick="toggle(this)">5th Feb 2026</div>
+        <div class="day-content">
+            <p class="convener"> Plenary Session-I, Convener: Nayana Majumdar (Applied Nuclear Physics Division, SINP, A CI of Homi Bhabha National Institute) </p>
+                
             <table>
-                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
-                <tbody>
-                    <tr><td class="time-col">09:30-10:40</td><td>Plenary Session (HBA)</td><td class="speaker-col">BS Acharya</td></tr>
-                    <tr><td class="time-col">10:40-10:50</td><td>Group Photo</td><td></td></tr>
-                    <tr><td class="time-col">10:50-11:20</td><td>Tea Break</td><td></td></tr>
-                    <tr><td class="time-col">11:20-12:30</td><td>Plenary Session II (HBA)</td><td class="speaker-col">Junji Haba</td></tr>
-                    <tr><td class="time-col">12:30-14:00</td><td>Lunch Break</td><td></td></tr>
-                    <tr><td class="time-col">14:00-16:00</td><td>Parallel Sessions I-IV</td><td class="speaker-col">Rajdeep Chatterjee, et al.</td></tr>
-                    <tr><td class="time-col">16:30-18:00</td><td>Poster Session</td><td class="speaker-col">HBA Foyer</td></tr>
-                    <tr><td class="time-col">18:00-20:30</td><td>Cultural Program & Dinner</td><td></td></tr>
-                </tbody>
+                <tr><td class="time">09:30-10:05</td><td><span class="talk">Quantum Sensors for HEP</span><span class="speaker">Masashi Hazumi</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">10:05-10:40</td><td><span class="talk">R&D and design for the CEPC experiment</span><span class="speaker">Prof. Wang Yifang</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">10:45-11:15</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                <tr><td colspan="2"><p class="convener" style="margin: 5px 0;"> Plenary Session-II, Convener: Naba Mondal (TIFR)</p></td></tr>   
+                <tr><td class="time">11:15-11:50</td><td><span class="talk">LHCb-upgrade II: DAQ challenge</span><span class="speaker">Flavio Pisani (CERN)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr><td class="time">11:50-12:25</td><td><span class="talk">GRAPES-3 Upgrade plan</span><span class="speaker">Pravata Mohanty (TIFR)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="lunch-break"><td class="time">12:30-14:00</td><td><span class="talk"><span class="tea-icon">🍽️</span>Lunch Break</span></td></tr>
             </table>
+
+            <div class="sub-box">
+                <div class="sub-header" onclick="toggle(this)">Parallel Sessions (14:00 - 16:00) <span>[+]</span></div>
+                <div class="sub-content">
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session I - <span class="room">Homi Bhabha Auditorium</span> - <span class="session-convener">Convener: </span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">TPC Development by the LCTPC Collaboration for the ILD Detector at ILC</span><span class="speaker">Dr Maksym Titov (IRFU, CEA Saclay, Universite Paris-Saclay (FR))<div class="sub-box">
+                        
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Innovative Back-Side Illuminated SiPMs (BSI-SiPMs): first results from the IBIS project</span><span class="speaker">Luigi Pio Rignanese (INFN, Bologna (IT))</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Performance of the Timepix3 Detector Network in ATLAS for Luminosity Measurement during 2025 Van der Meer Scans</span><span class="speaker">Catalina Lesmes Ramirez (Czech Technical University in Prague (CZ))</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">How to synchronize clocks to a sub-picoesecond level in large-scale detectors and systems</span><span class="speaker">Roger Rusack (University of Minnesota (US)) </span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">A System-On-chip based High Resolution Time-to-digital converter in Artix-7 FPGA</span><span class="speaker">Dr Hari Prasad Kolla (Bhabha Atomic Research Centre) </span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Upgrade of the Belle II Vertex Detector with depleted monolithic CMOS active pixel sensors</span><span class="speaker">Dr Vindhyawasini Prasad (Jilin University)</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session II - <span class="room">Room AG66</span> - <span class="session-convener">Convener: Prakash Rout</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">LHCb-VELO upgrade II and LumiTracker -- Mechanics, cooling and electronics</span><span class="speaker">Bhagyashree Pagare (Universidade de Santiago de Compostela (ES)) </span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Getting ready for the new ATLAS ITk pixel detector: Large scale detector system tests</span><span class="speaker">Benedikt Vormwald (CERN) </span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Fast, Compact Readout of PbWO₄ crystals with SiPM arrays for Future Collider Calorimeters</span><span class="speaker">Silvia Sykorova</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">The CMS MTD Barrel Timing Layer for the High Luminosity LHC</span><span class="speaker">Toyoko Orimoto (Northeastern University (US)) </span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">The progress of Super Tau Charm Facility in China</span><span class="speaker">Prof. Haiping Peng (University of Science and Technology of China) </span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">A hybrid muon detector for the Super Tau-Charm Facility experiment: concept, design optimization and particle identification</span><span class="speaker">Yulin Liu (USTC) </span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">Development and Beam Test of the Electromagnetic Calorimeter Prototype for STCF</span><span class="speaker">Junhao Wang (USTC)</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">CMS GEM Upgrade: Status and Prospects for the HL-LHC</span><span class="speaker">Mahesh Kumar Saini (University of Delhi (IN)) </span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session III - <span class="room">Room AG69</span> - <span class="session-convener">Convener: Rajdeep Chatterjee (TIFR)</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Detecting Antiprotons with Submicrometric Spatial Accuracy</span><span class="speaker">Markus Munster (Technische Universitaet Muenchen (DE))</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">R&D and qualification system development for ALICE ITS3 MOSAIX sensor ASIC</span><span class="speaker">Luca Aglietta (Universita e INFN Torino (IT)) </span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">Overview of the ALICE ITS3 Upgrade</span><span class="speaker">Naseem Bouchhar (Sejong University) </span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">Recent progress and R&D toward LHCb Velo Upgrade II</span><span class="speaker">Morag Williams (CERN)</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">Beam Test Performance of ATLAS ITk Pixel Modules irradiated up to End-of-Lifetime Fluences</span><span class="speaker">Krishnan Rama (The Barcelona Institute of Science and Technology (BIST) (ES)) </span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Microchannel Cooling Substrates</span><span class="speaker">Burkhard Schmidt (CERN), Oscar Augusto De Aguiar Francisco (The University of Manchester (GB))</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">The RD50-MPW4: a radiation hard HV-CMOS sensor for future colliders</span><span class="speaker">Jory Sonneveld (Nikhef National institute for subatomic physics (NL))</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">The Precision Endcap Timing Layer of the CMS MIP Timing Detector for HL-LHC</span><span class="speaker">Nicolo Cartiglia (INFN Torino (IT)) </span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session IV - <span class="room">Room AG80</span> - <span class="session-convener">Convener: Mandakini Ravindra Patil (TIFR)</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Ultrasonic welding technology for future Straw Trackers</span><span class="speaker">Temur Enik (Joint Institute for Nuclear Research (RU)) </span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">Development of scintillation beam counters and compact neutron detectors with picosecond time resolution for BM@N experiment</span><span class="speaker">Victor Rogov</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">The ATLAS High-Granularity Timing Detector for the HL-LHC: project status and results</span><span class="speaker">Luca Cadamuro (IJCLab - CNRS/IN2P3 - Université Paris-Saclay (FR))</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">LIGHT01: A prototype LGAD pixel readout ASIC with ps timing resolution in 28 nm technology</span><span class="speaker">Abderrahmane Ghimouz (Paul Scherrer Institute (CH))</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">PICOSEC Micromegas gaseous detectors for precise timing and developments towards applicable detector</span><span class="speaker">Marta Lisowska (CERN)</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Characterisation of the First Silicon Electron Multiplier Demonstrators</span><span class="speaker">Federico De Benedetti (Universidade de Santiago de Compostela (ES))</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">HGCROC3: Radiation-Hard Front-End ASIC for the CMS HGCAL</span><span class="speaker">Mr Damien Thienpont (OMEGA - Ecole Polytechnique - CNRS/IN2P3)</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">Timing results of a 3D silicon sensor readout by Timepix4</span><span class="speaker">Evridki Chatzianagnostou (Nikhef National institute for subatomic physics (NL))</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session V - <span class="room">Room D406</span> - <span class="session-convener">Convener: TBD</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">14:00-14:15</td><td><span class="talk">Development and performance of the dRICH SiPM-based photodetector for the ePIC experiment at the EIC</span><span class="speaker">Roberto Preghenella (INFN, Bologna (IT))</span></td></tr>
+                                <tr><td class="time">14:15-14:30</td><td><span class="talk">DarkSide-20k SiPM Photodetectors – Production and Characterisation</span><span class="speaker">Pritindra Bhowmick (University of Oxford/Princeton University)</span></td></tr>
+                                <tr><td class="time">14:30-14:45</td><td><span class="talk">LiquidO: A New Paradigm of Particle Imaging & Detection in Opaqueness</span><span class="speaker">Dr Anatael CABRERA (IJCLab (Orsay) - CNRS / Université Paris-Saclay)</span></td></tr>
+                                <tr><td class="time">14:45-15:00</td><td><span class="talk">The SABRE South Experiment at the Stawell Underground Physics Laboratory</span><span class="speaker">Sharry</span></td></tr>
+                                <tr><td class="time">15:00-15:15</td><td><span class="talk">mPMT electronics and DAQ system in WCTE operation</span><span class="speaker">Michal Jan Nurek (Warsaw University of Technology (PL))</span></td></tr>
+                                <tr><td class="time">15:15-15:30</td><td><span class="talk">Study of the radiation aging of SiPMs with using of beam of the fast neutrons at BINP SB RAS</span><span class="speaker">Viktor Bobrovnikov (Budker Insititute of Nuclear Physics (RU))</span></td></tr>
+                                <tr><td class="time">15:30-15:45</td><td><span class="talk">The upgrade of the CMS Electromagnetic Calorimeter for the High Luminosity LHC</span><span class="speaker">(speaker not listed)</span></td></tr>
+                                <tr><td class="time">15:45-16:00</td><td><span class="talk">The first results on square position-sensitive MCP PMT produced in Russia</span><span class="speaker">Vadim Rusetsky (JSC "Ekran FEP", Rzhanov Institute of Semiconductor Physics)</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <tr class="tea-break"><td class="time">16:00-16:30</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+
+            <div class="sub-box">
+                <div class="sub-header" onclick="toggle(this)">Parallel Sessions (16:30 - 18:00) <span>[+]</span></div>
+                <div class="sub-content">
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session I - <span class="room">Homi Bhabha Auditorium</span> - <span class="session-convener">Convener: Prakash Rout</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Power-over-Fiber Development for DUNE Vertical Drift Photon Detection System</span><span class="speaker">Dr Biswaranjan Behera (IISc) </span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Performance of a highly compact and granular electromagnetic calorimeter prototype in a testbeam experiment</span><span class="speaker">Yan Benhammou (Tel Aviv University (IL))</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">Optical readout of MicroPattern Gaseous Detectors for beam monitoring</span><span class="speaker">Florian Maximilian Brunbauer (CERN)</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Beam monitor system for the Water Cherenkov Test Experiment at CERN</span><span class="speaker">Akira Konaka (TRIUMF (CA))</span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">Novel Fragment Separators at CERN-ISOLDE: the ISRS and ISLS projects</span><span class="speaker">Prof. Ismael Martel (University of Huelva (ES))</span></td></tr>
+                                <tr><td class="time">17:45-18:00</td><td><span class="talk">Toward a Beamline-Ready Optical TPC for Neutron-Induced Reactions at SARAF-II</span><span class="speaker">Dr Ryan Felkai (Weizmann Institute of Science)</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session II - <span class="room">Room AG66</span> - <span class="session-convener">Convener: Shilpi Jain</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Study of the AC-LGAD for CEPC</span><span class="speaker">Dr Yunyun Fan (Chinese Academy of Sciences (CN))</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Design and performance of MAPS prototypes for the STCF inner tracker</span><span class="speaker">Jiajun Qin  (University of Science and Technology of China (CN))</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">Characterisation of Wafer-Scale Stitched MAPS Prototypes for the ALICE ITS3 Upgrade</span><span class="speaker">Chunzheng Wang (Fudan University (CN))</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Smartpixels: radiation-hard ASICs with on-chip neural networks in 28 nm CMOS</span><span class="speaker">Danush Shekar (University of Illinois Chicago (US))</span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">Quiet Detectors, Clear Signals: ENC Noise Studies and Performance Tests of STS Silicon Modules</span><span class="speaker">Abhishek Kumar Sharma (Aligarh Muslim University, Aligarh) </span></td></tr>
+                                <tr><td class="time">17:45-18:00</td><td><span class="talk">Development of 55nm HV-CMOS Pixel Sensors</span><span class="speaker">Dr Yang Zhou (Institute of High Energy Physics, CAS, Beijing, China)</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session III - <span class="room">Room AG69</span> - <span class="session-convener">Convener: Saranya Samik Ghosh (IITH (IN))</span> <span>[+]</span></div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session IV - <span class="room">Room AG80</span> - <span class="session-convener">Convener: TBD</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">R&D on aerogels with refractive indexes less or equal to 1.008 to be used in the RICH detectors for particle identification at momenta above 20 GeV/c</span><span class="speaker">Aleksandr Kattsin (Budker Institute of Nuclear Physics)</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Optimisation of the FARICH technique for the SPD experiment</span><span class="speaker">Alexander Barniakov</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">Pulse peak reference based real-time pulse shape discrimination algorithm implemented on FPGA</span><span class="speaker">Ram kumar Paul (Variable Energy Cyclotron Centre), Swastika Biswas (RCC Institute of Information Technology)  </span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Cherenkov and scintillation counters with light collection using re-emitting light guides</span><span class="speaker">Prof. Evgeniy Kravchenko  (Budker INP SB RAS/ Novosibirsk State University) </span></td></tr>
+                                <tr><td class="time">17:30-17:45</td><td><span class="talk">Novel Concepts for RICH Fast-Timing Electronics in View of the LHCb LS3 Enhancement program</span><span class="speaker">Vlad-Mihai Placinta (Horia Hulubei National Institute for R&D in Physics and Nuclear Engineering (IFIN-HH RO))</span></td></tr>
+                                <tr><td class="time">17:45-18:00</td><td><span class="talk">Status of R&D on ASHIPH system for the Super Tau Charm facilities in Hefei, China</span><span class="speaker">Ivan Kuyanov</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sub-box">
+                        <div class="sub-header" onclick="toggle(this)">Parallel Session V - <span class="room">Room D406</span> - <span class="session-convener">Convener: TBD</span> <span>[+]</span></div>
+                        <div class="sub-content">
+                            <table>
+                                <tr><td class="time">16:30-16:45</td><td><span class="talk">Calibration, timing and energy performance studies of LYSO crystals using ~KeV energy photons</span><span class="speaker">Anindita Karmakar  (Tata Institute of Fundamental Research)</span></td></tr>
+                                <tr><td class="time">16:45-17:00</td><td><span class="talk">Development of PMT/WLS optical modules for Cherenkov detectors</span><span class="speaker">Gleb Erofeev (INR RAS)</span></td></tr>
+                                <tr><td class="time">17:00-17:15</td><td><span class="talk">HRPPD photodetectors - ageing studies and detector response as a function of rate</span><span class="speaker">Jinky Agarwala (Universita e INFN Trieste (IT))</span></td></tr>
+                                <tr><td class="time">17:15-17:30</td><td><span class="talk">Development of An In-Situ Magnetron Sputtering Plasma Monitoring Setup</span><span class="speaker">Burak Bilki (Beykent University (TR), The University of Iowa (US))</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="accordion-item">
-        <div class="accordion-header">Wednesday, Feb 04 <span>+</span></div>
-        <div class="accordion-content">
+        <div class="day-box">
+        <div class="day-header" onclick="toggle(this)">6th Feb 2026</div>
+        <div class="day-content">
+            <p class="convener">ICFA session Convener: Stefan Söldner-Rembold</p>
             <table>
-                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
-                <tbody>
-                    <tr><td class="time-col">09:30-10:45</td><td>Plenary Session I (HBA)</td><td class="speaker-col">Sunanda Banerjee</td></tr>
-                    <tr><td class="time-col">10:45-11:15</td><td>Tea Break</td><td></td></tr>
-                    <tr><td class="time-col">11:15-12:30</td><td>Plenary Session II (HBA)</td><td class="speaker-col">Indranil Mazumdar</td></tr>
-                    <tr><td class="time-col">12:30-14:00</td><td>Lunch Break</td><td></td></tr>
-                    <tr><td class="time-col">14:00-15:30</td><td>Plenary Session III (HBA)</td><td class="speaker-col">Yuri Tikhonov</td></tr>
-                    <tr><td class="time-col">16:00-17:00</td><td>Physics Colloquium</td><td class="speaker-col">at HBA</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                <tr><td class="time">09:30-10:30</td><td><span class="talk">The 2026 ICFA Instrumentation Awards</span><span class="speaker">Stefan Söldner-Rembold</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">10:30-11:00</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
 
-    <div class="accordion-item">
-        <div class="accordion-header">Thursday, Feb 05 <span>+</span></div>
-        <div class="accordion-content">
-            <table>
-                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
-                <tbody>
-                    <tr><td class="time-col">09:30-10:45</td><td>Plenary Session I (HBA)</td><td class="speaker-col">Nayana Majumdar</td></tr>
-                    <tr><td class="time-col">10:45-11:15</td><td>Tea Break</td><td></td></tr>
-                    <tr><td class="time-col">11:15-12:30</td><td>Plenary Session II (HBA)</td><td class="speaker-col">Naba Mondal</td></tr>
-                    <tr><td class="time-col">12:30-14:00</td><td>Lunch Break</td><td></td></tr>
-                    <tr><td class="time-col">14:00-16:00</td><td>Parallel Sessions I-V</td><td class="speaker-col">Prakash Rout, et al.</td></tr>
-                    <tr><td class="time-col">16:30-18:00</td><td>Parallel Sessions (Cont.)</td><td class="speaker-col">Saranya Samik Ghosh, et al.</td></tr>
-                </tbody>
             </table>
-        </div>
-    </div>
+                        <p class="convener">Technology Transfer Session-I Convener: Dr Christophe De La Taille</p>
+            <table>
+<tr><td class="time">11:00-11:25</td><td><span class="talk">The role of Research & tech infrastructures in the innovation process: the view of the EC</span><span class="speaker">Massimo Caccia (Università degli Studi e INFN Milano (IT))</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">11:25-11:50</td><td><span class="talk">An exemplary implementation of the measures to integrate research & innovation at EU level</span><span class="speaker">Paolo Giacomelli (INFN Sezione di Bologna)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">11:50-12:15</td><td><span class="talk">The role of Research & tech infrastructures in the innovation process: the view of INDIA</span><span class="speaker">Prof. Achanta Venu Gopal</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">12:15-12:40</td><td><span class="talk">Actions and thoughts from a research/technology infrastructure in INDIA</span><span class="speaker">Dr Shivkumar Kalyanraman</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr class="lunch-break"><td class="time">12:40-14:00</td><td><span class="talk"><span class="tea-icon">🍽️</span>Lunch Break</span></td></tr>
+</table>
+<table>
+                 <p class="convener">Technology Transfer Session-II Convener: Mandar Saraf</p>
+<tr><td class="time">14:00-14:15</td><td><span class="talk">Development of UV to Mid-IR superconducting single photon detectors"</span><span class="speaker">Dr Vidur Raj</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">14:15-14:30</td><td><span class="talk">From Lab Success to Field Survival: What Changes in Real Deployment</span><span class="speaker">Dr D Amarnath (MERRITRONIX LTD)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">14:30-14:45</td><td><span class="talk">From Prototype to Production: Bridging the Lab-to-Market Gap In Scientific Requirement</span><span class="speaker">Vinoth</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">14:45-15:00</td><td><span class="talk">PCBs for High Reliability Applications</span><span class="speaker">U Nagraj (Micropack Pvt Ltd)</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">15:30-15:40</td><td><span class="talk">Vote of thanks</span><span class="speaker">Shilpi Jain (Tata Institute of Fundamental Research (IN))</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+<tr><td class="time">15:40-15:55</td><td><span class="talk">Announcement from TIPP Steering committee</span><span class="speaker">Dr Maksym Titov (IRFU, CEA Saclay, Université Paris-Saclay (FR))</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">15:55-16:25</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
+                <tr><td class="time">16:25-17:25</td><td><span class="talk">ASET Colloquium: Random Power: a platform of random bit streamers based on quantum tunneling </span><span class="speaker">Massimo Caccia</span><span class="location">Homi Bhabha Auditorium</span></td></tr>
+                <tr class="tea-break"><td class="time">17:25-18:00</td><td><span class="talk"><span class="tea-icon">🫖</span>Tea Break</span></td></tr>
 
-    <div class="accordion-item">
-        <div class="accordion-header">Friday, Feb 06 <span>+</span></div>
-        <div class="accordion-content">
-            <table>
-                <thead><tr><th>Time</th><th>Session</th><th>Speaker/Chair</th></tr></thead>
-                <tbody>
-                    <tr><td class="time-col">09:30-10:30</td><td>ICFA Session (HBA)</td><td class="speaker-col">Stefan Söldner-Rembold</td></tr>
-                    <tr><td class="time-col">10:30-11:00</td><td>Tea Break</td><td></td></tr>
-                    <tr><td class="time-col">11:00-12:40</td><td>Technology Transfer I</td><td class="speaker-col">Dr Christophe De La Taille</td></tr>
-                    <tr><td class="time-col">12:40-14:00</td><td>Lunch Break</td><td></td></tr>
-                    <tr><td class="time-col">14:00-15:30</td><td>Technology Transfer II</td><td class="speaker-col">Mandar Saraf</td></tr>
-                    <tr><td class="time-col">16:25-17:25</td><td>ASET Colloquium (HBA)</td><td></td></tr>
-                </tbody>
+
             </table>
+
+
+
         </div>
     </div>
 </div>
 
 <script>
-    document.querySelectorAll('.accordion-header').forEach(button => {
-        button.addEventListener('click', () => {
-            const item = button.parentElement;
-            item.classList.toggle('active');
-            
-            // Toggle the plus/minus sign
-            const span = button.querySelector('span');
-            span.textContent = item.classList.contains('active') ? '-' : '+';
-        });
-    });
+    function toggle(header) {
+        const content = header.nextElementSibling;
+        content.classList.toggle('active');
+        const spans = header.querySelectorAll('span');
+        if (spans.length > 0) {
+            const lastSpan = spans[spans.length - 1];
+            lastSpan.innerText = content.classList.contains('active') ? '[-]' : '[+]';
+        }
+    }
 </script>
 
 </body>

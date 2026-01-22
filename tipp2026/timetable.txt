@@ -1,0 +1,1971 @@
+Program
+2–6 Feb 2026
+
+TIPP 2026
+TIFR, Mumbai
+Tata Institute of Fundamental Research, Homi Bhabha Road, Navy Nagar, Colaba, Mumbai 400005,
+India
+
+Table of contents
+1
+
+Monday 2 Feb
+
+10
+
+Tuesday 3 Feb
+
+17
+
+Wednesday 4 Feb
+
+19
+
+Thursday 5 Feb
+
+27
+
+Friday 6 Feb
+
+i
+
+Monday 2 February
+
+Monday 2 February
+09:30
+
+Opening Session: at the Homi Bhabha Auditorium (HBA)
+Session | Convener: Prof. Rudrajyoti Palit (TIFR, Mumbai)
+
+09:30–09:40
+
+Welcome
+
+Speaker
+Prof. Jayaram Chengalur (Director, TIFR, Mumbai)
+
+09:40–09:50
+
+Introduction to TIFR
+
+Speaker
+Prof. Shankar Ghosh (Dean-NSF, TIFR, Mumbai)
+
+09:50–10:00
+
+Wlecome address from CERN
+
+Speaker
+Mark Thomson (CERN)
+
+10:00–10:10
+
+Welcome adress from Europe
+
+10:10–10:20
+
+Welcome adress from KEK
+
+Speaker
+Shoji Asai (University of Tokyo (JP))
+
+10:20–10:55
+
+Microelectronics : A vision talk with radiation hard electronics
+
+Speaker
+
+11:00
+11:00
+
+Dr Christophe De La Taille (OMEGA (FR))
+
+Tea
+Break
+
+11:30
+11:30
+
+Plenary Session-I: at HBA
+Session | Convener: Prof. Vandana Nanal (TIFR, Mumbai)
+
+11:30–12:05
+
+SuperCDMS dark matter experiment
+
+Speaker
+Priscilla Cushman
+
+12:05–12:40
+
+Indian National Gamma Array
+
+Speaker
+
+12:40
+12:40
+
+Rudrajyoti Palit (Department of Nulcear and Atomic Physics, Tata Institute of Fundamental Research, Mumbai
+400005, India)
+
+Lunch Break
+Break
+
+14:00
+
+1
+
+Monday 2 February
+14:00
+
+Parallel Session-I: at HBA
+Session | Convener:
+Nayana Majumdar (Applied Nuclear Physics Division, Saha Institute of Nuclear Physics, A CI of Homi Bhabha National
+Institute)
+14:00–14:15
+
+wireless power transmission for silicon detector
+
+Speaker
+Yan Benhammou (Tel Aviv University (IL))
+
+14:15–14:30
+
+The Spin Physics Detector (SPD) at NICA
+
+Speaker
+Alexander Korzenev (Joint Institute for Nuclear Research (RU))
+
+14:30–14:45
+
+The Crilin electromagnetic calorimeter: a fast, highly granular detector for a
+future Muon Collider
+Speaker
+Vittoria Ludovica Ciccarella (INFN Laboratori Nazionali di Frascati)
+
+14:45–15:00
+
+Low-Power Modular UV Detector with SiPMs and ASIC/FPGA Readout for SpaceBased Observatories
+Speaker
+Valentina Scotti
+
+15:00–15:15
+
+R&D toward a next-generation heavy-ion experiment at LHC (ALICE 3)
+
+Speaker
+Sofia Strazzi (Universita e INFN, Bologna (IT))
+
+15:15–15:30
+
+High Granularity Scintillator Tiles for the High Luminosity Upgrade of the CMS
+Endcap Calorimeter
+Speaker
+Daria Selivanova (Deutsches Elektronen-Synchrotron (DE))
+
+15:30–15:45
+
+Water Cherenkov Test Experiment at CERN: Preliminary Results from a New
+Generation of multi-PMT Modules
+Speaker
+Mohit Gola (TRIUMF (CA))
+
+15:45–16:00
+
+A new large-area Micromegas detector and its ToRA-based readout electronics for
+AMBER experiment at CERN
+Speaker
+
+16:00
+14:00
+
+Chiara Alice (Universita e INFN Torino (IT))
+
+Parallel Session-II: at AG66
+Session | Convener: Ismael Martel (University of Huelva (ES))
+
+14:00–14:15
+
+Operational experience and performance of the Silicon Vertex Detector after the
+first long shutdown of Belle II
+
+2
+
+Monday 2 February
+Speaker
+Alice Gabrielli
+
+14:15–14:30
+
+Design, Development and Performance of a Charge Injection System for the CMS
+HGCAL Front-End Electronics QC
+Speaker
+Jasmine Chhikara (Tata Institute of Fundamental Research (IN))
+
+14:30–14:45
+
+CMS Phase 2 Tracker Upgrade for HL-LHC
+
+Speaker
+Prolay Mal (National Institute of Science Education and Research (NISER) (IN))
+
+14:45–15:00
+
+Radiation Tolerance Evaluation of P-Type Silicon Sensors with HGCROC for FoCal
+Detector in ALICE
+Speaker
+Anup Kumar Sikdar (Department of Atomic Energy (IN))
+
+15:00–15:15
+
+Assembly procedure of silicon strip detector module with 1 µm alignment
+precision for the muon g-2/EDM experiment at J-PARC
+Speaker
+Shinji Ogawa (KEK IPNS)
+
+15:15–15:30
+
+Radiation Damage and Operation of the LHCb Upgrade I Vertex Locator
+Speaker
+Valeriia Zhovkovska (University of Warwick (GB))
+
+15:30–15:45
+
+The new NA60+/DiCE experiment at the CERN SPS with wafer-scale, stitched,
+monolithic active pixel sensors
+Speaker
+Dr Sabyasachi Siddhanta (INFN, Italy and CERN, Switzerland)
+
+15:45–16:00
+
+Phase 2 Upgrade of ATLAS Hadronic Tile Calorimeter
+
+Speaker
+
+16:00
+14:00
+
+Mattia Soldani (CERN)
+
+Parallel Session-III: at AG69
+Session | Convener: Moonmoon Devi
+
+14:00–14:15
+
+G-RWELL Performance Studies for ePIC's MPGD Endcap Tracker
+
+Speaker
+Elena Sidoretti
+
+14:15–14:30
+
+Superheated liquid Detector and instrumentation for InDEx dark matter search
+experiment at JUSL
+Speaker
+Mala Das
+
+3
+
+Monday 2 February
+14:30–14:45
+
+Measurement and Simulation of Light Output Response in EJ-276D Plastic
+Scintillator for Fast Neutron Detection
+Speaker
+Mr Pankaj Pant (Variable Energy Cyclotron Center Kolkata, India)
+
+14:45–15:00
+
+DarkSide-20k: A Next Generation LAr Dual-phase TPC for Direct Search of Particle
+DM
+Speaker
+Devidutta Gahan (INFN-LNGS)
+
+15:00–15:15
+
+Development of the ATLAS Liquid Argon Calorimeter Readout Electronics for the
+HL-LHC
+Speaker
+Georges Aad (CPPM, Aix-Marseille Université, CNRS/IN2P3 (FR))
+
+15:15–15:30
+
+Power over fiber for fundamental and applied physics at cryogenic temperature:
+final results of the Cryo-PoF project
+Speaker
+Andrea Falcone (Universita e INFN, Milano Bicocca(IT))
+
+15:30–15:45
+
+R&D Studies on the ALLEGRO Noble Liquid Calorimeter for FCC-ee
+
+Speaker
+Juska Pekkanen (CERN)
+
+15:45–16:00
+
+Resistive Pixelized Micromegas for Applications at Future Colliders
+
+Speaker
+
+16:00
+14:00
+
+Mauro Iodice (INFN - Sezione di Roma Tre)
+
+Parallel Session-IV: at AG80
+Session | Convener: Shilpi Jain (Tata Institute of Fundamental Research (IN))
+
+14:00–14:15
+
+Drift tube detectors in RNC "Kurchatov institute" - IHEP for accelerator-based
+particles physics, monitoring the fluxes of cosmic ray particles, cosmic ray muon
+tomography
+Speaker
+Dr RinatMakarim Fakhrutdinov (NRC "Kurchatov institute" - IHEP)
+
+14:15–14:30
+
+Proportional counter development with vacuum manifolds recycling legacy iron
+tubes for the GRAPES-3 expansion
+Speaker
+Dr Pranaba K Nayak (Tata Institute of Fundamental Research)
+
+14:30–14:45
+
+Development of Time Projection Chamber for low energy Nuclear Physics
+experiments
+
+4
+
+Monday 2 February
+Speakers
+Nayana Majumdar (Saha Institute of Nuclear Physics), Mr Pralay Kumar Das (Saha Institute Of Nuclear Physics)
+
+14:45–15:00
+
+Preliminary Design of ePIC’s G-RWELL Endcap Tracker and Development of its
+First Engineering Test Article
+Speaker
+Stefano Gramigna (INFN Roma Tor Vergata)
+
+15:00–15:15
+
+Performance Studies of Gaseous Detectors for Heavy-Ion Experiments
+Speaker
+Mr S. Mandal (Bose Institute)
+
+15:15–15:30
+
+Muon momentum spectrum near equator and tuning of hadronic models
+Speaker
+Dr PETHURAJ S (Tata Institute of Fundamental Research, Mumbai)
+
+15:30–15:45
+
+Technical challenges and performance of the new ATLAS LAr Calorimeter Trigger
+Speaker
+
+16:00
+14:00
+
+Ruben Pozzi (CERN)
+
+Parallel Session-V: at D406
+Session | Convener: Mandakini Ravindra Patil (Tata Institute of Fundamental Research (TIFR))
+
+14:00–14:15
+
+Electronics of the Fast Forward Detector in MPD experiment
+
+Speaker
+Victor Rogov
+
+14:15–14:30
+
+Design and development of a 32 Channel Waveform Digitiser Board based on
+DRS4 for the Cosmic Muon Veto Detector
+Speaker
+Mandar Saraf (Tata Institute of Fundamental Research (IN))
+
+14:30–14:45
+
+Development and Characterisation of a Plastic Scintillator-based Compact Test
+and Trigger System with SiPM Readout and Custom Electronics
+Speaker
+Mr Prajjalak Chattopadhyay (Tata Institute of Fundamental Research (IN))
+
+14:45–15:00
+
+The MDT Trigger Processor prototype for the ATLAS Level-0 Muon Trigger at HLLHC
+Speaker
+Panagiotis Gkountoumis (University of California Irvine (US))
+
+15:00–15:15
+
+Knypaegje: An Algorithm for Achieving Deterministic Startup Phase in GTYe4 and
+GTYe5 Transceivers
+
+5
+
+Monday 2 February
+Speaker
+Melvin Leguijt (Nikhef National institute for subatomic physics (NL))
+
+15:15–15:30
+
+RAM-based Coincidence Window Optimization for Real-Time Muon Reconstruction
+in HL-LHC ATLAS L0 Muon Trigger
+Speaker
+Tetsuro Nakagawa (Kyoto University (JP))
+
+15:30–15:45
+
+FPGA-based Emulator Platform Targeting ATLAS Phase-2 ITk DAQ System
+Development
+Speaker
+
+16:00
+16:00
+
+Matthias Peter Drescher (Georg August Universitaet Goettingen (DE))
+
+Tea Break
+Break
+
+16:30
+16:30
+
+Parallel Session-I: at HBA
+Session | Convener:
+Nayana Majumdar (Applied Nuclear Physics Division, Saha Institute of Nuclear Physics, A CI of Homi Bhabha National
+Institute)
+16:30–16:45
+
+Water-based Liquid Scintillator in ANNIE
+
+Speaker
+Mr Noah Goehlke (Johannes Gutenberg-University Mainz)
+
+16:45–17:00
+
+Towards detection of Breit-Wheeler tunneling positrons in E320 at the FACET-II
+accelerator
+Speaker
+Arka Santra
+
+17:00–17:15
+
+Construction and QA/QC of Large-Size GEM Modules for Muon Chamber Station 1
+in CBM
+Speaker
+Mr Rajeshranjan Rath
+
+17:15–17:30
+
+Development of the PBR Cherenkov Camera: A High-Resolution SiPM Instrument
+for Space Astroparticle Observatories
+Speaker
+
+18:00
+16:30
+
+Valentina Scotti
+
+Parallel Session-II: at AG66
+Session | Convener: Ismael Martel (University of Huelva (ES))
+
+16:30–16:45
+
+Pentadimensional Tracking Space Detector on a CubeSat demonstrator for 5D
+tracking in space
+
+6
+
+Monday 2 February
+Speaker
+Elisabetta Cavazzuti (Agenzia Spaziale Italiana)
+
+16:45–17:00
+
+Design and Performance Evaluation of the Silicon Strip Detector Cooling System
+for J-PARC Muon g-2/EDM Experiment
+Speaker
+Mr Taiki SATO (The University of Tokyo)
+
+17:00–17:15
+
+The CBM Micro-Vertex Detector: Toward Production Readiness with MIMOSIS
+MAPS
+Speaker
+Ajit Kumar (Goethe-Universität Frankfurt(UFfm-IKP))
+
+17:15–17:30
+
+The Beam Conditions Monitor at the LHCb experiment in Run 3
+
+Speaker
+Donata Osthues (Technische Universitaet Dortmund (DE))
+
+17:30–17:45
+
+Pixelated AC-LGAD sensors for the Electron-Ion Collider (EIC): read-out
+performances with EICROC0_v0 ASIC
+Speaker
+Dominique Marchand
+
+17:45–18:00
+
+Early Failure Detection in Electronics: Assessing the Impact of Burn-In Station
+Using Machine Learning
+Speaker
+
+18:00
+16:30
+
+Chuene Johannes Mosomane (iThemba LABS, National Research Foundation (ZA))
+
+Parallel Session-III: at AG69
+Session | Convener: Moonmoon Devi
+
+16:30–16:45
+
+Latest results from the LUX-ZEPLIN (LZ) dark matter experiment
+
+Speaker
+Nicholas Fieldhouse (University of Oxford)
+
+16:45–17:00
+
+Development of an optical tomography system based on picosecond pulses for
+non-invasive brain diagnosis and monitoring
+Speaker
+Vladislav Sharov (Joint Institute for Nuclear Research)
+
+17:00–17:15
+
+In-flight performance of the HEPD-02 detector on board the CSES-02 satellite
+Speaker
+Ester Ricci (Universita degli Studi di Trento and INFN (IT))
+
+17:15–17:30
+
+Development of Silicon Photo-Multiplier (SiPM) Detectors for Muon Scattering
+Tomography
+
+7
+
+Monday 2 February
+Speaker
+Shubhabrata Dutta (Applied Nuclear Physics Division, Saha Institute of Nuclear Physics, A CI of Homi Bhabha
+National Institute)
+
+17:30–17:45
+
+A development of a water quality monitoring system and its application to
+drinking water monitoring
+Speaker
+Akira Konaka (TRIUMF (CA))
+
+17:45–18:00
+
+Neutron detection with boron-coated GEM-based detector using ${}
+^{252}\mathbf{Cf}$ source
+Speaker
+
+18:00
+16:30
+
+Pawan Kumar Sharma (VECC Kolkata)
+
+Parallel Session-IV: at AG80
+Session | Convener: Deepak Samuel (Central University of Karnataka)
+
+16:30–16:45
+
+Commissioning and Testing of Station-1 and Station-2 MuCh-GEM Modules with
+High-Intensity Beams at the mini-CBM Experiment at GSI
+Speaker
+Mr Chandrasekhar Ghosh (1. Variable Energy Cyclotron Centre, Kolkata - 700064, INDIA, 2. Homi Bhabha National
+Institute, Anushaktinagar, Mumbai 400094)
+
+16:45–17:00
+
+Investigation of India-made Thick-GEM for Application in Muon Scattering
+Tomography
+Speaker
+saikat ghosh
+
+17:00–17:15
+
+ATLAS Muon Detectors Upgrades for High Luminosity LHC
+
+Speaker
+Chaowaroj Wanotayaroj (KEK High Energy Accelerator Research Organization (JP))
+
+17:15–17:30
+
+Construction and Testing of Resistive Plate Chambers with Optical Readout
+Speaker
+Burak Bilki (Beykent University (TR), The University of Iowa (US))
+
+17:30–17:45
+
+The µ-RWELL technology in the IDEA Muon System for FCC-ee
+
+Speaker
+
+18:00
+16:30
+
+Riccardo Farinelli (INFN Bologna (IT))
+
+Parallel Session-V: at D406
+Session | Convener: Mandar Saraf (Tata Institute of Fundamental Research (IN))
+
+16:30–16:45
+
+Upgrade of the Front-End Electronics of the C217 RPC Detector Stack at TIFR
+Speaker
+Ravindra Raghunath Shinde (TATA INSTITUTE OF FUNDAMENTAL RESEARCH)
+
+8
+
+Monday 2 February
+16:45–17:00
+
+Data Acquisition System of the TPC/MPD Detector for the NICA Project
+Speaker
+Mr Stepan Vereshchagin (Joint Institute for Nuclear Research (RU))
+
+17:00–17:15
+
+An FPGA based readout system for sub-nanosecond beam background
+characterization
+Speaker
+Florian Eisele
+
+17:15–17:30
+
+Development and Testing of an External and Self-Triggering System for HGCAL
+Beam and Cassette Tests
+Speaker
+Raghunandan Shukla (Imperial College (GB))
+
+17:30–17:45
+
+Scintillator Counters and PMT Read-out Electronics for the HEPD-02 Calorimeter
+on the CSES-02 Satellite: Design and Performance
+Speaker
+Marco Mese (University of Naples Federico II)
+
+17:45–18:00
+
+From Polling to Proactive Push: An Event-Driven Architecture for Real-Time Data
+Acquisition
+Speakers
+
+18:00
+
+Mr Prajwal Deshmukh (Sardar Patel Institute of Technology), Rohan Kadam (Sardar Patel Institute of Technology),
+Mr Saiesh Khadpe (Sardar Patel Institute of Technology)
+
+9
+
+Tuesday 3 February
+
+Tuesday 3 February
+09:30
+
+Plenary Session-I: at the Homi Bhabha Auditorium (HBA)
+Session | Convener: B S Acharya (T.I.F.R.)
+
+09:30–10:05
+
+JUNO – A technical feat becoming reality
+
+Speaker
+Andrea Barresi (University and INFN of Milano-Bicocca)
+
+10:05–10:40
+
+MACE Detector and physics
+
+Speaker
+
+10:40
+10:40
+
+Kuldeep Yadav
+
+Group photo
+Session
+
+10:50
+10:50
+
+Tea Break
+Break
+
+11:20
+11:20
+
+Plenary Session-II: at HBA
+Session | Convener: junji haba (KEK)
+
+11:20–11:55
+
+ATLAS Inner TracKer Upgrade
+
+Speaker
+Tony Affolder (University of California,Santa Cruz (US))
+
+11:55–12:30
+
+CMS High Granularity Calorimeter
+
+Speaker
+
+12:30
+12:30
+
+Rajdeep Mohan Chatterjee (Tata Institute of Fundamental Research (IN))
+
+Lunch Break
+Break
+
+14:00
+14:00
+
+Parallel Session-I: at HBA
+Session | Convener: Rajdeep Chatterjee (Tata Institute of Fundamental Research (IN))
+
+14:00–14:15
+
+Test of 1 cm^3 scintillator cubes with pion beam
+
+Speaker
+Angelina Chvirova (INR RAS)
+
+14:15–14:30
+
+Characterization of Different Size Deuterated Liquid Scintillator Detectors
+Speakers
+P. Pant, S. Dalal
+
+10
+
+Tuesday 3 February
+14:30–14:45
+
+ADVANCING SCINTILLATION-BASED DARK MATTER DETECTION WITH SiPM
+READOUT IN NaI CRYSTALS
+Speaker
+Mr Swadheen Bharat (University of Zaragoza, Spain)
+
+14:45–15:00
+
+The OREO Calorimeter status and prospect
+
+Speaker
+Pierluigi Fedeli (Università degli Studi di Ferrara & Instituto Nazionale di Fisica Nucleare)
+
+15:00–15:15
+
+Performance of 3D segmented neutrino detector SuperFGD in the T2K neutrino
+beam
+Speaker
+Yury Kudenko
+
+15:15–15:30
+
+R&D on supercritical CO2 and krypton as natural refrigerants for the thermal
+management of future detectors and electronics
+Speaker
+Bart Verlaat (CERN)
+
+15:45–16:00
+
+DRD8 - Common tools for next generation detectors
+
+Speaker
+
+16:00
+14:00
+
+Burkhard Schmidt (CERN)
+
+Parallel Session-II: at AG69
+Session | Convener: Saranya Samik Ghosh (Indian Institute of Technology Hyderabad (IN))
+
+14:00–14:15
+
+Irradiation studies of CMS Cathode Strip Chambers and in situ CSC performance
+monitoring at CMS
+Speaker
+Neha Rawal (University of Florida (US))
+
+14:15–14:30
+
+The CGEM-IT of the BESIII detector
+
+Speaker
+Antonio Amoroso (Universita e INFN Torino (IT))
+
+14:30–14:45
+
+Quenching factor measurement efforts for NEWS-G
+
+Speaker
+Neha Panchal (Postdoctoral Fellow)
+
+14:45–15:00
+
+External VMM3a Readout for the Straw Trackers
+
+Speaker
+Vitalii Bautin (Joint Institute for Nuclear Research (RU))
+
+15:00–15:15
+
+Wire-by-Wire Tracking Efficiency Plots: New Diagnostic for the Belle II Central
+Drift Chamber
+Speaker
+Dr Suryanarayan Mondal (INFN Turin)
+
+11
+
+Tuesday 3 February
+15:15–15:30
+
+THGEM with resistive plate anode: Signal shape and gain optimization
+Speaker
+Arpan Maity (Weizmann Institute of Science (IL))
+
+15:30–15:45
+
+The G-RWELL: A High-Performance Resistive MPGD for Next-Generation HighEnergy Experiments
+Speaker
+Matteo Giovannetti (INFN e Laboratori Nazionali di Frascati (IT))
+
+15:45–16:00
+
+Requirements to the read-out electronics for future Straw Trackers and the straw
+performance measurements with muon, hadron and electron test beams.
+Speaker
+
+16:00
+14:00
+
+Katerina Kuznetsova (University of Florida (US))
+
+Parallel Session-III: at AG80
+Session | Convener: Deepak Samuel (Central University of Karnataka)
+
+14:00–14:15
+
+Design and Performance Evaluation of a Compact PET Scanner Setup
+
+Speaker
+Vishal Malik (TIFR Mumbai)
+
+14:15–14:30
+
+A prototype coded aperture imaging-based radiation localization and
+identification system
+Speaker
+Mr Tushar Kesarkar (Bhabha Atomic Research Centre, Mumbai)
+
+14:30–14:45
+
+OPOSSUM - Optimal Particle identification Of Single Site events with
+Underground MKIDs detectors
+Speaker
+Paul Andrei Puiu
+
+14:45–15:00
+
+Characterization of Quantum Dot Properties for Enhanced Calorimetry in High
+Energy Physics
+Speaker
+Mr Santanu Mahata (Tata Institute of Fundamental Research (IN))
+
+15:00–15:15
+
+CEvNS Search with Cryogenic Sapphire Detectors at MINER: From TRIGA Results
+to HFIR Prospects
+Speaker
+Dipanwita Mondal (National Institute of Science Education and research (NISER), Bhubaneswar)
+
+15:15–15:30
+
+3D-Printed Plastic Scintillators for Advanced Radiation Detection and ToF-PET
+Applications
+
+12
+
+Tuesday 3 February
+Speaker
+Vivek Anand (Indian Institute of Technology Roorkee)
+
+15:30–15:45
+
+Optimisaiton of plastic scintillator based PET device
+
+Speaker
+
+16:00
+14:00
+
+Raj Shah (Tata Institute of Fundamental Research)
+
+Parallel Session-IV: at D406
+Session | Convener: Mandar Saraf (Tata Institute of Fundamental Research)
+
+14:00–14:15
+
+Analysis of radiation effects in trigger front-end electronics with impedance
+spectroscopy
+Speaker
+Dr Pierluigi Casolaro (University Federico II and INFN, Naples (IT))
+
+14:15–14:30
+
+Development and validation of trigger primitive generation algorithms of High
+Granularity Calorimeter of CMS
+Speaker
+Indranil Das (Imperial College London (GB))
+
+14:30–14:45
+
+A FPGA-based L1 trigger system design for STCF
+
+Speaker
+Yuhe Huang
+
+14:45–15:00
+
+Triggering on Muon Detector Showers with CMS
+
+Speaker
+Pedro Fernandez Manteca (CERN)
+
+15:00–15:15
+
+Detector R&D for Future Linear Colliders
+
+Speaker
+Dr Maksym Titov (IRFU, CEA Saclay, Université Paris-Saclay (FR))
+
+15:15–15:30
+
+Control System and Data Quality Monitoring of the Belle II KLM Detector
+Speaker
+Dr Varghese Babu (University of Louisville and KEK accelerator facility)
+
+15:30–15:45
+
+Development of an SiPM-based camera for a 4 m class Atmospheric Cherenkov
+Telescope
+Speaker
+Sandeep Duhan (TIFR, Mumbai)
+
+15:45–16:00
+
+Commissioning and Calibration of SiPM-based 4m cherenkov telescope
+Speaker
+
+16:00
+
+Dr Bharat Singh (TIFR, Mumbai)
+
+13
+
+Tuesday 3 February
+16:00
+
+Tea Break
+Break
+
+16:30
+16:30
+
+Poster session: (HBA Foyer : Stand for Portrait A0 size poster, poster
+will be displayed for all five days)
+Session
+16:55–16:57
+
+The OCTOPUS Project: Development of a Monolithic Active Pixel Sensor for Future
+Lepton Colliders
+Speaker
+Zdenko Janoska (Czech Technical University in Prague (CZ))
+
+16:55–16:57
+
+Study of bulk and surface resistivity of carbon-loaded PTFE material for RPC
+Speaker
+Sayan Chakraborty (University of Calcutta)
+
+17:00–17:02
+
+Measurements of Response of LBC, LaBr3:Ce and NaI(Tl) Crystals to Thermal and
+Fast Neutrons
+Speaker
+Virender Ranga (Indian Institute of Technology Roorkee)
+
+17:00–17:02
+
+KKMCee for precision monte carlo: Tests and extensions
+
+Speaker
+Dr J. M. John (IFJ-PAN, Krakow)
+
+17:05–17:07
+
+Background Particle Response of CMS GEM Detectors with Run 3 Data and
+Simulation
+Speaker
+Tanvi Sheokand (Panjab University (IN))
+
+17:05–17:07
+
+Recent results from the characterization of the MALTA2 monolithic active pixel
+sensor.
+Speaker
+Anusree Vijay (Indian Institute of Technology Madras (IN))
+
+17:10–17:12
+
+Study with HFO gas in Ar/CO2 based gas mixture in GEM Detectors.
+
+Speaker
+Ms Sushila Lohan (University of Delhi (IN))
+
+17:10–17:12
+
+Performance study of Glass RPC detector with low Global Warming Potential
+gases.
+Speaker
+Bhanu Thakurani (University of Delhi (IN))
+
+17:15–17:17
+
+A portable glass-RPC based muon tracking system for muography applications
+
+14
+
+Tuesday 3 February
+Speaker
+Dr Raveendrababu Karnam (National Institute of Science Education and Research (NISER) (IN))
+
+17:15–17:17
+
+Long-Baseline Neutrino Physics in the Precision Era: multi-PMTs for the HyperKamiokande Experiment
+Speaker
+Mohit Gola (TRIUMF (CA))
+
+17:20–17:22
+
+Operation of the Belle II ARICH detector
+
+Speakers
+Hridey Chetri, Nihar Pawar
+
+17:20–17:22
+
+Characteristic study of Straw tube detector for future heavy ion experiment
+Speaker
+Mr SUBIR MANDAL (Bose Institute)
+
+17:24–17:26
+
+Status of the ATLAS Tile Calorimeter during LHC Run 3
+
+Speaker
+Mattia Soldani (CERN)
+
+17:24–17:26
+
+Design, Development, and Validation of Inner Coincidence for HL-LHC ATLAS
+Level-0 Endcap Muon Trigger.
+Speaker
+Ryugo Mizuhiki (Kobe University (JP))
+
+17:27–17:29
+
+CMS Phase 2 Outer Tracker 2S Module Assembly
+
+Speaker
+Kuldeep Kumar Pal (National Institute of Science Education and Research (NISER) (IN))
+
+17:27–17:29
+
+In-flight performances of the HEPD-02 silicon tracker
+
+Speaker
+Prof. Paoloz Zuccon (Universita degli Studi di Trento and INFN (IT))
+
+17:30–17:32
+
+Performance of the Belle II TOP Detector for Charged Particle Identification
+Speaker
+Mr Hrishikesh Goswami (Indian Institute of Technology Hyderabad)
+
+17:30–17:32
+
+Operational performance of the CMS Strip Tracker during LHC Run 3
+
+Speaker
+Sneh Shuchi (National Institute of Science Education and Research (NISER) (IN))
+
+17:32–17:34
+
+The SiSMUV Project: Modular Front-End Readout and Control Electronics for
+Large SiPM-Based Telescope Focal Surfaces
+Speaker
+Marco Mese (University of Naples Federico II)
+
+15
+
+Tuesday 3 February
+17:32–17:34
+
+Development of Large-Area Plastic Scintillators at the Cosmic Ray Laboratory,
+TIFR, India
+Speaker
+Atul Jain (Tata Institute of Fundamental Research (TIFR))
+
+17:34–17:36
+
+Development of EPICS based control system for LINAC at BARC-TIFR PLF, Mumbai
+Speaker
+
+18:00
+18:00
+
+Ms Catarina Rozario (Tata Institute of Fundamental Research (IN))
+
+Cultural Program + Conference Dinner
+Session
+
+20:30
+
+16
+
+Wednesday 4 February
+
+Wednesday 4 February
+09:30
+
+Plenary Session-I: at the Homi Bhabha Auditorium (HBA)
+Session | Convener: Sunanda Banerjee (University of Wisconsin Madison (US))
+
+09:30–10:05
+
+Digital SiPM beyond particle physics
+
+Speaker
+Claudio Bruschini
+
+10:05–10:40
+
+FoCAL detector activities in India
+
+Speaker
+
+10:45
+10:45
+
+Sanjib Muhuri (Department of Atomic Energy (IN))
+
+Tea Break
+Break
+
+11:15
+11:15
+
+Plenary Session-II: at HBA
+Session | Convener: Indranil Mazumdar (Tata Institute of Fundamental Research, Mumbai 400005, India)
+
+11:15–11:50
+
+Future of single photon detection technology
+
+Speaker
+Massimiliano Fiorini (Universita e INFN, Ferrara (IT))
+
+11:50–12:25
+
+Achievements and plans of CERN DRD collaborations
+
+Speaker
+
+12:30
+12:30
+
+Dr Didier Claude Contardo
+
+Lunch Break
+Break
+
+14:00
+14:00
+
+Plenary Session-III: at HBA
+Session | Convener: Yuri Tikhonov (Budker INP)
+
+14:00–14:35
+
+Vision on picosecond timing device
+
+Speaker
+Nicolo Cartiglia (INFN Torino (IT))
+
+14:35–15:10
+
+A monitored and tagged beamline for neutrinos
+
+Speaker
+
+15:30
+15:30
+
+Andrea Falcone (Universita e INFN, Milano Bicocca(IT))
+
+Tea Break
+Break
+
+16:00
+
+17
+
+Wednesday 4 February
+16:00
+
+Physic Colloquium: at HBA
+Session
+
+16:00–17:00
+
+Fundamental Physics with Cosmic Microwave Background Observations
+Speaker
+
+17:00
+17:00
+
+Masashi Hazumi
+
+Tea
+Break
+
+17:30
+
+18
+
+Thursday 5 February
+
+Thursday 5 February
+09:30
+
+Plenary Session-I: at the Homi Bhabha Auditorium (HBA)
+Session | Convener:
+Nayana Majumdar (Applied Nuclear Physics Division, Saha Institute of Nuclear Physics, A CI of Homi Bhabha National
+Institute)
+09:30–10:05
+
+Quantum Sensors for HEP
+
+Speaker
+Masashi Hazumi
+
+10:05–10:40
+
+R&D and design for the CEPC experiment
+
+Speaker
+
+10:45
+10:45
+
+Prof. Wang Yifang
+
+Tea Break
+Break
+
+11:15
+11:15
+
+Plenary Session-II: at HBA
+Session | Convener: Naba Mondal (Tata Inst. of Fundamental Research (IN))
+
+11:15–11:50
+
+LHCb-upgrade II: DAQ challenge
+
+Speaker
+Flavio Pisani (CERN)
+
+11:50–12:25
+
+GRAPES (Gamma Ray Astronomy PeV EnergieS)-3 Upgrade plan
+
+Speaker
+
+12:30
+12:30
+
+PRAVATA MOHANTY (Tata Institute of Fundamental Research, Mumbai, India)
+
+Lunch Break
+Break
+
+14:00
+14:00
+
+Parallel Session-I: at HBA
+Session
+
+14:00–14:15
+
+TPC Development by the LCTPC Collaboration for the ILD Detector at ILC
+Speaker
+Dr Maksym Titov (IRFU, CEA Saclay, Université Paris-Saclay (FR))
+
+14:15–14:30
+
+Innovative Back-Side Illuminated SiPMs (BSI-SiPMs): first results from the IBIS
+project
+Speaker
+Luigi Pio Rignanese (INFN, Bologna (IT))
+
+19
+
+Thursday 5 February
+14:30–14:45
+
+Performance of the Timepix3 Detector Network in ATLAS for Luminosity
+Measurement during 2025 Van der Meer Scans
+Speaker
+Catalina Lesmes Ramirez (Czech Technical University in Prague (CZ))
+
+14:45–15:00
+
+How to synchronize clocks to a sub-picoesecond level in large-scale detectors
+and systems.
+Speaker
+Roger Rusack (University of Minnesota (US))
+
+15:00–15:15
+
+A System-On-chip based High Resolution Time-to-digital converter in Artix-7 FPGA
+Speaker
+Dr Hari Prasad Kolla (Bhabha Atomic Research Centre)
+
+15:15–15:30
+
+Upgrade of the Belle II Vertex Detector with depleted monolithic CMOS active
+pixel sensors
+Speaker
+
+16:00
+14:00
+
+Dr Vindhyawasini Prasad (Jilin University,)
+
+Parallel Session-II: at AG66
+Session | Convener: Prakash Rout (Bhabha Atomic Research Centre (IN))
+
+14:00–14:15
+
+LHCb-VELO upgrade II and LumiTracker -- Mechanics, cooling and electronics
+Speaker
+Bhagyashree Pagare (Universidade de Santiago de Compostela (ES))
+
+14:15–14:30
+
+Getting ready for the new ATLAS ITk pixel detector: Large scale detector system
+tests
+Speaker
+Benedikt Vormwald (CERN)
+
+14:30–14:45
+
+Fast, Compact Readout of PbWO₄ crystals with SiPM arrays for Future Collider
+Calorimeters
+Speaker
+Silvia Sykorova
+
+14:45–15:00
+
+The CMS MTD Barrel Timing Layer for the High Luminosity LHC
+
+Speaker
+Toyoko Orimoto (Northeastern University (US))
+
+15:00–15:15
+
+The progress of Super Tau Charm Facility in China
+
+Speaker
+Prof. Haiping Peng (University of Science and Technology of China)
+
+20
+
+Thursday 5 February
+15:15–15:30
+
+A hybrid muon detector for the Super Tau-Charm Facility experiment: concept,
+design optimization and particle identification
+Speaker
+Yulin Liu (USTC)
+
+15:30–15:45
+
+Development and Beam Test of the Electromagnetic Calorimeter Prototype for
+STCF
+Speaker
+Junhao Wang (USTC)
+
+15:45–16:00
+
+CMS GEM Upgrade: Status and Prospects for the HL-LHC
+
+Speaker
+
+16:00
+14:00
+
+Mahesh Kumar Saini (University of Delhi (IN))
+
+Parallel Session-III: at AG69
+Session | Convener: Rajdeep Chatterjee (Tata Institute of Fundamental Research (IN))
+
+14:00–14:15
+
+Detecting Antiprotons with Submicrometric Spatial Accuracy
+
+Speaker
+Markus Munster (Technische Universitaet Muenchen (DE))
+
+14:15–14:30
+
+R&D and qualification system development for for ALICE ITS3 MOSAIX sesnsor
+ASIC
+Speaker
+Luca Aglietta (Universita e INFN Torino (IT))
+
+14:30–14:45
+
+Overview of the ALICE ITS3 Upgrade
+
+Speaker
+Naseem Bouchhar (Sejong University)
+
+14:45–15:00
+
+Recent progress and R&D toward LHCb Velo Upgrade II
+
+Speaker
+Morag Williams (CERN)
+
+15:00–15:15
+
+Beam Test Performance of ATLAS ITk Pixel Modules irradiated up to End-ofLifetime Fluences.
+Speaker
+Krishnan Rama (The Barcelona Institute of Science and Technology (BIST) (ES))
+
+15:15–15:30
+
+Microchannel Cooling Substrates
+
+Speakers
+Burkhard Schmidt (CERN), Oscar Augusto De Aguiar Francisco (The University of Manchester (GB))
+
+15:30–15:45
+
+The RD50-MPW4: a radiation hard HV-CMOS sensor for future colliders
+Speaker
+Jory Sonneveld (Nikhef National institute for subatomic physics (NL))
+
+21
+
+Thursday 5 February
+15:45–16:00
+
+The Precision Endcap Timing Layer of the CMS MIP Timing Detector for HL-LHC
+Speaker
+
+16:00
+14:00
+
+Nicolo Cartiglia (INFN Torino (IT))
+
+Parallel Session-IV: at AG80
+Session | Convener: Mandakini Ravindra Patil (Tata Institute of Fundamental Research (TIFR))
+
+14:00–14:15
+
+Ultrasonic welding technology for future Straw Trackers
+
+Speaker
+Temur Enik (Joint Institute for Nuclear Research (RU))
+
+14:15–14:30
+
+Development of scintillation beam counters and compact neutron detectors with
+picosecond time resolution for BM@N experiment
+Speaker
+Victor Rogov
+
+14:30–14:45
+
+The ATLAS High-Granularity Timing Detector for the HL-LHC: project status and
+results
+Speaker
+Luca Cadamuro (IJCLab - CNRS/IN2P3 - Université Paris-Saclay (FR))
+
+14:45–15:00
+
+LIGHT01: A prototype LGAD pixel readout ASIC with ps timing resolution in 28 nm
+technology
+Speaker
+Abderrahmane Ghimouz (Paul Scherrer Institute (CH))
+
+15:00–15:15
+
+PICOSEC Micromegas gaseous detectors for precise timing and developments
+towards applicable detector
+Speaker
+Marta Lisowska (CERN)
+
+15:15–15:30
+
+Characterisation of the First Silicon Electron Multiplier Demonstrators
+Speaker
+Federico De Benedetti (Universidade de Santiago de Compostela (ES))
+
+15:30–15:45
+
+HGCROC3: Radiation-Hard Front-End ASIC for the CMS HGCAL
+
+Speaker
+Mr Damien Thienpont (OMEGA - Ecole Polytechnique - CNRS/IN2P3)
+
+15:45–16:00
+
+Timing results of a 3D silicon sensor readout by Timepix4
+
+Speaker
+
+16:00
+
+Evridki Chatzianagnostou (Nikhef National institute for subatomic physics (NL))
+
+22
+
+Thursday 5 February
+14:00
+
+Parallel Session-V: at D406
+Session
+
+14:00–14:15
+
+Development and performance of the dRICH SiPM-based photodetector for the
+ePIC experiment at the EIC
+Speaker
+Roberto Preghenella (INFN, Bologna (IT))
+
+14:15–14:30
+
+DarkSide-20k SiPM Photodetectors – Production and Characterisation
+
+Speaker
+Pritindra Bhowmick (University of Oxford/Princeton University)
+
+14:30–14:45
+
+LiquidO: A New Paradigm of Particle Imaging & Detection in Opaqueness
+Speaker
+Dr Anatael CABRERA (IJCLab (Orsay) - CNRS / Université Paris-Saclay)
+
+14:45–15:00
+
+The SABRE South Experiment at the Stawell Underground Physics Laboratory
+Speaker
+Sharry
+
+15:00–15:15
+
+mPMT electronics and DAQ system in WCTE operation
+
+Speaker
+Michal Jan Nurek (Warsaw University of Technology (PL))
+
+15:15–15:30
+
+Study of the radiation aging of SiPMs with using of beam of the fast neutrons at
+BINP SB RAS
+Speaker
+Viktor Bobrovnikov (Budker Insititute of Nuclear Physics (RU))
+
+15:30–15:45
+
+The upgrade of the CMS Electromagnetic Calorimeter for the High Luminosity LHC
+15:45–16:00
+
+The first results on square position-sensitive MCP PMT produced in Russia
+Speaker
+
+16:00
+16:00
+
+Vadim Rusetsky (JSC "Ekran FEP", Rzhanov Institute of Semiconductor Physics)
+
+Tea Break
+Break
+
+16:30
+16:30
+
+Parallel Session-I: at HBA
+Session | Convener: Prakash Rout (Bhabha Atomic Research Centre (IN))
+
+16:30–16:45
+
+Power-over-Fiber Development for DUNE Vertical Drift Photon Detection System
+Speaker
+Dr Biswaranjan Behera (IISc)
+
+23
+
+Thursday 5 February
+16:45–17:00
+
+Performance of a highly compact and granular electromagnetic calorimeter
+prototype in a testbeam experiment
+Speaker
+Yan Benhammou (Tel Aviv University (IL))
+
+17:00–17:15
+
+Optical readout of MicroPattern Gaseous Detectors for beam monitoring
+Speaker
+Florian Maximilian Brunbauer (CERN)
+
+17:15–17:30
+
+Beam monitor system for the Water Cherenkov Test Experiment at CERN
+Speaker
+Akira Konaka (TRIUMF (CA))
+
+17:30–17:45
+
+Novel Fragment Separators at CERN-ISOLDE: the ISRS and ISLS projects
+Speaker
+Prof. Ismael Martel (University of Huelva (ES))
+
+17:45–18:00
+
+Toward a Beamline-Ready Optical TPC for Neutron-Induced Reactions at SARAF-II
+Speaker
+
+18:00
+16:30
+
+Dr Ryan Felkai (Weizmann Institute of Science)
+
+Parallel Session-II: at AG66
+Session | Convener: Shilpi Jain (Tata Institute of Fundamental Research (IN))
+
+16:30–16:45
+
+Study of the AC-LGAD for CEPC
+
+Speaker
+Dr Yunyun Fan (Chinese Academy of Sciences (CN))
+
+16:45–17:00
+
+Design and performance of MAPS prototypes for the STCF inner tracker
+Speaker
+Jiajun Qin (University of Science and Technology of China (CN))
+
+17:00–17:15
+
+Characterisation of Wafer-Scale Stitched MAPS Prototypes for the ALICE ITS3
+Upgrade
+Speaker
+Chunzheng Wang (Fudan University (CN))
+
+17:15–17:30
+
+Smartpixels: radiation-hard ASICs with on-chip neural networks in 28 nm CMOS
+Speaker
+Danush Shekar (University of Illinois Chicago (US))
+
+17:30–17:45
+
+Quiet Detectors, Clear Signals: ENC Noise Studies and Performance Tests of STS
+Silicon Modules
+
+24
+
+Thursday 5 February
+Speaker
+Abhishek Kumar Sharma (Aligarh Muslim University, Aligarh)
+
+17:45–18:00
+
+Development of 55nm HV-CMOS Pixel Sensors
+
+Speaker
+
+18:00
+16:30
+
+Dr Yang Zhou (Institute of High Energy Physics, CAS, Beijing, China)
+
+Parallel Session-III: at AG69
+Session | Convener: Saranya Samik Ghosh (Indian Institute of Technology Hyderabad (IN))
+
+18:00
+16:30
+
+Parallel Session-IV: at AG80
+Session
+
+16:30–16:45
+
+R&D on aerogels with refractive indexes less or equal to 1.008 to be used in the
+RICH detectors for particle identification at momenta above 20 GeV/c
+Speaker
+Aleksandr Kattsin (Budker Institute of Nuclear Physics)
+
+16:45–17:00
+
+Optimisation of the FARICH technique for the SPD experiment
+
+Speaker
+Alexander Barniakov
+
+17:00–17:15
+
+Pulse peak reference based real-time pulse shape discrimination algorithm
+implemented on FPGA
+Speakers
+Ram kumar Paul (Variable Energy Cyclotron Centre), Swastika Biswas (RCC Institute of Information Technology)
+
+17:15–17:30
+
+Cherenkov and scintillation counters with light collection using re-emitting light
+guides.
+Speaker
+Prof. Evgeniy Kravchenko (Budker INP SB RAS/ Novosibirsk State University)
+
+17:30–17:45
+
+Novel Concepts for RICH Fast-Timing Electronics in View of the LHCb LS3
+Enhancement program
+Speaker
+Vlad-Mihai Placinta (Horia Hulubei National Institute for R&D in Physics and Nuclear Engineering (IFIN-HH RO))
+
+17:45–18:00
+
+Status of R&D on ASHIPH system for the Super Tau Charm facilities in Hefei, China
+Speaker
+
+18:00
+16:30
+
+Ivan Kuyanov
+
+Parallel Session-V: at D406
+Session
+
+16:30–16:45
+
+Calibration, timing and energy performance studies of LYSO crystals using ~KeV
+energy photons
+
+25
+
+Thursday 5 February
+Speaker
+Anindita Karmakar (Tata Institute of Fundamental Research)
+
+16:45–17:00
+
+Development of PMT/WLS optical modules for Cherenkov detectors
+
+Speaker
+Gleb Erofeev (INR RAS)
+
+17:00–17:15
+
+HRPPD photodetectors - ageing studies and detector response as a function of
+rate
+Speaker
+Jinky Agarwala (Universita e INFN Trieste (IT))
+
+17:15–17:30
+
+Development of An In-Situ Magnetron Sputtering Plasma Monitoring Setup
+Speaker
+
+18:00
+
+Burak Bilki (Beykent University (TR), The University of Iowa (US))
+
+26
+
+Friday 6 February
+
+Friday 6 February
+09:30
+
+ICFA Session: at the Homi Bhabha Auditorium (HBA)
+Session | Convener: Stefan Söldner-Rembold (Imperial College London)
+
+09:30–10:30
+
+The 2026 ICFA Instrumentation Awards
+
+Speaker
+
+10:30
+10:30
+
+Stefan Söldner-Rembold (Imperial College London)
+
+Tea Break
+Break
+
+11:00
+11:00
+
+Technology Transfer Session-I: at HBA
+Session | Convener: Dr Christophe De La Taille (OMEGA (FR))
+
+11:00–11:25
+
+The role of Research & tech infrastructures in the innovation process: the view of
+the EC
+Speaker
+Massimo Caccia (Università degli Studi e INFN Milano (IT))
+
+11:25–11:50
+
+An exemplary implementation of the measures to integrate research &
+innovation at EU level
+Speaker
+Paolo Giacomelli (INFN Sezione di Bologna)
+
+11:50–12:15
+
+The role of Research & tech infrastructures in the innovation process: the view of
+INDIA
+Speaker
+Prof. Achanta Venu Gopal
+
+12:15–12:40
+
+Actions and thoughts from a research/technology infrastructure in INDIA
+Speaker
+
+12:40
+12:40
+
+Dr Shivkumar Kalyanraman
+
+Lunch Break
+Break
+
+14:00
+14:00
+
+Technology Transfer Session-II: at HBA
+Session | Convener: Mandar Saraf (Tata Institute of Fundamental Research)
+
+14:00–14:15
+
+Development of UV to Mid-IR superconducting single photon detectors"
+
+27
+
+Friday 6 February
+Speaker
+Dr Vidur Raj
+
+14:15–14:30
+
+From Lab Success to Field Survival: What Changes in Real Deployment
+Speaker
+Dr D Amarnath (MERRITRONIX LTD)
+
+14:30–14:45
+
+From Prototype to Production: Bridging the Lab-to-Market Gap in Scientific
+Requirement
+Speaker
+Vinoth
+
+14:45–15:00
+
+PCBs for High Reliability Applications
+
+Speaker
+
+15:30
+15:30
+
+U Nagraj (Micropack Pvt Ltd)
+
+Plenary Session-I
+Session
+
+15:30–15:40
+
+Vote of thanks
+
+Speaker
+Shilpi Jain (Tata Institute of Fundamental Research (IN))
+
+15:40–15:55
+
+Announcemenr from TIPP Steering committee
+
+Speaker
+
+15:55
+15:55
+
+Dr Maksym Titov (IRFU, CEA Saclay, Université Paris-Saclay (FR))
+
+Tea Break
+Break
+
+16:25
+16:25
+
+Advances in Science, Engineering and Technology(ASET) colloquium at
+HBA
+Session
+16:25–17:25
+
+Random Power: a platform of random bit streamers based on quantum tunneling
+Speaker
+
+17:25
+17:25
+
+Massimo Caccia (Università degli Studi e INFN Milano (IT))
+
+Tea
+Break
+
+18:00
+
+28
+
+
