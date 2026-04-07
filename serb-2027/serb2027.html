@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EHEP 2027 — SERB School on Experimental High Energy Physics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Apple-style fonts & minimal CSS framework -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #1d1c1f;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Apple-like container & spacing */
+    .apple-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / hero */
+    .hero {
+      background: #fbfbfd;
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid #e8e8ed;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1c1c1e, #3a3a44);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #6e6e73;
+      font-weight: 400;
+    }
+
+    /* glassmorphism / modern navbar */
+    .apple-navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+    }
+    .nav-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1d1c1f;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+      padding: 0.6rem 0;
+      display: inline-block;
+    }
+    .nav-links li a:hover {
+      color: #0066cc;
+    }
+    .dropdown-menu-custom {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      min-width: 200px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      border-radius: 18px;
+      padding: 0.6rem 0;
+      top: 35px;
+      left: 0;
+      z-index: 200;
+      border: 0.5px solid #e4e4e8;
+    }
+    .dropdown-menu-custom:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: #1d1c1f;
+      font-size: 0.9rem;
+    }
+    .dropdown-content a:hover {
+      background: #f2f2f5;
+    }
+
+    /* cards, sections */
+    .card-apple {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+      border: 1px solid #f0f0f2;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 2rem 0 1rem;
+      color: #1d1c1f;
+    }
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .grid-4col {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .participant-list {
+      columns: 2;
+      column-gap: 2rem;
+    }
+    .participant-list p {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #2c2c2e;
+    }
+    .table-apple {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .table-apple th, .table-apple td {
+      padding: 1rem;
+      border-bottom: 1px solid #e9e9ef;
+      text-align: left;
+    }
+    .table-apple th {
+      background: #f9f9fb;
+      font-weight: 600;
+      color: #1c1c1e;
+    }
+    .btn-apple {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #0071e3;
+      color: white;
+      border-radius: 980px;
+      padding: 0.5rem 1.2rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.2s;
+      border: none;
+      font-size: 0.9rem;
+    }
+    .btn-apple-outline {
+      background: transparent;
+      border: 1px solid #0071e3;
+      color: #0071e3;
+    }
+    .btn-apple-outline:hover {
+      background: #0071e310;
+    }
+    .btn-apple:hover {
+      background: #005fc9;
+      color: white;
+    }
+    .footer-apple {
+      background: #f5f5f7;
+      padding: 2rem 0;
+      margin-top: 4rem;
+      border-top: 1px solid #e8e8ed;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6e6e73;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #ffffffcc;
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 0.7rem 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 0.5px solid #d9d9df;
+      color: #1c1c1e;
+      transition: 0.2s;
+      z-index: 99;
+    }
+    .carousel-apple img {
+      border-radius: 28px;
+      width: 100%;
+      object-fit: cover;
+      height: 320px;
+    }
+    @media (max-width: 768px) {
+      .apple-container { padding: 0 1.2rem; }
+      .hero h1 { font-size: 2rem; }
+      .grid-2col { grid-template-columns: 1fr; }
+      .participant-list { columns: 1; }
+      .nav-links { gap: 0.8rem; }
+      .nav-links li a { font-size: 0.8rem; }
+    }
+    hr {
+      margin: 1rem 0;
+      border-color: #e9e9ef;
+    }
+    .badge-apple {
+      background: #e9e9ef;
+      border-radius: 40px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<!-- APPLE STYLE NAVBAR (sticky, translucent) -->
+<div class="apple-navbar">
+  <div class="apple-container">
+    <div class="nav-flex">
+      <div style="font-weight: 600; font-size: 1.2rem; letter-spacing: -0.3px;">EHEP<span style="font-weight: 400;"> 2027</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="dropdown-menu-custom">
+          <a href="#courses">Courses <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+          <div class="dropdown-content">
+            <a href="#classroom">Classroom</a>
+            <a href="#software">Software</a>
+            <a href="#hardware">Hardware</a>
+          </div>
+        </li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#committee">Committees</a></li>
+        <li><a href="#participants">Participants</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#"><i class="fas fa-user"></i> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- HERO SECTION (header.php modern) -->
+<div class="hero">
+  <div class="apple-container">
+    <h1>XIII SERB School on <br>Experimental High Energy Physics</h1>
+    <p>Tata Institute of Fundamental Research, Mumbai | Jan ??–??, 2027</p>
+    <div style="margin-top: 1rem;">
+      <a href="#registration" class="btn-apple">Register now <i class="fas fa-arrow-right"></i></a>
+      <a href="#about" class="btn-apple btn-apple-outline" style="margin-left: 0.8rem;">Learn more</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="apple-container" style="margin-top: 2rem;">
+  
+  <!-- HOME Section (index + news + slider) -->
+  <div id="home">
+    <div class="grid-2col" style="align-items: start;">
+      <!-- Left sidebar: news & previous schools -->
+      <div>
+        <div class="card-apple" style="padding: 1.5rem;">
+          <h3 style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-bullhorn" style="margin-right: 0.6rem;"></i> Latest Updates</h3>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="margin-bottom: 1rem; border-bottom: 1px solid #efeff4; padding-bottom: 0.75rem;">✨ Welcome to SERB SCHOOL ON EXPERIMENTAL HIGH ENERGY PHYSICS, 2027</li>
+            <li style="margin-bottom: 1rem; border-bottom: 1px solid #efeff4; padding-bottom: 0.75rem;">📍 TIFR, Mumbai during January ?? to ??, 2027</li>
+            <li style="margin-bottom: 1rem;">📧 For support: <a href="mailto:??@tifr.res.in" style="color:#0071e3;">??@tifr.res.in</a></li>
+          </ul>
+        </div>
+        <div class="card-apple" style="padding: 1.5rem; margin-top: 1rem;">
+          <h3 style="font-weight: 600;"><i class="fas fa-chevron-circle-left"></i> Previous Schools</h3>
+          <ul style="margin-top: 1rem; list-style: none;">
+            <li><a href="#" style="color:#1c1c1e; text-decoration: none;">🔹 NISER, Bhubaneswar (2017)</a></li>
+            <li><a href="#" style="color:#1c1c1e; text-decoration: none;">🔹 Delhi University (2015)</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Main welcome + slider -->
+      <div>
+        <div class="carousel-apple" style="border-radius: 28px; overflow: hidden; margin-bottom: 1.5rem;">
+          <div id="appleSlider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active"><img src="images/TIFR-img.jpeg" alt="Campus"></div>
+              <div class="carousel-item"><img src="images/TIFR-img2.jpeg" alt="Lab"></div>
+              <div class="carousel-item"><img src="images/tifr_bldg_1.jpg" alt="Participants"></div>
+            </div>
+            <a class="carousel-control-prev" href="#appleSlider" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+            <a class="carousel-control-next" href="#appleSlider" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+          </div>
+        </div>
+        <h2 style="font-weight: 600; font-size: 1.8rem;">Welcome to the School</h2>
+        <p style="color: #3a3a3e; margin: 1rem 0;">The first Experimental High Energy Physics school was held in Jan 1995. This SERB-sponsored school has trained generations of PhD students. The 2019 edition at TIFR brought together leading experts, hardware workshops, and advanced software training.</p>
+        <div class="badge-apple" style="display: inline-block;">📄 <a href="#" style="text-decoration: none;">School Schedule (PDF)</a></div>
+        <div style="margin-top: 1rem;">
+          <h3 style="font-weight: 500;">Eligibility</h3>
+          <p>Research scholars, post-docs, faculty, and motivated MSc/MTech students. Prerequisites: Particle physics, matter interactions, and C++ programming.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT section minimal -->
+  <div id="about" style="margin-top: 3rem;">
+    <div class="card-apple" style="padding: 2rem;">
+      <h2 class="section-title" style="margin-top: 0;">About the School</h2>
+      <p>This year the school is held at Tata Institute of Fundamental Research, Mumbai from January ??, 2027. The program includes intensive classroom lectures, software exercises with ROOT, Geant4, and hands-on hardware experiments with detectors, FPGA, and silicon photomultipliers.</p>
+      <a href="#" class="btn-apple btn-apple-outline" style="margin-top: 1rem;"><i class="fas fa-download"></i> Download full schedule</a>
+    </div>
+  </div>
+
+  <!-- COURSES gateway + classroom/hardware/software integrated -->
+  <div id="courses"></div>
+  <div id="classroom" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Classroom Sessions</h2>
+    <div class="card-apple" style="overflow-x: auto;">
+      <table class="table-apple">
+        <thead><tr><th>Topic</th><th>Instructor</th></tr></thead>
+        <tbody>
+          <tr><td>Standard Model & Collider Physics</td><td>Tuhin Roy (TIFR) / Pratishruti Saha (HRI)</td></tr>
+          <tr><td>Flavour Physics</td><td>S. Umasankar (IIT Bombay)</td></tr>
+          <tr><td>Dark Matter</td><td>Rishi Khatri (TIFR)</td></tr>
+          <tr><td>Neutrino Physics</td><td>Sanjib Agarwalla (IOP Bhubaneswar)</td></tr>
+          <tr><td>Quark Gluon Plasma</td><td>Jane-e-Alam (VECC)</td></tr>
+          <tr><td>Detector Physics</td><td>Indranil Mazumdar (TIFR)</td></tr>
+          <tr><td>Relativistic Kinematics</td><td>Manoranjan Guchait (TIFR)</td></tr>
+          <tr><td>Electronics, DAQ, Trigger</td><td>Darin Acosta (Florida)</td></tr>
+          <tr><td>Accelerator Physics</td><td>Raj Pillay (IIT Ropar)</td></tr>
+          <tr><td>Statistical Methods</td><td>Eilam Gross (Weizmann)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="software" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-laptop-code"></i> Software Session</h2>
+    <div class="card-apple" style="padding: 1.8rem;">
+      <div class="grid-2col">
+        <div>
+          <h3>Packages</h3>
+          <ul><li>ROOT6</li><li>Pythia6/8</li><li>Geant4.10</li><li>EVTGEN, HIJING, RooUnfold</li></ul>
+        </div>
+        <div>
+          <h3>Installation Manuals</h3>
+          <p><i class="fas fa-download"></i> <a href="#">Scientific Linux 6 & 7</a></p>
+          <p><i class="fas fa-download"></i> <a href="#">Ubuntu 16</a></p>
+          <p class="badge-apple">📧 Contact: jim.john@tifr.res.in | pavan.v@tifr.res.in</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hardware" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-microchip"></i> Hardware & Lab Experiments</h2>
+    <div class="card-apple" style="padding: 1.8rem;">
+      <p><strong>🔬 Experiments include:</strong> Basic electronics, FPGA programming, Resistive Plate Chamber, Scintillator detector, Silicon strip detector, SiPM characterization, Muon lifetime, HPGe gamma spectroscopy.</p>
+      <div class="grid-2col" style="margin-top: 1rem;">
+        <div><i class="fas fa-waveform"></i> Pulse shaping & discriminators</div>
+        <div><i class="fas fa-microchip"></i> Max10 FPGA board + Quartus</div>
+        <div><i class="fas fa-tachometer-alt"></i> Cosmic muon trajectory with RPC</div>
+        <div><i class="fas fa-charging-station"></i> SiPM gain & breakdown voltage</div>
+      </div>
+      <a href="#" class="btn-apple btn-apple-outline" style="margin-top: 1rem;"><i class="fas fa-file-pdf"></i> Full experiment schedule</a>
+    </div>
+  </div>
+
+  <!-- REGISTRATION (modern card) -->
+  <div id="registration" style="margin-top: 3rem;">
+    <h2 class="section-title"><i class="far fa-registered"></i> Registration</h2>
+    <div class="grid-2col">
+      <div class="card-apple" style="padding: 1.5rem;">
+        <h3>For applicants</h3>
+        <p><strong>Last date:</strong> ??</p>
+        <p><i class="fas fa-user-plus"></i> Step 1: Create Indico Account (mandatory)</p>
+        <p><i class="fas fa-check-circle"></i> Step 2: Register via the school portal</p>
+        <p><i class="fas fa-envelope"></i> Recommendation letter signed by referee sent to ??@tifr.res.in</p>
+        <a href="#" class="btn-apple" style="margin-top: 0.8rem;">Register now →</a>
+      </div>
+      <div class="card-apple" style="padding: 1.5rem;">
+        <h3>For Referees</h3>
+        <p>Download recommendation letter form, sign & scan, and email before ??.</p>
+        <a href="#" class="btn-apple-outline btn-apple">Download form (PDF/DOC)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMITTEES -->
+  <div id="committee" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-users"></i> Organizing Committees</h2>
+    <div class="grid-2col">
+      <div class="card-apple" style="padding: 1.5rem;">
+        <h3>National Organizing Committee</h3>
+        <p>Kajari Mazumdar (Chair, TIFR) <br> Bedangadas Mohanty (NISER) <br> Prafulla Behera (IITM) <br> Sukalyan Chattopadhaya (SINP) <br> Gobinda Majumder (TIFR) <br> Md. Naimuddin (DU) <br> Lalit M. Pant (BARC)</p>
+      </div>
+      <div class="card-apple" style="padding: 1.5rem;">
+        <h3>Local Organizing Committee</h3>
+        <p>G. Majumder (Director), V. Chitnis, S. Dugad, M. Guchait, K. Mazumdar, G.B. Mohanty, P.K. Mohanty, L.M. Pant (BARC).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELECTED PARTICIPANTS -->
+  <div id="participants" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-check-circle"></i> Selected Participants</h2>
+    <div class="card-apple" style="padding: 1.5rem;">
+      <div class="participant-list">
+        <p>Krishan GOPAL</p><p>Dibakar BAURI</p><p>Maharnab BHATTACHARJEE</p><p>Rik BHATTACHARYYA</p>
+        <p>Pritam CHAKRABORTY</p><p>Akshay CHATLA</p><p>Geetanjali CHAUDHARY</p><p>Seema CHOUDHURY</p>
+        <p>Aloke Kumar DAS</p><p>Shubham DUTTA</p><p>Soumen HALDER</p><p>Mamta JANGRA</p>
+        <p>Bhumika KANSAL</p><p>Amandeep KAUR</p><p>Sandeep KAUR</p><p>Honey KHINDRI</p>
+        <p>Anil KUMAR</p><p>Devender KUMAR</p><p>Manish KUMAR</p><p>Pramod KUMAR</p>
+        <p>Vishal KUMAR</p><p>Sumit KUNDU</p><p>Anita LAVANIA</p><p>Jim M JOHN</p>
+        <p>Souvik MAITY</p><p>Rudra MAJHI</p><p>Tribeni MISHRA</p><p>Pritam PALIT</p>
+        <p>Ashish PANDAV</p><p>SOURAV PATRA</p><p>Promita ROY</p><p>Prafulla SAHA</p>
+        <p>Anup Kumar SIKDAR</p><p>Vivek Kumar SINGH</p><p>Hariom SOGARWAL</p><p>Rahul TIWARY</p>
+        <p>Tulika TRIPATHY</p><p>Diwakar VATS</p><p>Monika BHARTI</p><p>Manisha MEENA</p>
+        <p>Medha CHAKRABORTY</p><p>Ravindra SINGH</p><p>Jyotirmoi BORAH</p><p>Bushra ALI</p>
+        <p>Jyoti BABBAR</p><p>Ritu DEVI</p><p>Ashish Sharma</p><p>Deepak Kumar</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCATION & MAP -->
+  <div id="location" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> How to reach TIFR</h2>
+    <div class="card-apple" style="padding: 1.8rem;">
+      <p><strong>📍 Venue:</strong> Tata Institute of Fundamental Research, Navy Nagar, Colaba, Mumbai.</p>
+      <p><i class="fas fa-plane"></i> From Airport: Prepaid taxi to "Navy Nagar" (~ ₹500-700).<br>
+      <i class="fas fa-train"></i> From CSMT / Churchgate: BEST buses 3,11,125,137 or taxi.<br>
+      <i class="fas fa-hotel"></i> Accommodation provided at TIFR Guest House & BARC Training School Hostel.</p>
+      <div style="border-radius: 24px; overflow: hidden; margin-top: 1rem;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.5581142074034!2d72.80294351489857!3d18.906674787185235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1885ef44fcd%3A0x645e134ed9a210d!2sTata+Institute+of+Fundamental+Research!5e0!3m2!1sen!2sin!4v1499680093592" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO GALLERY (clean grid) -->
+  <div id="gallery" style="margin-top: 2rem;">
+    <h2 class="section-title"><i class="fas fa-images"></i> Photo Gallery</h2>
+    <div class="grid-4col">
+      <div class="card-apple" style="border-radius: 24px;"><img src="images/TIFR-img.jpeg" style="width:100%; display:block;" alt="event"></div>
+      <div class="card-apple" style="border-radius: 24px;"><img src="images/TIFR-img2.jpeg" style="width:100%;" alt="lab"></div>
+      <div class="card-apple" style="border-radius: 24px;"><img src="images/TIFR-img1.jpeg" style="width:100%;" alt="group"></div>
+      <div class="card-apple" style="border-radius: 24px;"><img src="images/tifr_bldg_1.jpg" style="width:100%;" alt="hardware"></div>
+    </div>
+    <p class="badge-apple" style="margin-top: 1rem;">📸 More memories from the school will be added soon</p>
+  </div>
+</div>
+
+<!-- FOOTER (Apple style) -->
+<footer class="footer-apple">
+  <div class="apple-container">
+    <p>© EHEP 2027 — Tata Institute of Fundamental Research, Mumbai</p>
+    <p style="margin-top: 0.5rem;">Science & Engineering Research Board (SERB) School on Experimental High Energy Physics</p>
+  </div>
+</footer>
+
+<a href="#" id="back-to-top" class="back-to-top" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;"><i class="fas fa-chevron-up"></i> Top</a>
+
+<!-- scripts for sticky, carousel, smooth scroll -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const targetElem = document.querySelector(targetId);
+      if(targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  // back to top button visibility
+  const topBtn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 300) topBtn.style.display = 'inline-flex';
+    else topBtn.style.display = 'none';
+  });
+  topBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
