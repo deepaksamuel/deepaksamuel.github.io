@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Location</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7fbff;
+      color: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      color: #ffffff;
+      text-align: center;
+      padding: 18px 10px 10px;
+      border-bottom: 2px solid #60a5fa;
+    }
+
+    .header h1 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .header h2 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, #22d3ee, #3b82f6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      padding: 14px 10px;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .navbar a:hover {
+      color: #fef3c7;
+    }
+
+    .navbar i {
+      font-size: 15px;
+    }
+
+    .container {
+      width: 1000px;
+      margin: 8px auto 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .sidebar {
+      width: 260px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .panel-title {
+      background: linear-gradient(to right, #38bdf8, #818cf8);
+      color: white;
+      padding: 8px 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .panel-body {
+      padding: 14px;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .updates li,
+    .schools li {
+      list-style: none;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted #999;
+    }
+
+    .updates li:last-child,
+    .schools li:last-child {
+      border-bottom: none;
+    }
+
+    .updates i,
+    .schools i {
+      color: #ffffff;
+      margin-right: 6px;
+    }
+
+    .poster {
+      width: 100%;
+      border: 1px solid #dbeafe;
+    }
+
+    .hero {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      /* border: 1px solid #bbb; */
+      margin-bottom: 16px;
+    }
+
+    .content h2 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 26px;
+      margin: 12px 0 20px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .content h3 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 21px;
+      margin: 18px 0 10px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .content ol {
+      margin-left: 24px;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .footer {
+      width: 1000px;
+      margin: 18px auto;
+      background: linear-gradient(to right, #8b5cf6, #38bdf8);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 1024px) {
+      .container,
+      .footer {
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .navbar {
+        gap: 18px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>SCHOOL ON EXPERIMENTAL HIGH ENERGY PHYSICS</h1>
+    <h2>TIFR, Mumbai, Jan ??-??, 2027</h2>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="details.html"><i class="fas fa-info-circle"></i>Details about the School</a>
+    <a href="courses.html"><i class="fas fa-graduation-cap"></i>Courses</a>
+    <a href="registration.html"><i class="fas fa-registered"></i>Registration</a>
+    <a href="committees.html"><i class="fas fa-users"></i>Committees</a>
+    <a href="participants.html"><i class="fas fa-check-circle"></i>Selected Participants</a>
+    <a href="location.html"><i class="fas fa-map-marker-alt"></i>Location</a>
+    <a href="indico.html"><i class="fas fa-user"></i>Indico</a>
+    <a href="gallery.html"><i class="fas fa-image"></i>Photo Gallery</a>
+  </nav>
+
+  <div class="container">
+
+    <aside class="sidebar">
+
+      <div class="panel">
+        <div class="panel-title"><i class="fas fa-bullhorn"></i> Latest Updates</div>
+        <div class="panel-body">
+          <ul class="updates">
+            <li><i class="fas fa-bookmark"></i>Welcome to School ??, 2027</li>
+            <li><i class="fas fa-bookmark"></i>The school will be held at TIFR, Mumbai during January ?? to ??, 2027</li>
+            <li><i class="fas fa-bookmark"></i><span style="color:green">For support: ??@tifr.res.in</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title"><i class="fas fa-image"></i> Posters</div>
+        <div class="panel-body">
+          <img class="poster" src="https://dummyimage.com/220x300/f1f1f1/000000&text=Event+Poster" alt="Poster">
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title"><i class="fas fa-history"></i> Previous Schools of the current series</div>
+        <div class="panel-body">
+          <ul class="schools">
+            <li><i class="fas fa-chevron-circle-right"></i>NISER, Bhubneswar</li>
+            <li><i class="fas fa-chevron-circle-right"></i>Delhi University</li>
+          </ul>
+        </div>
+      </div>
+
+    </aside>
+
+    <main class="content">
+      <img class="hero" src="img/tifr-line-sketch.png" alt="TIFR Campus">
+
+      <h2>Location</h2>
+
+      <p>The school will be organized at TIFR Mumbai campus. See the how to reach TIFR & map below.</p>
+
+      <h3>Reaching TIFR</h3>
+
+      <p>The TIFR campus is situated by the seashore at the south end of Mumbai in an area called Navy Nagar, in Colaba. To get to TIFR you should ask to be taken to Navy Nagar bus terminus via Cuffe Parade. Once you get there, someone should be able to guide you to TIFR. The bus terminus is on Homi Bhabha Road, at the end of which TIFR is located.</p>
+
+      <h3>Arrival by Air: Airport Terminals</h3>
+
+      <p>We suggest you take a pre-paid taxi from the Mumbai airport to TIFR, you will have to say "Navy Nagar, Coloba" at the pre-paid taxi counter. You will be given a receipt for your payment. Retain this till the end of your ride; then hand it over to the taxi driver. At the exit from the airport, the police may want to look at this slip.</p>
+
+      <p>You can also call Meru/Mega cabs as you exit the airport from certain designated telephones.</p>
+
+      <p>The taxi fares would vary from Rs. 500-700 depending on ac/non-ac and regular cab or Meru type of cabs. Night charges are 1.5 times the day charges. It will take 45-90 minutes.</p>
+
+      <h3>Arrival by Rail:</h3>
+
+      <p>If you are coming to Mumbai by Central Railway, The nearest railway station on Central Railway is Chatrapati Shivaji Maharaj Terminus (CSMT/VT) and is ~7 kms from the Institute. (Take a local train from Dadar/Kurla if you arrive there)</p>
+
+      <p>If you are coming to Mumbai by Western Railway, take a local train from Mumbai Central/Dadar/Bandra to come to Churchgate Railway Station. From these Railway Stations you can travel by Bus or Taxi.</p>
+
+      <h3>Local Transport:</h3>
+
+      <p>Mumbai is well serviced by metro bus, rail and taxi.</p>
+
+      <p>From Chatrapati Shivaji Maharaj Terminus, taxis are available round the clock and fare is approx. Rs 100/- in daytime. From Mumbai Central, Taxi Fare is approx. Rs. 150/- in daytime, and From Churchgate Station, Taxi Fair is approx. Rs. 80/- in daytime.</p>
+
+      <p>Night charges are 1.5 times the day charges.</p>
+
+      <p>From Chatrapati Shivaji Maharaj Terminus, one can take BEST bus route numbers 3, 11, 125 all of which terminate at "Navy Nagar".</p>
+
+      <p>From Churchgate Railway Station, one can take BEST bus route number 137 comes to "Navy Nagar". The stop is opposite Asiatic Departmental Store on the road in front of Churchgate Railway Station.</p>
+
+      <p>Get off the bus at the "Navi Nagar bus Terminus" and walk ~ 250m down the road to the Institute.</p>
+
+      <h3>Map</h3>
+<center>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.5581142074034!2d72.80294351489857!3d18.906674787185235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1885ef44fcd%3A0x645e134ed9a210d!2sTata+Institute+of+Fundamental+Research!5e0!3m2!1sen!2sin!4v1499680093592" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<center>    </main>
+
+  </div>
+
+  <footer class="footer">
+    © 2026, TIFR
+  </footer>
+
+</body>
+</html>

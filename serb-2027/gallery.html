@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7fbff;
+      color: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      color: #ffffff;
+      text-align: center;
+      padding: 18px 10px 10px;
+      border-bottom: 2px solid #60a5fa;
+    }
+
+    .header h1 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .header h2 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, #22d3ee, #3b82f6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      padding: 14px 10px;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .navbar a:hover {
+      color: #fef3c7;
+    }
+
+    .navbar i {
+      font-size: 15px;
+    }
+
+    .container {
+      width: 1000px;
+      margin: 8px auto 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .sidebar {
+      width: 260px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .panel-title {
+      background: linear-gradient(to right, #38bdf8, #818cf8);
+      color: white;
+      padding: 8px 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .panel-body {
+      padding: 14px;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .updates li,
+    .schools li {
+      list-style: none;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted #999;
+    }
+
+    .updates li:last-child,
+    .schools li:last-child {
+      border-bottom: none;
+    }
+
+    .updates i,
+    .schools i {
+      color: #ffffff;
+      margin-right: 6px;
+    }
+
+    .poster {
+      width: 100%;
+      border: 1px solid #dbeafe;
+    }
+
+    .hero {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      /* border: 1px solid #bbb; */
+      margin-bottom: 16px;
+    }
+
+    .content h2 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 26px;
+      margin: 12px 0 20px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .content h3 {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 21px;
+      margin: 18px 0 10px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .content ol {
+      margin-left: 24px;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .footer {
+      width: 1000px;
+      margin: 18px auto;
+      background: linear-gradient(to right, #8b5cf6, #38bdf8);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 1024px) {
+      .container,
+      .footer {
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .navbar {
+        gap: 18px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>SCHOOL ON EXPERIMENTAL HIGH ENERGY PHYSICS</h1>
+    <h2>TIFR, Mumbai, Jan ??-??, 2027</h2>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="details.html"><i class="fas fa-info-circle"></i>Details about the School</a>
+    <a href="courses.html"><i class="fas fa-graduation-cap"></i>Courses</a>
+    <a href="registration.html"><i class="fas fa-registered"></i>Registration</a>
+    <a href="committees.html"><i class="fas fa-users"></i>Committees</a>
+    <a href="participants.html"><i class="fas fa-check-circle"></i>Selected Participants</a>
+    <a href="location.html"><i class="fas fa-map-marker-alt"></i>Location</a>
+    <a href="indico.html"><i class="fas fa-user"></i>Indico</a>
+    <a href="gallery.html"><i class="fas fa-image"></i>Photo Gallery</a>
+  </nav>
+
+  <div class="container">
+
+    <aside class="sidebar">
+
+      <div class="panel">
+        <div class="panel-title"><i class="fas fa-bullhorn"></i> Latest Updates</div>
+        <div class="panel-body">
+          <ul class="updates">
+            <li><i class="fas fa-bookmark"></i>Welcome to School ??, 2027</li>
+            <li><i class="fas fa-bookmark"></i>The school will be held at TIFR, Mumbai during January ?? to ??, 2027</li>
+            <li><i class="fas fa-bookmark"></i><span style="color:green">For support: ??@tifr.res.in</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title"><i class="fas fa-image"></i> Posters</div>
+        <div class="panel-body">
+          <img class="poster" src="https://dummyimage.com/220x300/f1f1f1/000000&text=Event+Poster" alt="Poster">
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title"><i class="fas fa-history"></i> Previous Schools of the current series</div>
+        <div class="panel-body">
+          <ul class="schools">
+            <li><i class="fas fa-chevron-circle-right"></i>NISER, Bhubneswar</li>
+            <li><i class="fas fa-chevron-circle-right"></i>Delhi University</li>
+          </ul>
+        </div>
+      </div>
+
+    </aside>
+
+    <main class="content">
+      <img class="hero" src="img/tifr-line-sketch.png" alt="TIFR Campus">
+
+      <h2>Photo Gallery</h2>
+      <p>Welcome to the Photo Gallery page. Content for this section will be added soon.</p>
+    </main>
+
+  </div>
+
+  <footer class="footer">
+    © 2026, TIFR
+  </footer>
+
+</body>
+</html>
