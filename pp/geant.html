@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building Geant4</title>
+<meta name="description" content="Step-by-step instructions for building Geant4 from source with CMake and make, using src, build and install folders. Programming for Physicists, Deepak Samuel.">
+<style>
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff");font-weight:normal;font-style:italic;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff");font-weight:bold;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book-roman-old-style";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+
+:root{--bg:#fffff8;--fg:#111;--muted:#555;--rule:#ccc;--code-bg:#f4f1e4}
+@media (prefers-color-scheme:dark){:root{--bg:#151515;--fg:#ddd;--muted:#999;--rule:#444;--code-bg:#222}}
+
+html{font-size:15px}
+body{width:87.5%;max-width:1400px;margin:0 auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background:var(--bg);color:var(--fg)}
+h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1}
+h2{font-style:italic;font-weight:400;margin-top:3rem;margin-bottom:0;font-size:2.2rem;line-height:1}
+h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:0;line-height:1}
+p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1.2}
+article{padding:2rem 0 5rem}
+section{padding-top:1rem;padding-bottom:1rem}
+p,ol,ul,dl{font-size:1.4rem;line-height:2rem}
+p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline}
+section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back{width:55%}
+section>ol,section>ul{-webkit-padding-start:5%;padding-left:5%}
+li:not(:first-child){margin-top:.25rem}
+
+a:link,a:visited{color:inherit;text-underline-offset:.1em;text-decoration-thickness:.05em}
+.smallcaps{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase}
+.newthought{font-variant:small-caps;font-size:1.2em}
+.muted{color:var(--muted)}
+hr{border:0;border-top:1px solid var(--rule);width:55%;margin:3rem 0 0}
+.back{font-size:1.2rem;font-style:italic;margin-top:2rem}
+.back .current{color:var(--muted)}
+
+/* Code */
+code,pre,kbd{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}
+code,kbd{font-size:1.1rem}
+kbd{border:1px solid var(--rule);border-radius:3px;padding:0 .3rem}
+pre{font-size:1.05rem;line-height:1.5;background:var(--code-bg);padding:.8rem 1rem;margin:1rem 0;overflow-x:auto;box-sizing:border-box}
+pre .c{color:var(--muted);font-style:italic}
+pre .p{color:var(--muted);user-select:none}
+li pre{width:100%}
+
+/* Numbered steps */
+ol.steps{list-style:none;counter-reset:step;padding-left:0;-webkit-padding-start:0}
+ol.steps>li{counter-increment:step;margin-top:2.2rem}
+ol.steps>li>.step{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase;font-size:1.5rem}
+ol.steps>li>.step:before{content:"Step " counter(step) ". ";font-style:italic;text-transform:none;font-variant:normal;letter-spacing:0}
+ol.steps>li p{margin:.4rem 0}
+
+/* Tables */
+table{border-collapse:collapse;font-size:1.2rem;line-height:1.6rem;margin:1rem 0}
+th{font-weight:400;font-style:italic;text-align:left;border-bottom:1px solid var(--rule);padding:.3rem .8rem .3rem 0}
+td{vertical-align:top;padding:.4rem .8rem .4rem 0;border-bottom:1px solid var(--rule)}
+td code{font-size:1rem}
+
+/* Margin notes */
+.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:.3rem;margin-bottom:0;font-size:1.1rem;line-height:1.3;position:relative}
+.marginnote code{font-size:.95rem}
+input.margin-toggle{display:none}
+label.margin-toggle{display:none}
+
+@media (max-width:760px){
+  body{width:84%;padding-left:8%;padding-right:8%}
+  hr,section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back,footer{width:100%}
+  h1{font-size:2.6rem}
+  .marginnote{display:none}
+  .margin-toggle:checked+.marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;position:relative}
+  label{cursor:pointer}
+  label.margin-toggle{display:inline}
+}
+
+footer{width:55%;font-size:1.1rem;color:var(--muted);margin-top:4rem;padding-bottom:3rem;line-height:1.5}
+</style>
+</head>
+<body>
+<article>
+
+<p class="back"><a href="install.html">Getting started</a> &middot; <a href="linux.html">Linux terminal</a> &middot; <a href="cmake.html">Building software</a> &middot; <a href="root.html">Building ROOT</a> &middot; <span class="current">Building Geant4</span></p>
+
+<h1>Building Geant4</h1>
+<p class="subtitle">Step-by-step instructions, from source code to a running example</p>
+
+<section id="intro">
+  <p><span class="newthought">Geant4</span> is the toolkit used to simulate how particles pass through matter and detectors. These steps build it from source. If the words <em>source code</em>, <em>CMake</em>, <code>CMakeLists.txt</code> or <code>make -j4</code> are new to you, read <a href="cmake.html">Building (particle physics) software</a> first.</p>
+</section>
+
+<section id="steps">
+  <h2>Step by step</h2>
+  <p>Replace the version number with the current one from the download page. Do each step in order, and check that it succeeded before moving on.</p>
+
+  <ol class="steps">
+    <li>
+      <span class="step">Install the tools and common libraries</span>
+      <p><label for="mn-sudo" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-sudo" class="margin-toggle"><span class="marginnote"><code>sudo</code> runs a command as the administrator and asks for your password. <code>-dev</code> packages contain the headers needed to <em>build</em> against a library, not just run it.</span>You need a compiler, <code>make</code>, CMake, and the development packages of the libraries the software depends on. On Ubuntu or Debian:</p>
+<pre><span class="p">$ </span>sudo apt update
+<span class="p">$ </span>sudo apt install build-essential cmake git wget \
+      libexpat1-dev libxerces-c-dev libx11-dev libxmu-dev \
+      libgl1-mesa-dev libglu1-mesa-dev qtbase5-dev</pre>
+    </li>
+
+    <li>
+      <span class="step">Create the three folders</span>
+<pre><span class="p">$ </span>mkdir -p ~/software/geant4
+<span class="p">$ </span>cd ~/software/geant4
+<span class="p">$ </span>mkdir src build install
+<span class="p">$ </span>ls
+build  install  src</pre>
+    </li>
+
+    <li>
+      <span class="step">Download the source code into src</span>
+      <p>Download the tarball and unpack it straight into <code>src</code>:</p>
+<pre><span class="p">$ </span>wget https://gitlab.cern.ch/geant4/geant4/-/archive/v11.2.2/geant4-v11.2.2.tar.gz
+<span class="p">$ </span>tar -xzf geant4-v11.2.2.tar.gz -C src --strip-components=1</pre>
+      <p><label for="mn-strip" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-strip" class="margin-toggle"><span class="marginnote"><code>--strip-components=1</code> drops the archive&rsquo;s own top folder (<code>geant4-v11.2.2/</code>) so the files land directly in <code>src</code>.</span>Check that <code>CMakeLists.txt</code> is there:</p>
+<pre><span class="p">$ </span>ls src/CMakeLists.txt
+src/CMakeLists.txt</pre>
+    </li>
+
+    <li>
+      <span class="step">Go into the build folder</span>
+<pre><span class="p">$ </span>cd build</pre>
+      <p>Every remaining command, until the last step, is run from here.</p>
+    </li>
+
+    <li>
+      <span class="step">Configure with CMake</span>
+      <p><label for="mn-d" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-d" class="margin-toggle"><span class="marginnote">Each <code>-D</code> sets an option. <code>CMAKE_INSTALL_PREFIX</code> says where <code>make install</code> will copy the result. The <code>GEANT4_&hellip;</code> options are specific to Geant4: download its physics data, and enable the Qt and OpenGL viewers.</span>Tell CMake where the source is (<code>../src</code>) and where to install:</p>
+<pre><span class="p">$ </span>cmake ../src \
+      -DCMAKE_INSTALL_PREFIX=$HOME/software/geant4/install \
+      -DGEANT4_INSTALL_DATA=ON \
+      -DGEANT4_USE_QT=ON \
+      -DGEANT4_USE_OPENGL_X11=ON</pre>
+      <p>Success ends with:</p>
+<pre>-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/student/software/geant4/build</pre>
+      <p>If you see <code>CMake Error</code> instead, read it carefully, fix the cause (see <a href="cmake.html#errors">common errors</a>) and run the same <code>cmake</code> command again.</p>
+    </li>
+
+    <li>
+      <span class="step">Compile with make</span>
+<pre><span class="p">$ </span>make -j4</pre>
+      <p>This is the long step. Progress is shown as a percentage. It has succeeded when it reaches <code>[100%]</code> with no line containing <code>Error</code>.</p>
+    </li>
+
+    <li>
+      <span class="step">Install</span>
+<pre><span class="p">$ </span>make install</pre>
+      <p>This copies the finished libraries, headers and programs into the <code>install</code> folder. Check:</p>
+<pre><span class="p">$ </span>ls ../install
+bin  include  lib  share</pre>
+    </li>
+
+    <li>
+      <span class="step">Set up the environment</span>
+      <p><label for="mn-bashrc" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-bashrc" class="margin-toggle"><span class="marginnote">This must be done in every new terminal. To make it automatic, see the <a href="#permanent">next step</a>.</span>Your shell does not yet know where the new software lives. Geant4 provides a script that sets the necessary paths:</p>
+<pre><span class="p">$ </span>source ~/software/geant4/install/bin/geant4.sh</pre>
+      <p><a href="root.html">ROOT</a> does the same with <code>source install/bin/thisroot.sh</code>.</p>
+    </li>
+
+    <li id="permanent">
+      <span class="step">Make the setup permanent (optional)</span>
+      <p><label for="mn-perm" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-perm" class="margin-toggle"><span class="marginnote">Use <code>&gt;&gt;</code> (append), never a single <code>&gt;</code>, which would erase everything else in your <code>.bashrc</code>. Run the command only once.</span>Instead of typing the <code>source</code> command in every new terminal, you can add it to your <code>~/.bashrc</code>, a file that the terminal runs each time it starts (see <a href="linux.html#bashrc">what .bashrc does</a>). Append the line with:</p>
+<pre><span class="p">$ </span>echo 'source ~/software/geant4/install/bin/geant4.sh' &gt;&gt; ~/.bashrc</pre>
+      <p>Check that it was added as the last line:</p>
+<pre><span class="p">$ </span>tail -n 1 ~/.bashrc
+source ~/software/geant4/install/bin/geant4.sh</pre>
+      <p>Now open a <em>new</em> terminal (or run <code>source ~/.bashrc</code>) and check that Geant4 is found without any setup:</p>
+<pre><span class="p">$ </span>geant4-config --version
+11.2.2</pre>
+      <p>Skip this step if you keep several versions of Geant4, since an automatic setup can then pick the wrong one. To undo this, open <code>~/.bashrc</code> in <code>vi</code> and delete the line.</p>
+    </li>
+
+    <li>
+      <span class="step">Test with an example</span>
+      <p>Build and run the basic example B1, as described in <a href="#b1">the next section</a>. If it runs, your Geant4 installation works.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="b1">
+  <h2>Checking the examples: B1</h2>
+  <p><span class="newthought">Geant4 comes</span> with many examples in <code>src/examples</code>, from <code>basic</code> to <code>advanced</code>. The simplest, <code>B1</code>, fires 6&nbsp;MeV gamma rays into a box of water containing two shapes made of tissue and bone, and calculates the radiation dose deposited in one of them. Each example is a small program of its own that you build against your Geant4 installation, using the same <code>cmake</code> and <code>make</code> steps.</p>
+
+  <h3>1. Set up Geant4 in this terminal</h3>
+  <p>Skip this if you made the setup <a href="#permanent">permanent</a>:</p>
+<pre><span class="p">$ </span>source ~/software/geant4/install/bin/geant4.sh</pre>
+
+  <h3>2. Copy the example to your own folder</h3>
+  <p><label for="mn-copy" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-copy" class="margin-toggle"><span class="marginnote">Always work on a copy, so the original in <code>src</code> stays untouched and you can start over at any time.</span>Copy it out of the source tree and look at what it contains:</p>
+<pre><span class="p">$ </span>mkdir -p ~/g4work
+<span class="p">$ </span>cp -r ~/software/geant4/src/examples/basic/B1 ~/g4work/
+<span class="p">$ </span>cd ~/g4work/B1
+<span class="p">$ </span>ls
+CMakeLists.txt  exampleB1.cc  exampleB1.in  exampleB1.out  include  init_vis.mac
+README  run1.mac  run2.mac  src  vis.mac</pre>
+  <ul>
+    <li><code>exampleB1.cc</code> &mdash; the <code>main()</code> program.</li>
+    <li><code>src/</code> and <code>include/</code> &mdash; the detector geometry, the particle gun and the dose scoring.</li>
+    <li><code>*.mac</code> &mdash; <em>macro</em> files: lists of Geant4 commands, read when the program runs.</li>
+    <li><code>exampleB1.out</code> &mdash; a reference output to compare with yours.</li>
+  </ul>
+
+  <h3>3. Build it</h3>
+<pre><span class="p">$ </span>mkdir build
+<span class="p">$ </span>cd build
+<span class="p">$ </span>cmake ..
+<span class="p">$ </span>make -j4</pre>
+  <p><label for="mn-macs" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-macs" class="margin-toggle"><span class="marginnote">CMake also copies the <code>.mac</code> files into <code>build</code>, so the program can find them.</span>The build has succeeded when the last line reads <code>[100%] Built target exampleB1</code> and there is a program called <code>exampleB1</code>:</p>
+<pre><span class="p">$ </span>ls exampleB1
+exampleB1</pre>
+
+  <h3>4. Run it interactively</h3>
+<pre><span class="p">$ </span>./exampleB1</pre>
+  <p>A window opens showing the geometry: the water envelope with a cone and a trapezoid inside. At the bottom is a <em>Session</em> box where you type Geant4 commands. Simulate ten events:</p>
+<pre>/run/beamOn 10</pre>
+  <p><label for="mn-tracks" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-tracks" class="margin-toggle"><span class="marginnote">Colours follow the particle&rsquo;s charge: green for neutral (the gammas), red for negative (electrons), blue for positive.</span>The particle tracks are drawn over the detector. Use the mouse to rotate and zoom. To leave, type <code>exit</code> in the session box or close the window.</p>
+
+  <h3>5. Run it in batch mode</h3>
+  <p>For real simulations you do not want graphics. Give the program a macro file, and it runs the commands in it and exits:</p>
+<pre><span class="p">$ </span>./exampleB1 run2.mac &gt; run2.out
+<span class="p">$ </span>grep -A 3 "End of Global Run" run2.out</pre>
+  <p><label for="mn-mac" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-mac" class="margin-toggle"><span class="marginnote">Look inside with <code>cat run2.mac</code>: each <code>/run/beamOn</code> line starts a run, after setting the particle with <code>/gun/particle</code> and its energy with <code>/gun/energy</code>. <code>run1.mac</code> does the same with only a few events, but prints every step of every particle.</span>The output is long, so we save it to a file and pick out the summary printed at the end of each run. It looks like this:</p>
+<pre>--------------------End of Global Run-----------------------
+ The run consists of 1000 gamma of 6 MeV
+ Cumulated dose per run, in scoring volume : 4.1 picoGy  rms = 2.0 picoGy
+------------------------------------------------------------</pre>
+  <p>There is one such summary per run in the macro, and the particle, energy and dose differ from run to run. Your numbers will also differ a little from these and from <code>exampleB1.out</code>, because the simulation uses random numbers. If you get output like this, both the Geant4 libraries and its physics data are working.</p>
+
+  <h3>If B1 does not work</h3>
+  <ul>
+    <li><strong><code>Could not find a package configuration file provided by "Geant4"</code></strong> during <code>cmake ..</code>: Geant4 is not set up in this terminal. Run step 1, empty <code>build</code> and try again.</li>
+    <li><strong>An exception mentioning <code>G4ENSDFSTATEDATA</code> or another <code>G4&hellip;DATA</code> variable</strong> when running: the physics data is missing. Check that Geant4 was configured with <code>-DGEANT4_INSTALL_DATA=ON</code> and that <code>geant4.sh</code> has been sourced.</li>
+    <li><strong>The program runs but no window opens</strong>, only a text prompt <code>Idle&gt;</code>: Geant4 was built without Qt. Install <code>qtbase5-dev</code>, reconfigure Geant4 with <code>-DGEANT4_USE_QT=ON</code>, and rebuild. Meanwhile batch mode still works; type <code>exit</code> to quit.</li>
+    <li><strong><code>error while loading shared libraries: libG4&hellip;.so</code></strong>: as above, <code>geant4.sh</code> has not been sourced in this terminal.</li>
+  </ul>
+</section>
+
+<section id="summary">
+  <h2>The whole recipe</h2>
+<pre><span class="p">$ </span>mkdir -p ~/software/geant4 && cd ~/software/geant4
+<span class="p">$ </span>mkdir src build install
+<span class="p">$ </span>tar -xzf geant4-v11.2.2.tar.gz -C src --strip-components=1
+<span class="p">$ </span>cd build
+<span class="p">$ </span>cmake ../src -DCMAKE_INSTALL_PREFIX=$HOME/software/geant4/install
+<span class="p">$ </span>make -j4
+<span class="p">$ </span>make install
+<span class="p">$ </span>source ../install/bin/geant4.sh</pre>
+  <p><em>Download, configure, compile, install, set up.</em> Nearly every package you will meet in particle physics is built this way.</p>
+</section>
+
+<section id="downloads">
+  <p><a href="../serb-2027/" download>Download CMS model (for EHEP-2027)</a></p>
+</section>
+
+<hr>
+<footer>
+  <a href="cmake.html">Building (particle physics) software</a> &middot; <a href="root.html">Building ROOT</a><br>
+  &copy; 2026 Deepak Samuel &middot; Department of Physics, Central University of Karnataka.<br>
+  Typography after Edward Tufte; set in ET Book.
+</footer>
+
+</article>
+</body>
+</html>

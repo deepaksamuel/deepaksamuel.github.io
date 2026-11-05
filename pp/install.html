@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing Particle Physics Software</title>
+<meta name="description" content="Getting started with installing particle physics software: the Linux terminal, CMake, ROOT, Geant4 and setting up VS Code on Linux. Programming for Physicists, Deepak Samuel.">
+<style>
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff");font-weight:normal;font-style:italic;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff");font-weight:bold;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book-roman-old-style";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+
+:root{--bg:#fffff8;--fg:#111;--muted:#555;--rule:#ccc;--code-bg:#f4f1e4}
+@media (prefers-color-scheme:dark){:root{--bg:#151515;--fg:#ddd;--muted:#999;--rule:#444;--code-bg:#222}}
+
+html{font-size:15px}
+body{width:87.5%;max-width:1400px;margin:0 auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background:var(--bg);color:var(--fg)}
+h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1}
+h2{font-style:italic;font-weight:400;margin-top:3rem;margin-bottom:0;font-size:2.2rem;line-height:1}
+h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:0;line-height:1}
+p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1.2}
+article{padding:2rem 0 5rem}
+section{padding-top:1rem;padding-bottom:1rem}
+p,ol,ul,dl{font-size:1.4rem;line-height:2rem}
+p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline}
+section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back{width:55%}
+section>ol,section>ul{-webkit-padding-start:5%;padding-left:5%}
+li:not(:first-child){margin-top:.25rem}
+
+a:link,a:visited{color:inherit;text-underline-offset:.1em;text-decoration-thickness:.05em}
+.smallcaps{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase}
+.newthought{font-variant:small-caps;font-size:1.2em}
+.muted{color:var(--muted)}
+hr{border:0;border-top:1px solid var(--rule);width:55%;margin:3rem 0 0}
+.back{font-size:1.2rem;font-style:italic;margin-top:2rem}
+.back .current{color:var(--muted)}
+
+/* Code */
+code,pre,kbd{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}
+code,kbd{font-size:1.1rem}
+kbd{border:1px solid var(--rule);border-radius:3px;padding:0 .3rem}
+pre{font-size:1.05rem;line-height:1.5;background:var(--code-bg);padding:.8rem 1rem;margin:1rem 0;overflow-x:auto;box-sizing:border-box}
+pre .c{color:var(--muted);font-style:italic}
+pre .p{color:var(--muted);user-select:none}
+li pre{width:100%}
+
+/* Numbered steps */
+ol.steps{list-style:none;counter-reset:step;padding-left:0;-webkit-padding-start:0}
+ol.steps>li{counter-increment:step;margin-top:2.2rem}
+ol.steps>li>.step{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase;font-size:1.5rem}
+ol.steps>li>.step:before{content:"Step " counter(step) ". ";font-style:italic;text-transform:none;font-variant:normal;letter-spacing:0}
+ol.steps>li p{margin:.4rem 0}
+
+/* Tables */
+table{border-collapse:collapse;font-size:1.2rem;line-height:1.6rem;margin:1rem 0}
+th{font-weight:400;font-style:italic;text-align:left;border-bottom:1px solid var(--rule);padding:.3rem .8rem .3rem 0}
+td{vertical-align:top;padding:.4rem .8rem .4rem 0;border-bottom:1px solid var(--rule)}
+td code{font-size:1rem}
+
+/* Margin notes */
+.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:.3rem;margin-bottom:0;font-size:1.1rem;line-height:1.3;position:relative}
+.marginnote code{font-size:.95rem}
+input.margin-toggle{display:none}
+label.margin-toggle{display:none}
+
+@media (max-width:760px){
+  body{width:84%;padding-left:8%;padding-right:8%}
+  hr,section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back,footer{width:100%}
+  h1{font-size:2.6rem}
+  .marginnote{display:none}
+  .margin-toggle:checked+.marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;position:relative}
+  label{cursor:pointer}
+  label.margin-toggle{display:inline}
+}
+
+footer{width:55%;font-size:1.1rem;color:var(--muted);margin-top:4rem;padding-bottom:3rem;line-height:1.5}
+</style>
+</head>
+<body>
+<article>
+
+<p class="back"><span class="current">Getting started</span> &middot; <a href="linux.html">Linux terminal</a> &middot; <a href="cmake.html">Building software</a> &middot; <a href="root.html">Building ROOT</a> &middot; <a href="geant.html">Building Geant4</a></p>
+
+<h1>Getting started with installing particle physics software</h1>
+<!-- <p class="subtitle">A reading order for the course pages, and setting up an editor</p> -->
+
+<section id="intro">
+  <p><span class="newthought">Most of the software</span> we use in particle physics&mdash;ROOT for analysis, Geant4 for simulation&mdash;is installed by building it from source code in a Linux terminal. The pages below take you there one step at a time. Work through them in order: each one assumes you are comfortable with the one before.</p>
+</section>
+
+<section id="path">
+  <!-- <h2>The pages, in order</h2> -->
+  <ol class="steps">
+    <li>
+      <span class="step">Learn the terminal</span>
+      <p><a href="linux.html">The Linux terminal</a> &mdash; moving between directories, copying and deleting files, reading files with <code>cat</code> and <code>head</code>, editing with <code>vi</code>, and what the <code>.bashrc</code> file does.</p>
+    </li>
+    <li>
+      <span class="step">Understand how software is built</span>
+      <p><a href="cmake.html">Building (particle physics) software</a> &mdash; what source code and compiling are, what CMake and <code>CMakeLists.txt</code> do, the <code>src</code>, <code>build</code> and <code>install</code> folders, <code>make -j4</code>, and the errors you are likely to meet.</p>
+    </li>
+    <li>
+      <span class="step">Build ROOT</span>
+      <p><a href="root.html">Building ROOT</a> &mdash; step-by-step instructions for CERN&rsquo;s data analysis framework, ending with your first histogram in C++ and in Python.</p>
+    </li>
+    <li>
+      <span class="step">Build Geant4</span>
+      <p><a href="geant.html">Building Geant4</a> &mdash; step-by-step instructions for the detector simulation toolkit, and how to build and run the basic example B1.</p>
+    </li>
+    <li>
+      <span class="step">Install an editor</span>
+      <p><a href="#vscode">Visual Studio Code</a>, below &mdash; a comfortable place to read and edit the code of ROOT macros and Geant4 examples.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="vscode">
+  <h2>Installing Visual Studio Code</h2>
+  <p><label for="mn-vi" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-vi" class="margin-toggle"><span class="marginnote"><code>vi</code> is still worth knowing: it is the editor you will have on a remote cluster where nothing else is installed.</span><code>vi</code> is fine for small changes, but for a Geant4 application spread over dozens of files you will want a full editor. <em>Visual Studio Code</em> (VS Code) is free, runs on Linux, and understands C++, Python and CMake.</p>
+
+  <ol class="steps">
+    <li>
+      <span class="step">Install VS Code</span>
+      <p><label for="mn-deb" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-deb" class="margin-toggle"><span class="marginnote">A <code>.deb</code> file is a software package for Debian-based systems such as Ubuntu. On Fedora or Red Hat, download the <code>.rpm</code> instead.</span>On Ubuntu, the easiest way is the <em>App Center</em> (called <em>Ubuntu Software</em> on older versions): open it from the applications menu, search for <strong>Visual Studio Code</strong>, and click <strong>Install</strong>.</p>
+      <p>Alternatively, go to <a href="https://code.visualstudio.com/download">code.visualstudio.com/download</a> and click the <strong>.deb</strong> button for Debian and Ubuntu. Open your <em>Downloads</em> folder in the file manager, right-click the downloaded file, choose <strong>Open With&hellip; App Center</strong> (or <em>Software Install</em>), and click <strong>Install</strong>. You will be asked for your password.</p>
+    </li>
+
+    <li>
+      <span class="step">Start it</span>
+      <p>Open the applications menu and search for <strong>Visual Studio Code</strong>. Right-click its icon in the dock and choose <strong>Pin to Dash</strong> (or <em>Add to Favourites</em>) to keep it there. To see which version you have, use <strong>Help &rarr; About</strong>.</p>
+    </li>
+
+    <li>
+      <span class="step">Install the extensions we use</span>
+      <p><label for="mn-ext" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-ext" class="margin-toggle"><span class="marginnote">Many extensions have similar names. Check that the publisher is <em>Microsoft</em>, shown with a blue tick, before installing.</span>Extensions add support for particular languages and tools. To install one:</p>
+      <ul>
+        <li>Click the <strong>Extensions</strong> icon on the bar at the far left of the window&mdash;four small squares, one of them detached&mdash;or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>.</li>
+        <li>Type the extension&rsquo;s name in the search box at the top of the panel.</li>
+        <li>Click the right entry in the list to see its description page, then click the blue <strong>Install</strong> button.</li>
+        <li>When it has finished, the button changes to a gear icon, and the extension appears under <strong>Installed</strong> in the panel.</li>
+      </ul>
+      <p>Install these three, all published by Microsoft:</p>
+      <table>
+        <thead><tr><th>Search for</th><th>What it gives you</th></tr></thead>
+        <tbody>
+          <tr><td><strong>C/C++</strong></td><td>Colouring, auto-completion and error checking for C++ code such as Geant4 and ROOT macros</td></tr>
+          <tr><td><strong>CMake Tools</strong></td><td>Understands <code>CMakeLists.txt</code>, and can configure and build a project from buttons in the status bar</td></tr>
+          <tr><td><strong>Python</strong></td><td>Support for Python scripts, including ones using <code>import ROOT</code></td></tr>
+        </tbody>
+      </table>
+      <p>VS Code also suggests extensions on its own: when you first open a <code>.cc</code> or <code>.py</code> file, a message at the bottom right offers to install the recommended one. Clicking <strong>Install</strong> there does the same thing.</p>
+    </li>
+
+    <li>
+      <span class="step">Open a project folder</span>
+      <p>VS Code works best when you open a whole folder rather than single files. Choose <strong>File &rarr; Open Folder&hellip;</strong>, browse to the folder&mdash;for example the Geant4 B1 example in <code>g4work/B1</code> in your home folder&mdash;and click <strong>Open</strong>. The files appear in the <strong>Explorer</strong> panel on the left; click one to edit it.</p>
+      <p>The first time, VS Code asks whether you trust the authors of the files in this folder; answer <em>Yes</em> for your own work.</p>
+    </li>
+
+    <li>
+      <span class="step">Use the built-in terminal</span>
+      <p><label for="mn-env" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-env" class="margin-toggle"><span class="marginnote">This terminal reads your <code>.bashrc</code> like any other, so if you made the ROOT or Geant4 setup <a href="linux.html#bashrc">permanent</a>, it is ready to use.</span>Choose <strong>Terminal &rarr; New Terminal</strong> (or press <kbd>Ctrl</kbd>+<kbd>`</kbd>, the key below <kbd>Esc</kbd>). A terminal opens below the editor, already in your project folder, so you can build and run the code while you edit it.</p>
+    </li>
+  </ol>
+
+  <h3>If VS Code cannot find ROOT or Geant4 headers</h3>
+  <p>VS Code may underline lines such as <code>#include "G4RunManager.hh"</code> in red, even though the program compiles. The editor simply does not know where the headers are. The easiest fix is to let CMake tell it: when the CMake Tools extension asks to configure the project, click <strong>Yes</strong>. For this to work, ROOT or Geant4 must be set up in your <code>.bashrc</code> (see the optional step in the <a href="root.html#permanent">ROOT</a> and <a href="geant.html#permanent">Geant4</a> guides); restart VS Code after changing it.</p>
+</section>
+
+<hr>
+<footer>
+  <a href="linux.html">Linux terminal</a> &middot; <a href="cmake.html">Building software</a> &middot; <a href="root.html">Building ROOT</a> &middot; <a href="geant.html">Building Geant4</a><br>
+  &copy; 2026 Deepak Samuel &middot; Department of Physics, Central University of Karnataka.<br>
+  Typography after Edward Tufte; set in ET Book.
+</footer>
+
+</article>
+</body>
+</html>

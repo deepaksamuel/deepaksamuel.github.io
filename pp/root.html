@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building ROOT</title>
+<meta name="description" content="Step-by-step instructions for building CERN ROOT from source with CMake and make, using src, build and install folders. Programming for Physicists, Deepak Samuel.">
+<style>
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff");font-weight:normal;font-style:italic;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff");font-weight:bold;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book-roman-old-style";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+
+:root{--bg:#fffff8;--fg:#111;--muted:#555;--rule:#ccc;--code-bg:#f4f1e4}
+@media (prefers-color-scheme:dark){:root{--bg:#151515;--fg:#ddd;--muted:#999;--rule:#444;--code-bg:#222}}
+
+html{font-size:15px}
+body{width:87.5%;max-width:1400px;margin:0 auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background:var(--bg);color:var(--fg)}
+h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1}
+h2{font-style:italic;font-weight:400;margin-top:3rem;margin-bottom:0;font-size:2.2rem;line-height:1}
+h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:0;line-height:1}
+p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1.2}
+article{padding:2rem 0 5rem}
+section{padding-top:1rem;padding-bottom:1rem}
+p,ol,ul,dl{font-size:1.4rem;line-height:2rem}
+p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline}
+section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back{width:55%}
+section>ol,section>ul{-webkit-padding-start:5%;padding-left:5%}
+li:not(:first-child){margin-top:.25rem}
+
+a:link,a:visited{color:inherit;text-underline-offset:.1em;text-decoration-thickness:.05em}
+.smallcaps{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase}
+.newthought{font-variant:small-caps;font-size:1.2em}
+.muted{color:var(--muted)}
+hr{border:0;border-top:1px solid var(--rule);width:55%;margin:3rem 0 0}
+.back{font-size:1.2rem;font-style:italic;margin-top:2rem}
+.back .current{color:var(--muted)}
+
+/* Code */
+code,pre,kbd{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}
+code,kbd{font-size:1.1rem}
+kbd{border:1px solid var(--rule);border-radius:3px;padding:0 .3rem}
+pre{font-size:1.05rem;line-height:1.5;background:var(--code-bg);padding:.8rem 1rem;margin:1rem 0;overflow-x:auto;box-sizing:border-box}
+pre .c{color:var(--muted);font-style:italic}
+pre .p{color:var(--muted);user-select:none}
+li pre{width:100%}
+
+/* Numbered steps */
+ol.steps{list-style:none;counter-reset:step;padding-left:0;-webkit-padding-start:0}
+ol.steps>li{counter-increment:step;margin-top:2.2rem}
+ol.steps>li>.step{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase;font-size:1.5rem}
+ol.steps>li>.step:before{content:"Step " counter(step) ". ";font-style:italic;text-transform:none;font-variant:normal;letter-spacing:0}
+ol.steps>li p{margin:.4rem 0}
+
+/* Tables */
+table{border-collapse:collapse;font-size:1.2rem;line-height:1.6rem;margin:1rem 0}
+th{font-weight:400;font-style:italic;text-align:left;border-bottom:1px solid var(--rule);padding:.3rem .8rem .3rem 0}
+td{vertical-align:top;padding:.4rem .8rem .4rem 0;border-bottom:1px solid var(--rule)}
+td code{font-size:1rem}
+
+/* Margin notes */
+.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:.3rem;margin-bottom:0;font-size:1.1rem;line-height:1.3;position:relative}
+.marginnote code{font-size:.95rem}
+input.margin-toggle{display:none}
+label.margin-toggle{display:none}
+
+@media (max-width:760px){
+  body{width:84%;padding-left:8%;padding-right:8%}
+  hr,section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back,footer{width:100%}
+  h1{font-size:2.6rem}
+  .marginnote{display:none}
+  .margin-toggle:checked+.marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;position:relative}
+  label{cursor:pointer}
+  label.margin-toggle{display:inline}
+}
+
+footer{width:55%;font-size:1.1rem;color:var(--muted);margin-top:4rem;padding-bottom:3rem;line-height:1.5}
+</style>
+</head>
+<body>
+<article>
+
+<p class="back"><a href="install.html">Getting started</a> &middot; <a href="linux.html">Linux terminal</a> &middot; <a href="cmake.html">Building software</a> &middot; <span class="current">Building ROOT</span> &middot; <a href="geant.html">Building Geant4</a></p>
+
+<h1>Building ROOT</h1>
+<p class="subtitle">Step-by-step instructions, from source code to your first histogram</p>
+
+<section id="intro">
+  <p><span class="newthought">ROOT</span> is CERN&rsquo;s framework for storing, analysing and plotting particle physics data, used from C++ and from Python. These steps build it from source. If the words <em>source code</em>, <em>CMake</em>, <code>CMakeLists.txt</code> or <code>make -j4</code> are new to you, read <a href="cmake.html">Building (particle physics) software</a> first.</p>
+</section>
+
+<section id="steps">
+  <h2>Step by step</h2>
+  <p>Replace the version number with the current one from <a href="https://root.cern/install/all_releases/">root.cern/install/all_releases</a>. Do each step in order, and check that it succeeded before moving on.</p>
+
+  <ol class="steps">
+    <li>
+      <span class="step">Install the tools and required libraries</span>
+      <p><label for="mn-sudo" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-sudo" class="margin-toggle"><span class="marginnote"><code>sudo</code> runs a command as the administrator and asks for your password. <code>-dev</code> packages contain the headers needed to <em>build</em> against a library, not just run it. The full list is at <a href="https://root.cern/install/dependencies/">root.cern/install/dependencies</a>.</span>ROOT needs a compiler, CMake, the X11 graphics libraries and Python. On Ubuntu or Debian:</p>
+<pre><span class="p">$ </span>sudo apt update
+<span class="p">$ </span>sudo apt install binutils cmake dpkg-dev g++ gcc git wget \
+      libssl-dev libx11-dev libxext-dev libxft-dev libxpm-dev \
+      python3 python3-dev python3-numpy libtbb-dev libvdt-dev libgif-dev</pre>
+      <p>These optional packages enable more features (OpenGL 3D viewer, fitting with GSL, FFTs, XML):</p>
+<pre><span class="p">$ </span>sudo apt install libglu1-mesa-dev libglew-dev libftgl-dev \
+      libgsl-dev libfftw3-dev libxml2-dev libpcre3-dev gfortran</pre>
+    </li>
+
+    <li>
+      <span class="step">Create the three folders</span>
+<pre><span class="p">$ </span>mkdir -p ~/software/root
+<span class="p">$ </span>cd ~/software/root
+<span class="p">$ </span>mkdir src build install
+<span class="p">$ </span>ls
+build  install  src</pre>
+    </li>
+
+    <li>
+      <span class="step">Download the source code into src</span>
+      <p>Download the source tarball and unpack it straight into <code>src</code>:</p>
+<pre><span class="p">$ </span>wget https://root.cern/download/root_v6.32.08.source.tar.gz
+<span class="p">$ </span>tar -xzf root_v6.32.08.source.tar.gz -C src --strip-components=1</pre>
+      <p><label for="mn-strip" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-strip" class="margin-toggle"><span class="marginnote"><code>--strip-components=1</code> drops the archive&rsquo;s own top folder (<code>root-6.32.08/</code>) so the files land directly in <code>src</code>. Alternatively, clone with git: <code>git clone --branch v6-32-08 --depth 1 https://github.com/root-project/root.git src</code>.</span>Check that <code>CMakeLists.txt</code> is there:</p>
+<pre><span class="p">$ </span>ls src/CMakeLists.txt
+src/CMakeLists.txt</pre>
+    </li>
+
+    <li>
+      <span class="step">Go into the build folder</span>
+<pre><span class="p">$ </span>cd build</pre>
+      <p>Every remaining command, until the last step, is run from here.</p>
+    </li>
+
+    <li>
+      <span class="step">Configure with CMake</span>
+      <p><label for="mn-conda" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-conda" class="margin-toggle"><span class="marginnote">If you use Anaconda or Miniconda, run <code>conda deactivate</code> first. Otherwise CMake may pick up conda&rsquo;s Python and libraries, and the build fails in confusing ways.</span>Tell CMake where the source is (<code>../src</code>) and where to install:</p>
+<pre><span class="p">$ </span>cmake ../src \
+      -DCMAKE_INSTALL_PREFIX=$HOME/software/root/install</pre>
+      <p>ROOT checks for many optional features and prints a summary of what is enabled. Success ends with:</p>
+<pre>-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/student/software/root/build</pre>
+      <p>Scroll up through the output and check that <code>pyroot</code> (Python support) is enabled; if it is not, <code>python3-dev</code> is missing. If you see <code>CMake Error</code>, read it carefully, fix the cause (see <a href="cmake.html#errors">common errors</a>) and run the same <code>cmake</code> command again.</p>
+    </li>
+
+    <li>
+      <span class="step">Compile with make</span>
+<pre><span class="p">$ </span>make -j4</pre>
+      <p><label for="mn-time" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-time" class="margin-toggle"><span class="marginnote">ROOT builds its own copy of the LLVM/Clang compiler for its C++ interpreter, Cling. This part is slow and memory-hungry; if the build is <code>Killed</code>, use <code>make -j2</code>.</span>This is the long step, typically an hour or more at <code>-j4</code>. Progress is shown as a percentage. It has succeeded when it reaches <code>[100%]</code> with no line containing <code>Error</code>.</p>
+    </li>
+
+    <li>
+      <span class="step">Install</span>
+<pre><span class="p">$ </span>make install</pre>
+      <p>This copies the finished libraries, headers and programs into the <code>install</code> folder. Check:</p>
+<pre><span class="p">$ </span>ls ../install
+bin  cmake  config  etc  fonts  icons  include  lib  macros  man  README  tutorials  ...</pre>
+    </li>
+
+    <li>
+      <span class="step">Set up the environment</span>
+      <p><label for="mn-bashrc" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-bashrc" class="margin-toggle"><span class="marginnote">This must be done in every new terminal. To make it automatic, see the <a href="#permanent">next step</a>.</span>Your shell does not yet know where ROOT lives. ROOT provides a script that sets <code>PATH</code>, <code>LD_LIBRARY_PATH</code> and <code>PYTHONPATH</code>:</p>
+<pre><span class="p">$ </span>source ~/software/root/install/bin/thisroot.sh
+<span class="p">$ </span>root-config --version
+6.32.08</pre>
+    </li>
+
+    <li id="permanent">
+      <span class="step">Make the setup permanent (optional)</span>
+      <p><label for="mn-perm" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-perm" class="margin-toggle"><span class="marginnote">Use <code>&gt;&gt;</code> (append), never a single <code>&gt;</code>, which would erase everything else in your <code>.bashrc</code>. Run the command only once.</span>Instead of typing the <code>source</code> command in every new terminal, you can add it to your <code>~/.bashrc</code>, a file that the terminal runs each time it starts (see <a href="linux.html#bashrc">what .bashrc does</a>). Append the line with:</p>
+<pre><span class="p">$ </span>echo 'source ~/software/root/install/bin/thisroot.sh' &gt;&gt; ~/.bashrc</pre>
+      <p>Check that it was added as the last line:</p>
+<pre><span class="p">$ </span>tail -n 1 ~/.bashrc
+source ~/software/root/install/bin/thisroot.sh</pre>
+      <p>Now open a <em>new</em> terminal (or run <code>source ~/.bashrc</code>) and check that ROOT is found without any setup:</p>
+<pre><span class="p">$ </span>root-config --version
+6.32.08</pre>
+      <p>Skip this step if you keep several versions of ROOT, or use conda, since an automatic setup can then pick the wrong one. To undo this, open <code>~/.bashrc</code> in <code>vi</code> and delete the line.</p>
+    </li>
+
+    <li>
+      <span class="step">Test ROOT</span>
+      <p>Start ROOT and draw a histogram of 10&thinsp;000 Gaussian random numbers:</p>
+<pre><span class="p">$ </span>root
+root [0] TH1F h("h", "My first histogram", 100, -4, 4);
+root [1] h.FillRandom("gaus", 10000);
+root [2] h.Draw();
+root [3] .q</pre>
+      <p><label for="mn-dotq" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-dotq" class="margin-toggle"><span class="marginnote">Commands starting with a dot are instructions to ROOT itself: <code>.q</code> quits, <code>.x macro.C</code> runs a macro.</span>A window with a bell-shaped histogram should appear. Then check that Python can use ROOT:</p>
+<pre><span class="p">$ </span>python3 -c "import ROOT; print(ROOT.gROOT.GetVersion())"
+6.32/08</pre>
+      <p>If both work, your build is complete. The <code>tutorials</code> folder in <code>install</code> has hundreds of examples to try.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="root-errors">
+  <h2>Problems specific to ROOT</h2>
+  <p>The general errors in <a href="cmake.html#errors">Building (particle physics) software</a> all apply. In addition:</p>
+  <ul>
+    <li><strong><code>import ROOT</code> fails with <code>ModuleNotFoundError</code>.</strong> Either you have not sourced <code>thisroot.sh</code> in this terminal, or ROOT was built without Python. Install <code>python3-dev python3-numpy</code>, empty the <code>build</code> folder and configure again.</li>
+    <li><strong><code>import ROOT</code> works in one Python but not another.</strong> ROOT only works with the Python it was built against. If you switched on conda after building, run <code>conda deactivate</code>.</li>
+    <li><strong>CMake says a newer version of CMake is required.</strong> Recent ROOT releases need a recent CMake. Install it with <code>pip install cmake</code>, or use an older ROOT release.</li>
+    <li><strong>No graphics window appears.</strong> On a remote machine, connect with <code>ssh -X</code>. Under WSL on Windows, use a recent WSL with graphics support.</li>
+    <li><strong>The build uses all the memory and the computer freezes.</strong> Use fewer parallel jobs: <code>make -j2</code>.</li>
+  </ul>
+</section>
+
+<section id="summary">
+  <h2>The whole recipe</h2>
+<pre><span class="p">$ </span>mkdir -p ~/software/root && cd ~/software/root
+<span class="p">$ </span>mkdir src build install
+<span class="p">$ </span>tar -xzf root_v6.32.08.source.tar.gz -C src --strip-components=1
+<span class="p">$ </span>cd build
+<span class="p">$ </span>cmake ../src -DCMAKE_INSTALL_PREFIX=$HOME/software/root/install
+<span class="p">$ </span>make -j4
+<span class="p">$ </span>make install
+<span class="p">$ </span>source ../install/bin/thisroot.sh</pre>
+  <p><em>Download, configure, compile, install, set up</em>&mdash;exactly as for <a href="geant.html">Geant4</a>.</p>
+</section>
+
+<hr>
+<footer>
+  <a href="cmake.html">Building (particle physics) software</a> &middot; <a href="geant.html">Building Geant4</a><br>
+  &copy; 2026 Deepak Samuel &middot; Department of Physics, Central University of Karnataka.<br>
+  Typography after Edward Tufte; set in ET Book.
+</footer>
+
+</article>
+</body>
+</html>

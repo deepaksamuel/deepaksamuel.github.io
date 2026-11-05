@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building (Particle Physics) Software</title>
+<meta name="description" content="How to build particle physics software such as Geant4 and ROOT from source code with CMake and make: src, build and install folders, common errors and how to fix them. Programming for Physicists, Deepak Samuel.">
+<style>
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff");font-weight:normal;font-style:italic;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff");font-weight:bold;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book-roman-old-style";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+
+:root{--bg:#fffff8;--fg:#111;--muted:#555;--rule:#ccc;--code-bg:#f4f1e4}
+@media (prefers-color-scheme:dark){:root{--bg:#151515;--fg:#ddd;--muted:#999;--rule:#444;--code-bg:#222}}
+
+html{font-size:15px}
+body{width:87.5%;max-width:1400px;margin:0 auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background:var(--bg);color:var(--fg)}
+h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1}
+h2{font-style:italic;font-weight:400;margin-top:3rem;margin-bottom:0;font-size:2.2rem;line-height:1}
+h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:0;line-height:1}
+p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1.2}
+article{padding:2rem 0 5rem}
+section{padding-top:1rem;padding-bottom:1rem}
+p,ol,ul,dl{font-size:1.4rem;line-height:2rem}
+p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline}
+section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back{width:55%}
+section>ol,section>ul{-webkit-padding-start:5%;padding-left:5%}
+li:not(:first-child){margin-top:.25rem}
+
+a:link,a:visited{color:inherit;text-underline-offset:.1em;text-decoration-thickness:.05em}
+.smallcaps{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase}
+.newthought{font-variant:small-caps;font-size:1.2em}
+.muted{color:var(--muted)}
+hr{border:0;border-top:1px solid var(--rule);width:55%;margin:3rem 0 0}
+.back{font-size:1.2rem;font-style:italic;margin-top:2rem}
+.back .current{color:var(--muted)}
+
+/* Code */
+code,pre,kbd{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}
+code,kbd{font-size:1.1rem}
+kbd{border:1px solid var(--rule);border-radius:3px;padding:0 .3rem}
+pre{font-size:1.05rem;line-height:1.5;background:var(--code-bg);padding:.8rem 1rem;margin:1rem 0;overflow-x:auto;box-sizing:border-box}
+pre .c{color:var(--muted);font-style:italic}
+pre .p{color:var(--muted);user-select:none}
+li pre{width:100%}
+
+/* Numbered steps */
+ol.steps{list-style:none;counter-reset:step;padding-left:0;-webkit-padding-start:0}
+ol.steps>li{counter-increment:step;margin-top:2.2rem}
+ol.steps>li>.step{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase;font-size:1.5rem}
+ol.steps>li>.step:before{content:"Step " counter(step) ". ";font-style:italic;text-transform:none;font-variant:normal;letter-spacing:0}
+ol.steps>li p{margin:.4rem 0}
+
+/* Tables */
+table{border-collapse:collapse;font-size:1.2rem;line-height:1.6rem;margin:1rem 0}
+th{font-weight:400;font-style:italic;text-align:left;border-bottom:1px solid var(--rule);padding:.3rem .8rem .3rem 0}
+td{vertical-align:top;padding:.4rem .8rem .4rem 0;border-bottom:1px solid var(--rule)}
+td code{font-size:1rem}
+
+/* Margin notes */
+.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:.3rem;margin-bottom:0;font-size:1.1rem;line-height:1.3;position:relative}
+.marginnote code{font-size:.95rem}
+input.margin-toggle{display:none}
+label.margin-toggle{display:none}
+
+@media (max-width:760px){
+  body{width:84%;padding-left:8%;padding-right:8%}
+  hr,section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back,footer{width:100%}
+  h1{font-size:2.6rem}
+  .marginnote{display:none}
+  .margin-toggle:checked+.marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;position:relative}
+  label{cursor:pointer}
+  label.margin-toggle{display:inline}
+}
+
+footer{width:55%;font-size:1.1rem;color:var(--muted);margin-top:4rem;padding-bottom:3rem;line-height:1.5}
+</style>
+</head>
+<body>
+<article>
+
+<p class="back"><a href="install.html">Getting started</a> &middot; <a href="linux.html">Linux terminal</a> &middot; <span class="current">Building software</span> &middot; <a href="root.html">Building ROOT</a> &middot; <a href="geant.html">Building Geant4</a></p>
+
+<h1>Building (Particle Physics) Software</h1>
+<p class="subtitle">From source code to a working program, with CMake and make</p>
+
+<section id="source">
+  <h2>What is source code?</h2>
+  <p><span class="newthought">A program</span> begins life as plain text files written by people, in a language such as C++ or Python. This text is the <em>source code</em>. A file like <code>DetectorConstruction.cc</code> in Geant4 is source code: you can open it in <code>vi</code> and read it.</p>
+  <p>The computer cannot run C++ text directly. It runs <em>machine code</em>&mdash;binary instructions for its processor. Turning one into the other is called <em>compiling</em>, and the whole process of producing usable programs and libraries from source is called <em>building</em>.</p>
+
+  <h3>Where is source code available?</h3>
+  <p><label for="mn-open" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-open" class="margin-toggle"><span class="marginnote">Almost all particle physics software is open source: anyone may download, read, modify and build it.</span>Particle physics packages publish their source openly:</p>
+  <ul>
+    <li><strong>Geant4</strong> (detector simulation) &mdash; <a href="https://geant4.web.cern.ch/download/">geant4.web.cern.ch/download</a>, and on CERN&rsquo;s GitLab.</li>
+    <li><strong>ROOT</strong> (data analysis) &mdash; <a href="https://root.cern/install/">root.cern/install</a>, and <a href="https://github.com/root-project/root">github.com/root-project/root</a>.</li>
+    <li><strong>CLHEP</strong>, <strong>Pythia</strong>, <strong>HepMC</strong>, <strong>Garfield++</strong> and most others &mdash; on their project web pages, GitHub or GitLab.</li>
+  </ul>
+  <p>Source code is usually distributed in one of two ways: as a compressed archive (a <em>tarball</em>, ending in <code>.tar.gz</code>), or as a <em>git repository</em> that you <em>clone</em>.</p>
+</section>
+
+<section id="compile">
+  <h2>What compiling means</h2>
+  <p>A compiler such as <code>g++</code> reads source files and produces machine code. For a single file it is one command:</p>
+<pre><span class="p">$ </span>g++ hello.cc -o hello   <span class="c"># compile hello.cc into a program called hello</span>
+<span class="p">$ </span>./hello                 <span class="c"># run it</span></pre>
+  <p><label for="mn-link" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-link" class="margin-toggle"><span class="marginnote">A <em>library</em> is compiled code meant to be used by other programs, e.g. <code>libG4run.so</code>. Files ending in <code>.so</code> are shared libraries; <code>.h</code> or <code>.hh</code> files are the <em>headers</em> that describe what a library contains.</span>Real software is far bigger. Geant4 has thousands of source files that must be compiled in the right order, with the right options, and then <em>linked</em> together and with external libraries (for graphics, XML, mathematics&hellip;). Typing all of that by hand is impossible, which is why we use build tools.</p>
+</section>
+
+<section id="cmake">
+  <h2>What CMake does</h2>
+  <p>Building is done in two stages, by two different tools:</p>
+  <ol>
+    <li><strong>CMake</strong> <em>configures</em> the build. It inspects your machine&mdash;which compiler you have, which libraries are installed and where&mdash;checks that everything the software needs is present, and then writes a detailed set of build instructions called a <code>Makefile</code>.</li>
+    <li><strong>make</strong> reads the <code>Makefile</code> and actually runs the compiler on every file, then links the results into libraries and programs.</li>
+  </ol>
+  <p><label for="mn-meta" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-meta" class="margin-toggle"><span class="marginnote">This is why CMake is called a <em>build-system generator</em>: it does not compile anything itself.</span>CMake does not compile anything itself. Think of it as the planner, and <code>make</code> as the worker.</p>
+
+  <h3>What is CMakeLists.txt?</h3>
+  <p>CMake learns what to build from a file called <code>CMakeLists.txt</code>, written by the software&rsquo;s authors and placed at the top of the source code (and often in sub-folders too). It lists the source files, the programs and libraries to create, and the external packages required. A minimal one looks like this:</p>
+<pre>cmake_minimum_required(VERSION 3.16)
+project(Hello CXX)
+
+add_executable(hello hello.cc)            <span class="c"># build program "hello" from hello.cc</span>
+install(TARGETS hello DESTINATION bin)    <span class="c"># where "make install" puts it</span></pre>
+  <p>When you build Geant4 or ROOT you do not write <code>CMakeLists.txt</code>; you only point CMake at the folder that contains it. Its presence is how you know you are in the right place.</p>
+</section>
+
+<section id="folders">
+  <h2>The three folders: src, build, install</h2>
+  <p>In the exercises we always keep three separate folders side by side:</p>
+<pre>~/software/geant4/
+├── src/       <span class="c"># the source code, with CMakeLists.txt at its top</span>
+├── build/     <span class="c"># where CMake and make do their work</span>
+└── install/   <span class="c"># the finished libraries, programs and headers</span></pre>
+  <ul>
+    <li><code>src</code> holds the source code exactly as downloaded. We never edit or build inside it, so it stays clean.</li>
+    <li><code>build</code> is a scratch workspace. CMake writes its <code>Makefile</code> and a file of settings called <code>CMakeCache.txt</code> here, and <code>make</code> fills it with thousands of intermediate files. If something goes badly wrong you can delete <code>build</code> and start again without re-downloading anything.</li>
+    <li><code>install</code> receives the final product when you run <code>make install</code>: folders such as <code>bin</code> (programs), <code>lib</code> (libraries), <code>include</code> (headers) and <code>share</code> (data). This is what you actually use afterwards.</li>
+  </ul>
+  <p><label for="mn-oos" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-oos" class="margin-toggle"><span class="marginnote">Building in a separate folder is called an <em>out-of-source build</em>. Geant4 refuses to build inside its own source folder.</span>Keeping them apart means you can build several versions, or the same version with different options, from one copy of the source.</p>
+</section>
+
+<section id="make-j">
+  <h2>make -j4</h2>
+  <p>By default <code>make</code> compiles one file at a time. Your computer, however, has several processor <em>cores</em>, each able to compile a file on its own. The <code>-j</code> option tells <code>make</code> how many jobs to run in parallel:</p>
+<pre><span class="p">$ </span>nproc      <span class="c"># how many cores do I have?</span>
+8
+<span class="p">$ </span>make -j4   <span class="c"># compile four files at the same time</span></pre>
+  <p><label for="mn-mem" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-mem" class="margin-toggle"><span class="marginnote">If the build stops with <code>Killed signal terminated program cc1plus</code>, the machine ran out of memory. Run <code>make</code> again with a smaller number, e.g. <code>make -j2</code>.</span>On four cores, <code>make -j4</code> builds roughly four times faster; a Geant4 build that takes an hour on one core may take fifteen minutes. Do not exceed the number reported by <code>nproc</code>, and remember that each compile job of large C++ code can need 1&ndash;2&nbsp;GB of memory.</p>
+  <p>If <code>make</code> is interrupted, simply run it again: it only recompiles what is not already done.</p>
+</section>
+
+<section id="guides">
+  <h2>Step-by-step guides</h2>
+  <p>With these ideas in place, follow one of the step-by-step guides. Both use the same <code>src</code>, <code>build</code> and <code>install</code> layout.</p>
+  <ul>
+    <li><a href="geant.html">Building Geant4</a> &mdash; the detector simulation toolkit.</li>
+    <li><a href="root.html">Building ROOT</a> &mdash; the data analysis framework.</li>
+  </ul>
+  <p>When something goes wrong, come back to the list of errors below.</p>
+</section>
+
+<section id="errors">
+  <h2>Errors to expect, and how to fix them</h2>
+  <p><label for="mn-first" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-first" class="margin-toggle"><span class="marginnote">When <code>make</code> fails, the useful message is the <em>first</em> error, often well above the last lines. Scroll up, or run <code>make</code> (without <code>-j</code>) so the output is not interleaved.</span>Errors are normal, especially the first time on a new machine. Most of them mean that something the software needs is not installed. Read the message: it usually names what is missing.</p>
+
+  <h3>Missing libraries during cmake</h3>
+  <p>The most common case. CMake looks for a library, does not find it, and stops:</p>
+<pre>CMake Error at .../FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find X11 (missing: X11_Xmu_INCLUDE_PATH X11_Xmu_LIB)</pre>
+  <p>Here the <em>Xmu</em> library (part of the X11 graphics system) is missing. Install its development package and run <code>cmake</code> again:</p>
+<pre><span class="p">$ </span>sudo apt install libxmu-dev</pre>
+  <p>Other messages and their usual fix:</p>
+  <table>
+    <thead><tr><th>Message mentions</th><th>Install</th></tr></thead>
+    <tbody>
+      <tr><td><code>X11_Xmu</code>, <code>Xmu</code></td><td><code>sudo apt install libxmu-dev</code></td></tr>
+      <tr><td><code>X11</code>, <code>X11/Xlib.h</code></td><td><code>sudo apt install libx11-dev</code></td></tr>
+      <tr><td><code>Xi</code>, <code>Xext</code>, <code>Xft</code>, <code>Xpm</code></td><td><code>sudo apt install libxi-dev libxext-dev libxft-dev libxpm-dev</code></td></tr>
+      <tr><td><code>OpenGL</code>, <code>GL/gl.h</code></td><td><code>sudo apt install libgl1-mesa-dev</code></td></tr>
+      <tr><td><code>GLU</code>, <code>GL/glu.h</code></td><td><code>sudo apt install libglu1-mesa-dev</code></td></tr>
+      <tr><td><code>Qt5</code>, <code>Qt5Widgets</code></td><td><code>sudo apt install qtbase5-dev</code></td></tr>
+      <tr><td><code>EXPAT</code></td><td><code>sudo apt install libexpat1-dev</code></td></tr>
+      <tr><td><code>XercesC</code> (needed for GDML)</td><td><code>sudo apt install libxerces-c-dev</code></td></tr>
+      <tr><td><code>ZLIB</code></td><td><code>sudo apt install zlib1g-dev</code></td></tr>
+      <tr><td><code>OpenSSL</code></td><td><code>sudo apt install libssl-dev</code></td></tr>
+    </tbody>
+  </table>
+  <p><label for="mn-aptfile" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-aptfile" class="margin-toggle"><span class="marginnote">Install the helper once with <code>sudo apt install apt-file</code> then <code>sudo apt-file update</code>. Searching the web for &ldquo;ubuntu package for Xmu.h&rdquo; also works.</span>If the library is not in this table, ask the system which package provides the missing file:</p>
+<pre><span class="p">$ </span>apt-file search Xmu.h
+libxmu-headers: /usr/include/X11/Xmu/Xmu.h</pre>
+
+  <h3>No compiler or no CMake</h3>
+<pre>cmake: command not found
+No CMAKE_CXX_COMPILER could be found.</pre>
+  <p>Install the basic tools: <code>sudo apt install build-essential cmake</code>.</p>
+
+  <h3>Wrong source folder</h3>
+<pre>The source directory "/home/student/software/geant4" does not appear
+to contain CMakeLists.txt.</pre>
+  <p>CMake was pointed at the wrong place. Give it the folder that contains <code>CMakeLists.txt</code>, i.e. <code>cmake ../src</code> from inside <code>build</code>.</p>
+
+  <h3>CMake version too old</h3>
+<pre>CMake 3.16 or higher is required.  You are running version 3.10.2</pre>
+  <p>Upgrade CMake (a newer Ubuntu release, or <code>pip install cmake</code>), or use an older version of the software.</p>
+
+  <h3>Changes not taking effect</h3>
+  <p>CMake remembers its earlier findings in <code>build/CMakeCache.txt</code>. If, after installing a missing package, it still complains, or if you change your mind about an option, empty the build folder and configure again:</p>
+<pre><span class="p">$ </span>cd ~/software/geant4/build
+<span class="p">$ </span>rm -rf ./*       <span class="c"># careful: only ever do this inside build</span>
+<span class="p">$ </span>cmake ../src -DCMAKE_INSTALL_PREFIX=$HOME/software/geant4/install ...</pre>
+
+  <h3>Missing header during make</h3>
+<pre>fatal error: X11/Xlib.h: No such file or directory</pre>
+  <p>A header file belonging to a library is missing. The fix is the same as above: install the corresponding <code>-dev</code> package, then rerun <code>cmake</code> and <code>make</code>.</p>
+
+  <h3>Out of memory during make</h3>
+<pre>c++: fatal error: Killed signal terminated program cc1plus</pre>
+  <p>Too many parallel jobs for the available memory. Use a smaller number, e.g. <code>make -j2</code>.</p>
+
+  <h3>Permission denied during make install</h3>
+<pre>CMake Error at cmake_install.cmake:46 (file):
+  file INSTALL cannot copy file ... to "/usr/local/...": Permission denied.</pre>
+  <p>You forgot <code>-DCMAKE_INSTALL_PREFIX</code>, so CMake tried to install into the system folder <code>/usr/local</code>. Reconfigure with the prefix pointing to your own <code>install</code> folder. Do not reach for <code>sudo make install</code>.</p>
+
+  <h3>Library not found when running</h3>
+<pre>./exampleB1: error while loading shared libraries: libG4Tree.so:
+cannot open shared object file: No such file or directory</pre>
+  <p>The program was built, but the shell cannot find the libraries at run time. You have not set up the environment in this terminal. Source the setup script: <code>geant4.sh</code> for Geant4 or <code>thisroot.sh</code> for ROOT (see the <a href="geant.html">Geant4</a> and <a href="root.html">ROOT</a> guides).</p>
+
+  <h3>Could not find Geant4Config.cmake (or ROOTConfig.cmake)</h3>
+  <p>When building your own code against Geant4, CMake cannot locate the installed package. Again, source the setup script first, or tell CMake explicitly: <code>cmake .. -DGeant4_DIR=$HOME/software/geant4/install/lib/cmake/Geant4</code>.</p>
+</section>
+
+<hr>
+<footer>
+  <a href="linux.html">Linux terminal basics</a> &middot; <a href="geant.html">Building Geant4</a> &middot; <a href="root.html">Building ROOT</a><br>
+  &copy; 2026 Deepak Samuel &middot; Department of Physics, Central University of Karnataka.<br>
+  Typography after Edward Tufte; set in ET Book.
+</footer>
+
+</article>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux Terminal Basics</title>
+<meta name="description" content="A short guide to the Linux terminal: navigating directories, managing files, viewing file contents and editing with vi. Programming for Physicists, Deepak Samuel.">
+<style>
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff");font-weight:normal;font-style:italic;font-display:swap}
+@font-face{font-family:"et-book";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff");font-weight:bold;font-style:normal;font-display:swap}
+@font-face{font-family:"et-book-roman-old-style";src:url("https://cdn.jsdelivr.net/gh/edwardtufte/tufte-css@gh-pages/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff");font-weight:normal;font-style:normal;font-display:swap}
+
+:root{--bg:#fffff8;--fg:#111;--muted:#555;--rule:#ccc;--code-bg:#f4f1e4}
+@media (prefers-color-scheme:dark){:root{--bg:#151515;--fg:#ddd;--muted:#999;--rule:#444;--code-bg:#222}}
+
+html{font-size:15px}
+body{width:87.5%;max-width:1400px;margin:0 auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background:var(--bg);color:var(--fg)}
+h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1}
+h2{font-style:italic;font-weight:400;margin-top:3rem;margin-bottom:0;font-size:2.2rem;line-height:1}
+h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:0;line-height:1}
+p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1.2}
+article{padding:2rem 0 5rem}
+section{padding-top:1rem;padding-bottom:1rem}
+p,ol,ul,dl{font-size:1.4rem;line-height:2rem}
+p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline}
+section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back{width:55%}
+section>ol,section>ul{-webkit-padding-start:5%;padding-left:5%}
+li:not(:first-child){margin-top:.25rem}
+
+a:link,a:visited{color:inherit;text-underline-offset:.1em;text-decoration-thickness:.05em}
+.smallcaps{font-variant:small-caps;letter-spacing:.03em;text-transform:lowercase}
+.newthought{font-variant:small-caps;font-size:1.2em}
+.muted{color:var(--muted)}
+hr{border:0;border-top:1px solid var(--rule);width:55%;margin:3rem 0 0}
+.back{font-size:1.2rem;font-style:italic;margin-top:2rem}
+.back .current{color:var(--muted)}
+
+/* Code */
+code,pre,kbd{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace}
+code,kbd{font-size:1.1rem}
+kbd{border:1px solid var(--rule);border-radius:3px;padding:0 .3rem}
+pre{font-size:1.05rem;line-height:1.5;background:var(--code-bg);padding:.8rem 1rem;margin:1rem 0;overflow-x:auto;box-sizing:border-box}
+pre .c{color:var(--muted);font-style:italic}
+pre .p{color:var(--muted);user-select:none}
+
+/* Command table */
+table{border-collapse:collapse;font-size:1.2rem;line-height:1.6rem;margin:1rem 0}
+th{font-weight:400;font-style:italic;text-align:left;border-bottom:1px solid var(--rule);padding:.3rem .8rem .3rem 0}
+td{vertical-align:top;padding:.3rem .8rem .3rem 0;border-bottom:1px solid var(--rule)}
+td:first-child{white-space:nowrap}
+
+/* Margin notes */
+.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:.3rem;margin-bottom:0;font-size:1.1rem;line-height:1.3;vertical-align:baseline;position:relative}
+.marginnote code{font-size:.95rem}
+input.margin-toggle{display:none}
+label.margin-toggle{display:none}
+
+@media (max-width:760px){
+  body{width:84%;padding-left:8%;padding-right:8%}
+  hr,section>p,section>ol,section>ul,section>dl,section>pre,section>table,.back,footer{width:100%}
+  h1{font-size:2.6rem}
+  .marginnote{display:none}
+  .margin-toggle:checked+.marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;vertical-align:baseline;position:relative}
+  label{cursor:pointer}
+  label.margin-toggle{display:inline}
+  td:first-child{white-space:normal}
+}
+
+footer{width:55%;font-size:1.1rem;color:var(--muted);margin-top:4rem;padding-bottom:3rem;line-height:1.5}
+</style>
+</head>
+<body>
+<article>
+
+<p class="back"><a href="install.html">Getting started</a> &middot; <span class="current">Linux terminal</span> &middot; <a href="cmake.html">Building software</a> &middot; <a href="root.html">Building ROOT</a> &middot; <a href="geant.html">Building Geant4</a></p>
+
+<h1>The Linux Terminal</h1>
+<p class="subtitle">A working introduction for Programming for Physicists</p>
+
+<section>
+  <p><span class="newthought">The terminal</span> is a text window in which you type commands and the computer replies. Almost every tool a physicist uses&mdash;compilers, ROOT, Geant4, Python scripts, remote clusters&mdash;is driven from here, so it pays to be comfortable with a handful of commands.</p>
+  <p>Open a terminal with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> on most Linux desktops. You will see a <em>prompt</em>, something like:</p>
+<pre>student@lab:~$</pre>
+  <p>This tells you the user name, the machine name, and the directory you are currently in (<code>~</code>). In the examples below, the <span class="p">$</span> stands for the prompt: do not type it. Text after <code>#</code> is a comment for you to read.</p>
+</section>
+
+<section id="where">
+  <h2>Where am I?</h2>
+  <p>Files on Linux live in a tree of directories (folders). The top of the tree is <code>/</code>, called the <em>root</em>. Your personal directory is your <em>home</em>, usually <code>/home/yourname</code>.</p>
+
+  <h3>pwd &mdash; print working directory</h3>
+<pre><span class="p">$ </span>pwd
+/home/student</pre>
+
+  <h3>The special names ~, . and ..</h3>
+  <p><label for="mn-tilde" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-tilde" class="margin-toggle"><span class="marginnote">The tilde <code>~</code> is a shortcut the shell expands for you: <code>~/data</code> becomes <code>/home/student/data</code>.</span>Three short names are used constantly:</p>
+  <ul>
+    <li><code>~</code> &mdash; your home directory</li>
+    <li><code>.</code> &mdash; the current directory</li>
+    <li><code>..</code> &mdash; the directory one level up (the parent)</li>
+  </ul>
+</section>
+
+<section id="ls">
+  <h2>Listing files: ls</h2>
+  <p><code>ls</code> lists what is in a directory. On its own it lists the current directory; give it a path to look elsewhere.</p>
+<pre><span class="p">$ </span>ls
+data  notes.txt  programs
+<span class="p">$ </span>ls programs
+hello.c  projectile.py</pre>
+
+  <p>Options (also called <em>flags</em>) change the output. They start with a dash and can be combined.</p>
+<pre><span class="p">$ </span>ls -l        <span class="c"># long format: permissions, owner, size, date</span>
+<span class="p">$ </span>ls -a        <span class="c"># show hidden files (names starting with .)</span>
+<span class="p">$ </span>ls -lh       <span class="c"># sizes in human-readable units (K, M, G)</span>
+<span class="p">$ </span>ls -lrt      <span class="c"># long format, sorted by time, oldest first</span></pre>
+
+  <h3>ls -lrt</h3>
+  <p><label for="mn-lrt" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-lrt" class="margin-toggle"><span class="marginnote">Read the flags one by one: <code>-l</code> long, <code>-r</code> reverse, <code>-t</code> sort by modification time.</span>This is the combination you will use most. Because the newest file appears <em>last</em>, right above your prompt, it is the quickest way to find the file your program just wrote.</p>
+<pre><span class="p">$ </span>ls -lrt
+-rw-r--r-- 1 student student  1204 Oct 30 10:12 notes.txt
+drwxr-xr-x 2 student student  4096 Nov  2 14:40 programs
+-rw-r--r-- 1 student student 88310 Nov  5 09:03 output.dat</pre>
+  <p>In each line, the first character is <code>d</code> for a directory and <code>-</code> for a file; then come the permissions, the owner, the size in bytes, the date of last change and the name.</p>
+</section>
+
+<section id="cd">
+  <h2>Moving around: cd</h2>
+  <p><code>cd</code> (change directory) moves you to another directory.</p>
+<pre><span class="p">$ </span>cd programs       <span class="c"># go into programs (relative path)</span>
+<span class="p">$ </span>cd ..             <span class="c"># go up one level</span>
+<span class="p">$ </span>cd ../..          <span class="c"># go up two levels</span>
+<span class="p">$ </span>cd /usr/include   <span class="c"># go to an absolute path</span>
+<span class="p">$ </span>cd ~              <span class="c"># go home</span>
+<span class="p">$ </span>cd                <span class="c"># also goes home</span>
+<span class="p">$ </span>cd -              <span class="c"># go back to the previous directory</span></pre>
+  <p>A path starting with <code>/</code> or <code>~</code> is <em>absolute</em>: it means the same thing wherever you are. Any other path is <em>relative</em> to the current directory.</p>
+</section>
+
+<section id="files">
+  <h2>Making, copying, moving, deleting</h2>
+
+  <h3>mkdir &mdash; make a directory</h3>
+<pre><span class="p">$ </span>mkdir lab1
+<span class="p">$ </span>mkdir -p lab2/data/raw   <span class="c"># -p creates the parent directories too</span></pre>
+
+  <h3>touch &mdash; create an empty file</h3>
+<pre><span class="p">$ </span>touch lab1/readme.txt</pre>
+
+  <h3>cp &mdash; copy</h3>
+  <p>The pattern is always <code>cp</code> <em>source destination</em>.</p>
+<pre><span class="p">$ </span>cp notes.txt notes_backup.txt   <span class="c"># copy to a new name</span>
+<span class="p">$ </span>cp notes.txt lab1/              <span class="c"># copy into a directory</span>
+<span class="p">$ </span>cp -r lab1 lab1_copy            <span class="c"># -r copies a whole directory</span>
+<span class="p">$ </span>cp ~/data/run01.dat .           <span class="c"># copy into the current directory</span></pre>
+
+  <h3>mv &mdash; move or rename</h3>
+<pre><span class="p">$ </span>mv notes_backup.txt old_notes.txt   <span class="c"># rename</span>
+<span class="p">$ </span>mv old_notes.txt lab1/              <span class="c"># move into lab1</span></pre>
+
+  <h3>rm &mdash; remove</h3>
+  <p><label for="mn-rm" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-rm" class="margin-toggle"><span class="marginnote">There is <em>no</em> recycle bin in the terminal. A file removed with <code>rm</code> is gone. Use <code>rm -i</code> to be asked before each deletion.</span>Be careful with this one.</p>
+<pre><span class="p">$ </span>rm lab1/readme.txt   <span class="c"># remove a file</span>
+<span class="p">$ </span>rmdir lab2/data/raw  <span class="c"># remove an empty directory</span>
+<span class="p">$ </span>rm -r lab1_copy      <span class="c"># remove a directory and everything in it</span></pre>
+
+  <h3>Wildcards</h3>
+  <p><code>*</code> matches any characters and <code>?</code> matches exactly one, so you can act on many files at once.</p>
+<pre><span class="p">$ </span>ls *.py              <span class="c"># all Python files</span>
+<span class="p">$ </span>cp run0?.dat backup/ <span class="c"># run01.dat ... run09.dat</span></pre>
+</section>
+
+<section id="view">
+  <h2>Looking inside files</h2>
+
+  <h3>cat &mdash; print a whole file</h3>
+<pre><span class="p">$ </span>cat notes.txt
+<span class="p">$ </span>cat part1.txt part2.txt   <span class="c"># print several files one after another</span></pre>
+
+  <h3>head and tail &mdash; the start or end of a file</h3>
+  <p><label for="mn-head" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-head" class="margin-toggle"><span class="marginnote">Use <code>head</code> to check the column headers of a large data file without printing a million lines.</span>By default these show ten lines.</p>
+<pre><span class="p">$ </span>head output.dat        <span class="c"># first 10 lines</span>
+<span class="p">$ </span>head -n 3 output.dat   <span class="c"># first 3 lines</span>
+<span class="p">$ </span>tail output.dat        <span class="c"># last 10 lines</span>
+<span class="p">$ </span>tail -f run.log        <span class="c"># keep following a file as it grows</span></pre>
+
+  <h3>less &mdash; page through a file</h3>
+  <p>Scroll with the arrow keys or <kbd>Space</kbd>, search with <kbd>/</kbd>, and quit with <kbd>q</kbd>.</p>
+<pre><span class="p">$ </span>less output.dat</pre>
+
+  <h3>wc and grep</h3>
+<pre><span class="p">$ </span>wc -l output.dat        <span class="c"># count lines</span>
+<span class="p">$ </span>grep energy notes.txt   <span class="c"># print lines containing "energy"</span></pre>
+</section>
+
+<section id="vi">
+  <h2>Editing with vi</h2>
+  <p><label for="mn-vi" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-vi" class="margin-toggle"><span class="marginnote">On most systems <code>vi</code> is really <code>vim</code>. If you get stuck, press <kbd>Esc</kbd> a couple of times and type <code>:q!</code> to leave without saving.</span><code>vi</code> is an editor that runs inside the terminal and is available on every Linux machine, including remote servers where there is no graphical editor.</p>
+<pre><span class="p">$ </span>vi hello.c</pre>
+  <p>The one idea to grasp is that <code>vi</code> has <em>modes</em>. It opens in <em>normal mode</em>, where keys are commands, not text. You press <kbd>i</kbd> to enter <em>insert mode</em> and type; you press <kbd>Esc</kbd> to return to normal mode.</p>
+
+  <table>
+    <thead><tr><th>Key (normal mode)</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>i</kbd></td><td>Insert text before the cursor</td></tr>
+      <tr><td><kbd>a</kbd></td><td>Append text after the cursor</td></tr>
+      <tr><td><kbd>o</kbd></td><td>Open a new line below and insert</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Back to normal mode</td></tr>
+      <tr><td><kbd>h</kbd> <kbd>j</kbd> <kbd>k</kbd> <kbd>l</kbd></td><td>Left, down, up, right (arrow keys also work)</td></tr>
+      <tr><td><kbd>x</kbd></td><td>Delete the character under the cursor</td></tr>
+      <tr><td><kbd>dd</kbd></td><td>Delete (cut) the current line</td></tr>
+      <tr><td><kbd>yy</kbd></td><td>Copy (yank) the current line</td></tr>
+      <tr><td><kbd>p</kbd></td><td>Paste below the cursor</td></tr>
+      <tr><td><kbd>u</kbd></td><td>Undo</td></tr>
+      <tr><td><kbd>gg</kbd> / <kbd>G</kbd></td><td>Go to the first / last line</td></tr>
+      <tr><td><code>/word</code></td><td>Search for <em>word</em>; <kbd>n</kbd> for the next match</td></tr>
+      <tr><td><code>:w</code></td><td>Save (write)</td></tr>
+      <tr><td><code>:q</code></td><td>Quit</td></tr>
+      <tr><td><code>:wq</code></td><td>Save and quit</td></tr>
+      <tr><td><code>:q!</code></td><td>Quit without saving</td></tr>
+    </tbody>
+  </table>
+
+  <p>A complete first session: <code>vi hello.txt</code>, press <kbd>i</kbd>, type a line, press <kbd>Esc</kbd>, type <code>:wq</code> and press <kbd>Enter</kbd>. Then check with <code>cat hello.txt</code>.</p>
+</section>
+
+<section id="more">
+  <h2>A few more things worth knowing</h2>
+
+  <h3>Saving output and joining commands</h3>
+<pre><span class="p">$ </span>ls -l &gt; listing.txt       <span class="c"># send output to a file (overwrites)</span>
+<span class="p">$ </span>echo "run 2" &gt;&gt; log.txt   <span class="c"># append to a file</span>
+<span class="p">$ </span>ls -lrt | tail -n 3       <span class="c"># pipe: the three newest files</span>
+<span class="p">$ </span>grep muon log.txt | wc -l <span class="c"># how many lines mention muon</span></pre>
+
+  <h3>Shortcuts that save typing</h3>
+  <ul>
+    <li><kbd>Tab</kbd> completes file and command names. Press it twice to see all choices.</li>
+    <li><kbd>&uarr;</kbd> and <kbd>&darr;</kbd> step through previous commands; <code>history</code> lists them.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>C</kbd> stops a running program.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>L</kbd> (or <code>clear</code>) clears the screen.</li>
+  </ul>
+
+  <h3>Getting help</h3>
+<pre><span class="p">$ </span>man ls      <span class="c"># the manual page for ls (quit with q)</span>
+<span class="p">$ </span>ls --help   <span class="c"># a shorter summary of options</span></pre>
+</section>
+
+<section id="bashrc">
+  <h2>The .bashrc file</h2>
+  <p><label for="mn-dot" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-dot" class="margin-toggle"><span class="marginnote">Files whose names start with a dot are <em>hidden</em>: plain <code>ls</code> does not show them, <code>ls -a</code> does.</span>Every time you open a terminal, the shell (called <code>bash</code>) first reads and runs the commands in a hidden file in your home directory, <code>~/.bashrc</code>. Anything written there happens automatically in every new terminal, so it is the place for settings you always want: shortcuts, and the setup commands for software such as <a href="root.html#permanent">ROOT</a> or <a href="geant.html#permanent">Geant4</a>.</p>
+<pre><span class="p">$ </span>ls -a ~            <span class="c"># .bashrc is listed among the hidden files</span>
+<span class="p">$ </span>tail ~/.bashrc     <span class="c"># look at its last few lines</span></pre>
+
+  <h3>Adding a line to .bashrc</h3>
+  <p>Either open it with <code>vi ~/.bashrc</code>, go to the end with <kbd>G</kbd>, press <kbd>o</kbd>, type the line and save with <code>:wq</code>; or append the line in one go:</p>
+<pre><span class="p">$ </span>echo 'source ~/software/root/install/bin/thisroot.sh' &gt;&gt; ~/.bashrc</pre>
+  <p><label for="mn-append" class="margin-toggle">&#8853;</label><input type="checkbox" id="mn-append" class="margin-toggle"><span class="marginnote">A single <code>&gt;</code> here would replace the whole file with this one line, wiping out your existing settings.</span>Be sure to type <code>&gt;&gt;</code>, which appends to the end of the file.</p>
+
+  <h3>Making the change take effect</h3>
+  <p><code>.bashrc</code> is only read when a terminal starts, so changes do not affect terminals that are already open. Either open a new terminal, or reload it in the current one:</p>
+<pre><span class="p">$ </span>source ~/.bashrc</pre>
+  <p>If a mistake in <code>.bashrc</code> causes error messages every time a terminal opens, edit the file with <code>vi</code> and remove or fix the line you added.</p>
+</section>
+
+<section id="summary">
+  <h2>Quick reference</h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>pwd</code></td><td>Show the current directory</td></tr>
+      <tr><td><code>ls</code>, <code>ls -l</code>, <code>ls -a</code>, <code>ls -lrt</code></td><td>List files</td></tr>
+      <tr><td><code>cd dir</code>, <code>cd ..</code>, <code>cd ~</code></td><td>Change directory</td></tr>
+      <tr><td><code>mkdir dir</code>, <code>mkdir -p a/b</code></td><td>Make directories</td></tr>
+      <tr><td><code>cp src dest</code>, <code>cp -r</code></td><td>Copy files or directories</td></tr>
+      <tr><td><code>mv src dest</code></td><td>Move or rename</td></tr>
+      <tr><td><code>rm file</code>, <code>rm -r dir</code></td><td>Delete (permanently)</td></tr>
+      <tr><td><code>cat file</code></td><td>Print a file</td></tr>
+      <tr><td><code>head</code>, <code>tail</code>, <code>less</code></td><td>View part of a file</td></tr>
+      <tr><td><code>grep word file</code></td><td>Find lines containing a word</td></tr>
+      <tr><td><code>vi file</code></td><td>Edit a file</td></tr>
+      <tr><td><code>man cmd</code></td><td>Read the manual</td></tr>
+      <tr><td><code>source ~/.bashrc</code></td><td>Reload terminal settings</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>
+<footer>
+  &copy; 2026 Deepak Samuel &middot; Department of Physics, Central University of Karnataka.<br>
+  Typography after Edward Tufte; set in ET Book.
+</footer>
+
+</article>
+</body>
+</html>
